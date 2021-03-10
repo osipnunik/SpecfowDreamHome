@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SpecFlowDreanLotteryHome.pages.admin;
 using System;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowDreanLotteryHome.Steps
@@ -207,6 +208,52 @@ namespace SpecFlowDreanLotteryHome.Steps
         public void WhenClickSave()
         {
             WinnP.ClickSave();
+        }
+        [When(@"click Winners")]
+        public void WhenClickWinners()
+        {
+            WinnP.ClickWinners();
+        }
+
+        [When(@"Change pagination to (.*)")]
+        public void WhenChangePaginationTo(int p0)
+        {
+            WinnP.GetPaginationF().ChooseSelect(p0);
+        }
+        [When(@"click Last page")]
+        public void WhenClickLastPage()
+        {
+            WinnP.GetPaginationF().ClickLastPage();
+        }
+        [Then(@"winner with title ""(.*)"" should present in winner list")]
+        public void ThenWinnerWithTitleShouldPresentInWinnerList(string p0)
+        {
+            bool isPresent = false;
+            List<string> titles = WinnP.GetTitleData();
+            int i = 0;
+            for (; i < titles.Count; i++)
+            {
+                if (titles[i].Equals(p0))
+                {
+                    isPresent = true;
+                }
+            }
+            Assert.IsTrue(isPresent, "i: "+i);
+        }
+        [When(@"delete winner with title ""(.*)""")]
+        public void WhenDeleteWinnerWithTitle(string title)
+        {
+            WinnP.DeleteWinnersWithTitle(title);
+        }
+        [Then(@"winner with title ""(.*)"" should not present in winner list")]
+        public void ThenWinnerWithTitleShouldNotPresentInWinnerList(string p0)
+        {
+            List<string> titles = WinnP.GetTitleData();
+            for (int i = 0; i < titles.Count; i++)
+            {
+                Assert.AreNotEqual(titles[i], p0);
+            }
+                        
         }
 
 

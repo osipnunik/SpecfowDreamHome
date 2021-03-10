@@ -1,4 +1,5 @@
-﻿using SpecFlowDreanLotteryHome.pages.admin;
+﻿using NUnit.Framework;
+using SpecFlowDreanLotteryHome.pages.admin;
 using System;
 using TechTalk.SpecFlow;
 
@@ -55,7 +56,13 @@ namespace SpecFlowDreanLotteryHome.Steps
             dreamHomePg.clickNextMonthOnFinish();
             dreamHomePg.clickFifthDataCellFinishCalendar();
         }
-        
+
+        [When(@"upload main picture")]
+        public void WhenUploadMainPicture()
+        {
+            dreamHomePg.InputGeneralPictureInput();
+        }
+
         [When(@"go to Description tab")]
         public void WhenGoToDescriptionTab()
         {
@@ -67,65 +74,160 @@ namespace SpecFlowDreanLotteryHome.Steps
         {
             dreamHomePg.inputBadroomDescription(p0);
         }
-        
-        [When(@"download badroom picture")]
-        public void WhenDownloadBadroomPicture()
-        {
-            dreamHomePg.clickSelectBadroomPicture();
-        }
-        
-        /*[When(@"input bathroom desctiption as ""(.*)""")]
+
+        [When(@"input bathroom desctiption as ""(.*)""")]
         public void WhenInputBathroomDesctiptionAs(string p0)
         {
-            ScenarioContext.Current.Pending();
+            dreamHomePg.InputBathDescription(p0);
         }
-        
-        [When(@"download bathroom picture")]
-        public void WhenDownloadBathroomPicture()
-        {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [When(@"input Outspace  desctiption as ""(.*)""")]
+
+        [When(@"input Outspace desctiption as ""(.*)""")]
         public void WhenInputOutspaceDesctiptionAs(string p0)
         {
-            ScenarioContext.Current.Pending();
+            dreamHomePg.InputOutSpaceDescription(p0);
         }
-        
-        [When(@"download Outspace picture")]
-        public void WhenDownloadOutspacePicture()
+
+
+        [When(@"upload badroom picture")]
+        public void WhenUploadBadroomPicture()
         {
-            ScenarioContext.Current.Pending();
+            dreamHomePg.InputBadRoomInputPic();
         }
-        
-        [When(@"add about descrition as ""(.*)""")]
-        public void WhenAddAboutDescritionAs(string p0)
+
+        [When(@"upload bathroom picture")]
+        public void WhenUploadBathroomPicture()
         {
-            ScenarioContext.Current.Pending();
+            dreamHomePg.InputBathRoomInputPic();
         }
-        
-        [When(@"go to discount & ticket tab")]
+
+        [When(@"upload Outspace picture")]
+        public void WhenUploadOutspacePicture()
+        {
+            dreamHomePg.InputOutSpaceInputPic();
+        }
+
+        [When(@"input in about ""(.*)"" text")]
+        public void WhenInputInAboutText(string p0)
+        {
+            dreamHomePg.InputAboutInput(p0);
+        }
+
+        [When(@"upload floor plan picture")]
+        public void WhenUploadFloorPlanPicture()
+        {
+            dreamHomePg.InputFloorPlanInputPic();
+        }
+
+        [When(@"input in Take a Tour with Sara ""(.*)"" text")]
+        public void WhenInputInTakeATourWithSaraText(string p0)
+        {
+            dreamHomePg.InputAddLink(p0);
+        }
+
+        [When(@"input in 3d Tour ""(.*)"" text")]
+        public void WhenInputIn3DTourText(string p1)
+        {
+            dreamHomePg.InputTour3D(p1);
+        }
+
+        [When(@"input price as ""(.*)""")]
+        public void WhenInputPriceAs(string p0)
+        {
+            dreamHomePg.InputPriceInp(p0);
+        }
+
+        [When(@"input Bed as ""(.*)""")]
+        public void WhenInputBedAs(string p0)
+        {
+            dreamHomePg.InputBadInp(p0);
+        }
+
+        [When(@"input Bath as ""(.*)""")]
+        public void WhenInputBathAs(string p0)
+        {
+            dreamHomePg.InputBathInp(p0);
+        }
+
+        [When(@"input Garden as ""(.*)""")]
+        public void WhenInputGardenAs(string p0)
+        {
+            dreamHomePg.InputGardenInp(p0);
+        }
+
+        [When(@"input Transport as ""(.*)""")]
+        public void WhenInputTransportAs(string p0)
+        {
+            dreamHomePg.InputTransportInp(p0);
+        }
+
+        [When(@"input location as ""(.*)""")]
+        public void WhenInputLocationAs(string p0)
+        {
+            dreamHomePg.InputLocationInp(p0);
+        }
+
+        [When(@"input Freehold as ""(.*)""")]
+        public void WhenInputFreeholdAs(string p0)
+        {
+            dreamHomePg.InputFreeHoldInp(p0);
+        }
+
+        [When(@"input Tax as ""(.*)""")]
+        public void WhenInputTaxAs(string p0)
+        {
+            dreamHomePg.InputTaxInp(p0);
+        }
+
+        [When(@"input Size as (.*)")]
+        public void WhenInputSizeAs(string p0)
+        {
+            dreamHomePg.InputSizeInp(p0);
+        }
+
+        [When(@"input Energy as ""(.*)""")]
+        public void WhenInputEnergyAs(string p0)
+        {
+            dreamHomePg.InputEnergyInp(p0);
+        }
+        [When(@"go to Discount & ticket tab")]
         public void WhenGoToDiscountTicketTab()
         {
-            ScenarioContext.Current.Pending();
+            dreamHomePg.ClickDiscountTicketTab();
         }
-        
-        [When(@"input price as (.*)")]
-        public void WhenInputPriceAs(int p0)
+
+        [When(@"input ticket price value (.*)")]
+        public void WhenInputTicketPriceValue(string p0)
         {
-            ScenarioContext.Current.Pending();
+            dreamHomePg.InputTicketPrice(p0);
         }
-        
-        [When(@"Click Save")]
-        public void WhenClickSave()
+
+        [When(@"input default number of tickets (.*)")]
+        public void WhenInputDefaultNumberOfTickets(string p0)
         {
-            ScenarioContext.Current.Pending();
+            dreamHomePg.InputDefaultNumbersOfTickets(p0);
         }
-        
-        [Then(@"user login as user on web")]
-        public void ThenUserLoginAsUserOnWeb()
+
+        [When(@"click save button")]
+        public void WhenClickSaveButton()
         {
-            ScenarioContext.Current.Pending();
-        }*/
+            dreamHomePg.ClickSaveBtn();
+        }
+        [Then(@"in new dream home table should be ""(.*)"" title")]
+        public void ThenInNewDreamHomeTableShouldBeTitle(string p0)
+        {
+            Assert.IsTrue(dreamHomePg.GetTitles().Contains(p0));
+        }
+
+        [When(@"make ""(.*)"" active")]
+        public void WhenMakeActive(string p0)
+        {
+            if (/*!noActivePresent*/dreamHomePg.IsNoActive())
+            {
+                dreamHomePg.MakeActiveDreamHomeUnactive();
+            }
+                dreamHomePg.SetActiveDreamHomeWithTitle(p0);
+            
+        }
+
     }
 }

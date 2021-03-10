@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SpecFlowDreanLotteryHome.pages.admin.fragments;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,10 +11,16 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 {
     class WinnersPage : BasePage
     {
-        public WinnersPage(IWebDriver webDriver) : base(webDriver) { }
+
+        public static PaginationFragment Paginats;
+
+        public WinnersPage(IWebDriver webDriver) : base(webDriver) {
+            Paginats = new PaginationFragment(webDriver);
+        }
 
         private IWebElement SettingsHref => WebDriver.FindElement(By.XPath("//span[text()='Settings']"));
-        private IWebElement WinnersHref => WebDriver.FindElement(By.CssSelector("a[title='Winners']"));
+        private IWebElement WinnersHref => WebDriver.FindElement(By.CssSelector("a[href='#/winners']"));
+        private IWebElement DeleteIcon4 => WebDriver.FindElement(By.CssSelector("tbody:nth-child(5) div svg.delete-icon"));
         private IWebElement Addnew => WebDriver.FindElement(By.CssSelector("a[aria-label = 'Add new ']"));
         private IWebElement ProductChooser => WebDriver.FindElement(By.Id("search-input"));//By.Id("search-input"));
 
@@ -34,6 +42,10 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IList<IWebElement> CompetitionData => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(2)"));
         private IList<IWebElement> FinishDateData => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(3)"));
         private IList<IWebElement> TitleData => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(4)"));
+        string TitleText;
+        private IWebElement DeleteTitle => WebDriver.FindElement(By.XPath("//tbody/tr/td[text()='"+TitleText+"']/following-sibling::td//*[@class='MuiSvgIcon-root delete-icon']"));
+        private IWebElement ApproveRemove => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("button.user-remove-button span")));
+        private By PopupTitle => By.TagName("h4");
         string ColumnName;
         private IWebElement Header => WebDriver.FindElement(By.XPath("//thead/tr//*[text()='" + ColumnName + "']"));
 
@@ -110,20 +122,24 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         public List<string> GetTitleData()
         {
             List<string> data = new List<string>();
-            foreach (var el in TitleData)
+            try
             {
-                data.Add(el.Text);
+                foreach (var el in TitleData)
+                {
+                    data.Add(el.Text);
+                }
+            }catch(StaleElementReferenceException e)
+            {
+                return GetTitleData();
             }
+
             return data;
         }
         public void instertPic()
         {
             
-            Thread.Sleep(1000);
             string str = Environment.CurrentDirectory.Replace("TestResults","\\SpecFlowDreanLotteryHome\\G.PNG");
-            Log.Error("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             InputPicture.SendKeys(str);//"C:\\Users\\PC\\G.PNG") 
-            Thread.Sleep(3000);
         /*    IJavaScriptExecutor js = (IJavaScriptExecutor)WebDriver;
             js.ExecuteScript("arguments[0].setAttribute('style', arguments[1])", WebDriver.FindElement(By.XPath("//input[@type='file']")), "0");
             js.ExecuteScript("arguments[0].setAttribute('class', arguments[1])", WebDriver.FindElement(By.XPath("//input[@type='file']/../../div[2]")), "a");
@@ -132,7 +148,6 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         internal void ClickDescription()
         {
-            Thread.Sleep(4000);
             Description.Click();
         }
 
@@ -148,5 +163,18 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         }
 
         internal void ClickSave() => SaveBtn.Click();
+
+        public PaginationFragment GetPaginationF()
+        {
+            return Paginats;
+        }
+
+        internal void DeleteWinnersWithTitle(string title)
+        {
+            TitleText = title;
+            DeleteTitle.Click();
+            ApproveRemove.Click();
+            Waiter.Until(ExpectedConditions.InvisibilityOfElementWithText(PopupTitle, "Are you sure you want to remove winner?"));
+        }
     }
 }
