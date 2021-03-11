@@ -8,8 +8,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
     class LoginAdminPage : BasePage
     {
 
-        public LoginAdminPage(IWebDriver webDriver) : base(webDriver) { }
-       
+        public LoginAdminPage(IWebDriver webDriver) : base(webDriver) { }      
 
         private IWebElement Login => WebDriver.FindElement(By.Name("email"));
         private IWebElement Password => WebDriver.FindElement(By.Name("password"));

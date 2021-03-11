@@ -15,6 +15,9 @@ namespace SpecFlowDreanLotteryHome.pages
         protected IWebElement SuccessPopup => WebDriver.FindElement(By.Id("client-snackbar"));
         public string GetPopupText() => SuccessPopup.Text;
 
+        private IWebElement AddPrize => WebDriver.FindElement(By.CssSelector("a.add-button"));
+        public void ClickAddPrize() => AddPrize.Click();
+
         public BasePage(IWebDriver webDriver)
         {
             this.WebDriver = webDriver;

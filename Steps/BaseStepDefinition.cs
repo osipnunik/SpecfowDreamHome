@@ -14,13 +14,15 @@ namespace SpecFlowDreanLotteryHome.Steps
         protected static string MainUserPageURL =
             //""
             "http://localhost:8000"
+            
             ;
         public static string LOGIN_USER_VAL = MainUserPageURL + "/sign-in";
 
 
         protected static string MainAdminPageURL =
             //""
-            "http://localhost:3000/"
+            //"http://localhost:3000/"
+            "https://admin-staging.rafflehouse.com"
             ;
 
 

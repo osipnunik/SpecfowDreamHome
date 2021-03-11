@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kPGmLVTTZFn/DrrtKSm3pFA02KXG8uQDb1nYiyzsjiAIQImbmEPGyhCKdrPv+vf93wqLF/9OLF8cqAWU7OTuww==",
+  "dgSpecHash": "avUJPngv7+VvzN5w6yRGmmtk47NuL56bxNeeA/w0dk7coAOPjgdvNtcvh5D3HG9oDDofWAoHFpbza5DioSooDw==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\source\\repos\\SpecFlowDreanLotteryHome\\SpecFlowDreanLotteryHome\\SpecFlowDreanLotteryHome.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,7 @@
     "C:\\Users\\PC\\.nuget\\packages\\nlog.schema\\4.7.7\\nlog.schema.4.7.7.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\nunit\\3.13.1\\nunit.3.13.1.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",

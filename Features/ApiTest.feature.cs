@@ -19,22 +19,22 @@ namespace SpecFlowDreanLotteryHome.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Authentification, Authorisation as user in web", SourceFile="Features\\Login.feature", SourceLine=0)]
-    public partial class AuthentificationAuthorisationAsUserInWebFeature
+    [TechTalk.SpecRun.FeatureAttribute("ApiTest", Description="\ttest api", SourceFile="Features\\ApiTest.feature", SourceLine=0)]
+    public partial class ApiTestFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "Login.feature"
+#line 1 "ApiTest.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Authentification, Authorisation as user in web", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "ApiTest", "\ttest api", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -70,14 +70,16 @@ namespace SpecFlowDreanLotteryHome.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("as a user i want to be login with valid credentials", SourceLine=2)]
-        public virtual void AsAUserIWantToBeLoginWithValidCredentials()
+        [TechTalk.SpecRun.ScenarioAttribute("API test", new string[] {
+                "mytag"}, SourceLine=4)]
+        public virtual void APITest()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("as a user i want to be login with valid credentials", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 3
-  this.ScenarioInitialize(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("API test", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 5
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -96,20 +98,8 @@ namespace SpecFlowDreanLotteryHome.Features
             else
             {
                 this.ScenarioStart();
-#line 4
-    testRunner.When("user go to login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 5
-    testRunner.And("input in email value \"proton001@lenta.ru\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 6
-    testRunner.And("input in password \"sobaka\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 7
-    testRunner.And("click submit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 8
-    testRunner.Then("user redirected to dream house page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("api testing", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -38,3 +38,9 @@ Scenario: Create Winner and delete him
 	When input title as "TitleTest of Winner"
 	And input picture
 	And click Save
+	When click Winners
+	When Change pagination to 25
+	When click Last page
+	Then winner with title "TitleTest of Winner" should present in winner list
+	When delete winner with title "TitleTest of Winner" 
+	Then winner with title "TitleTest of Winner" should not present in winner list

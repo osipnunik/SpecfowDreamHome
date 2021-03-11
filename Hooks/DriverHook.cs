@@ -26,5 +26,6 @@ namespace SpecFlowDreanLotteryHome.Hooks
         {
            // SingletonDriver.GetInstance().Quit();
         }
+        
     }
 }

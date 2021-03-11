@@ -11,17 +11,22 @@ namespace SpecFlowDreanLotteryHome.pages.admin
     {
         public DreamHomePage(IWebDriver webDriver) : base(webDriver) { }
 
-        string PicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\G.PNG");
-        
+        string MainHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\main_pic.png");
+        string BadroomHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\badroom_pic.png");
+        string BathroomHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\bathroom_pic.jpg");
+        string OutspaceHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\outspace_pic.jpg");
+        string FloorPlanHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\floor_plan_pic.png");
+
+
         private IList<IWebElement> Titles => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-of-type(1)"));
         private IWebElement CheckboxOfActiveOne => WebDriver.FindElement(By.XPath("(//table)[1]/tbody/tr//label"));
         string TitleNeedBeActive;
-        private IWebElement CheckOfDrHomeWithTitle => WebDriver.FindElement(By.XPath("(//table)[2]/tbody/tr/td[text()='"+ TitleNeedBeActive + "']/..//label/input"));
+        private IWebElement CheckOfDrHomeWithTitle => WebDriver.FindElement(By.XPath("(//table)[2]/tbody/tr/td[text()='"+ TitleNeedBeActive + "']/..//label/span"));
         private IList<IWebElement> noActiveMessages => WebDriver.FindElements(By.CssSelector("div.no-active h6"));
 
         private IWebElement dreamHome => WebDriver.FindElement(By.CssSelector("a[title='Dream home']"));
 
-        private IWebElement addDreamHome => WebDriver.FindElement(By.XPath("//span[text()='Add new dream home']"));
+        private IWebElement addDreamHome => WebDriver.FindElement(By.CssSelector("a.add-button"));
 
         private IWebElement title => WebDriver.FindElement(By.Id("name"));
 
@@ -80,13 +85,13 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement TicketPriceInput => WebDriver.FindElement(By.Id("ticketPrice"));
         private IWebElement DefaultTicketNumberInput => WebDriver.FindElement(By.Id("defaultTickets"));
 
-        public void InputGeneralPictureInput() => GeneralPicInput.SendKeys(PicPath);//"C:\\Users\\PC\\G.PNG")         
+        public void InputGeneralPictureInput() => GeneralPicInput.SendKeys(MainHomePicPath);//"C:\\Users\\PC\\G.PNG")         
         
-        public void InputBadRoomInputPic() => BadRoomInputPic.SendKeys(PicPath);
-        public void InputBathRoomInputPic() => BathRoomInputPic.SendKeys(PicPath);
-        public void InputOutSpaceInputPic() => OutSpaceInputPic.SendKeys(PicPath);
+        public void InputBadRoomInputPic() => BadRoomInputPic.SendKeys(BadroomHomePicPath);
+        public void InputBathRoomInputPic() => BathRoomInputPic.SendKeys(BathroomHomePicPath);
+        public void InputOutSpaceInputPic() => OutSpaceInputPic.SendKeys(OutspaceHomePicPath);
         public void InputAboutInput(string inp) => AboutInput.SendKeys(inp);
-        public void InputFloorPlanInputPic() => FloorPlanInputPic.SendKeys(PicPath);
+        public void InputFloorPlanInputPic() => FloorPlanInputPic.SendKeys(FloorPlanHomePicPath);
         public void InputAddLink(string inp) => AddLink.SendKeys(inp);
         public void InputTour3D(string inp) => Tour3D.SendKeys(inp);
         public void InputPriceInp(string inp) => PriceInp.SendKeys(inp);
@@ -118,6 +123,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         internal void InputTicketPrice(string p0)
         {
+            //TicketPriceInput.Click();
             TicketPriceInput.SendKeys(p0);
         }
 

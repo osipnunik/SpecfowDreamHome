@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using RestSharp;
+using RestSharp.Authenticators;
 using SpecFlowDreanLotteryHome.pages.admin;
 using System;
 using TechTalk.SpecFlow;
@@ -25,25 +27,25 @@ namespace SpecFlowDreanLotteryHome.Steps
             loginPg.InputPass(p1);
             loginPg.ClickSignIn();
         }
-        
+
         [Given(@"click add new dream home")]
         public void GivenClickAddNewDreamHome()
         {
             dreamHomePg.clickAddNewDreamHome();
         }
-        
+
         [When(@"admin input title as ""(.*)""")]
         public void WhenAdminInputTitleAs(string p0)
         {
             dreamHomePg.inputTitle(p0);
         }
-        
+
         [When(@"admin input address as ""(.*)""")]
         public void WhenAdminInputAddressAs(string p0)
         {
             dreamHomePg.inputAddress(p0);
         }
-        
+
         [When(@"choose start and finish date")]
         public void WhenChooseStartAndFinishDate()
         {
@@ -68,7 +70,7 @@ namespace SpecFlowDreanLotteryHome.Steps
         {
             dreamHomePg.goToDescription();
         }
-        
+
         [When(@"input badroom desctiption as ""(.*)""")]
         public void WhenInputBadroomDesctiptionAs(string p0)
         {
@@ -221,13 +223,18 @@ namespace SpecFlowDreanLotteryHome.Steps
         [When(@"make ""(.*)"" active")]
         public void WhenMakeActive(string p0)
         {
-            if (/*!noActivePresent*/dreamHomePg.IsNoActive())
+            if (!dreamHomePg.IsNoActive())
             {
                 dreamHomePg.MakeActiveDreamHomeUnactive();
             }
-                dreamHomePg.SetActiveDreamHomeWithTitle(p0);
-            
+            dreamHomePg.SetActiveDreamHomeWithTitle(p0);
         }
-
+        public void ApiMethod(){
+            var client = new RestClient("https://api.twitter.com/1.1");
+            client.Authenticator = new HttpBasicAuthenticator("username", "password");
+            var request = new RestRequest("statuses/home_timeline.json", DataFormat.Json);
+            var response = client.Get(request);
+            response.Content.Contains("");
+        }
     }
 }

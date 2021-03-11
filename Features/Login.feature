@@ -1,4 +1,4 @@
-﻿Feature: Authentification, Authorisation
+﻿Feature: Authentification, Authorisation as user in web
 
   Scenario: as a user i want to be login with valid credentials
     When user go to login page
