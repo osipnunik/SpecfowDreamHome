@@ -11,7 +11,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 {
     class WinnersPage : BasePage
     {
-
+        private string MainHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\main_pic.png");
         public static PaginationFragment Paginats;
 
         public WinnersPage(IWebDriver webDriver) : base(webDriver) {
@@ -136,10 +136,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             return data;
         }
         public void instertPic()
-        {
-            
-            string str = Environment.CurrentDirectory.Replace("TestResults","\\SpecFlowDreanLotteryHome\\G.PNG");
-            InputPicture.SendKeys(str);//"C:\\Users\\PC\\G.PNG") 
+        {            
+            InputPicture.SendKeys(MainHomePicPath); 
         /*    IJavaScriptExecutor js = (IJavaScriptExecutor)WebDriver;
             js.ExecuteScript("arguments[0].setAttribute('style', arguments[1])", WebDriver.FindElement(By.XPath("//input[@type='file']")), "0");
             js.ExecuteScript("arguments[0].setAttribute('class', arguments[1])", WebDriver.FindElement(By.XPath("//input[@type='file']/../../div[2]")), "a");

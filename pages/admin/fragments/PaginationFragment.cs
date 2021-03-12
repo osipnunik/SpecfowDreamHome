@@ -7,15 +7,15 @@ using System.Text;
 
 namespace SpecFlowDreanLotteryHome.pages.admin.fragments
 {
-    class PaginationFragment /*: BasePage*/
+    class PaginationFragment : BasePage
     {
-        IWebDriver WebDriver;
-        public PaginationFragment(IWebDriver webDriver) /*: base(webDriver)*/ { WebDriver = webDriver; }
+        //IWebDriver WebDriver;
+        public PaginationFragment(IWebDriver webDriver) : base(webDriver) {  }
         private By RowsPerPageChooserBy = By.CssSelector("div.MuiTablePagination-select");
         private IWebElement RowsPerPageChooser => WebDriver.FindElement(RowsPerPageChooserBy);
         private IWebElement NextPage => WebDriver.FindElement(By.CssSelector("button[title='Next page']"));
         private IWebElement PreviousPage => WebDriver.FindElement(By.CssSelector("button[title='Previous page']"));
-        private IWebElement LastPage => WebDriver.FindElement(By.CssSelector("div[title = 'Last Page']"));
+        private IWebElement LastPage => Waiter.Until(ExpectedConditions.ElementExists(By.CssSelector("div[title = 'Last Page']")));
         private IWebElement FirstPage => WebDriver.FindElement(By.CssSelector("div[title = 'First Page']"));
 
         public void ClickNextPage() => NextPage.Click();
@@ -25,7 +25,15 @@ namespace SpecFlowDreanLotteryHome.pages.admin.fragments
             Actions act = new Actions(WebDriver);
             act.MoveToElement(LastPage);
             act.Perform();
+            Waiter.Until(ExpectedConditions.ElementToBeClickable(LastPage));
             LastPage.Click();
+            Waiter.Until(ExpectedConditions.ElementToBeClickable(PreviousPage));
+        }
+        public void ClickLastPageWithWithoutScroll()
+        {           
+            Waiter.Until(ExpectedConditions.ElementToBeClickable(LastPage));
+            LastPage.Click();
+            Waiter.Until(ExpectedConditions.ElementToBeClickable(PreviousPage));
         }
         public void ClickFirstPage() => FirstPage.Click();
 

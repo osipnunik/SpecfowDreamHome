@@ -84,6 +84,14 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         private IWebElement TicketPriceInput => WebDriver.FindElement(By.Id("ticketPrice"));
         private IWebElement DefaultTicketNumberInput => WebDriver.FindElement(By.Id("defaultTickets"));
+        private IWebElement DiscountFromTicket => WebDriver.FindElement(By.Id("isActiveDiscount"));
+        private IWebElement PriceIs => WebDriver.FindElement(By.XPath("(//h6[text()='Tickets']/..//input)[5]"));
+        private IWebElement ErrorMessage => WebDriver.FindElement(By.XPath("div.date-error"));
+        private IWebElement DiscountIs => WebDriver.FindElement(By.XPath("(//h6[text()='Tickets']/..//input)[4]"));
+        private IWebElement MoneyCurrency => WebDriver.FindElement(By.XPath("(//span[@class='discount-is']/..)[2]"));
+        private IWebElement DiscountNewPrice => WebDriver.FindElement(By.XPath("(//h6[text()='Discount']/..//input)[5]"));
+        private IWebElement CurrencyCheckbox => WebDriver.FindElement(By.Id("property.discountCategory_cash"));
+        private IWebElement DiscountStatus => WebDriver.FindElement(By.Id("isDiscountRates"));
 
         public void InputGeneralPictureInput() => GeneralPicInput.SendKeys(MainHomePicPath);//"C:\\Users\\PC\\G.PNG")         
         
@@ -98,9 +106,54 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         public void InputBadInp(string inp) => BadInp.SendKeys(inp);
         public void InputBathDescription(string inp) => BathDescription.SendKeys(inp);
         public void InputOutSpaceDescription(string inp) => OutSpaceDescription.SendKeys(inp);
+
+        internal void ClickDiscountInTicket()
+        {
+            DiscountFromTicket.Click();
+        }
+
+        internal void InputDiscountIs(string p0)
+        {
+            DiscountIs.SendKeys(Keys.Backspace); DiscountIs.SendKeys(Keys.Backspace); 
+            DiscountIs.SendKeys(p0);
+        }
+
         public void InputBathInp(string inp) => BathInp.SendKeys(inp);
+
+        internal string GetPriceIs()
+        {
+            return PriceIs.GetAttribute("value");
+        }
+
         public void InputGardenInp(string inp) => GardenInp.SendKeys(inp);
+
+        internal void ClickDiscountStatus() => DiscountStatus.Click();
+
+        internal void InputPriceIs(string p0)
+        {
+            PriceIs.SendKeys(Keys.Backspace); PriceIs.SendKeys(Keys.Backspace); PriceIs.SendKeys(Keys.Backspace);
+            PriceIs.SendKeys(p0);
+        }
+
+        internal void InputPriceDiscountTab(string p0)
+        {
+            DiscountNewPrice.SendKeys(Keys.Backspace);DiscountNewPrice.SendKeys(Keys.Backspace);  
+            DiscountNewPrice.SendKeys(p0);
+        }
+
+        internal string GetMoneyAndCurrency()
+        {
+            return MoneyCurrency.Text;
+        }
+
+        internal void ClickCurrencyCheckbox() => CurrencyCheckbox.Click();
+
         public void InputTransportInp(string inp) => TransportInp.SendKeys(inp);
+
+        internal string GetDiscountIs()
+        {
+            return DiscountIs.GetAttribute("value");
+        }
 
         internal void ClickDiscountTicketTab()
         {
@@ -124,7 +177,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         internal void InputTicketPrice(string p0)
         {
             //TicketPriceInput.Click();
-            TicketPriceInput.SendKeys(p0);
+            TicketPriceInput.SendKeys(p0);            
         }
 
         public void InputLocationInp(string inp) => LocationInp.SendKeys(inp);

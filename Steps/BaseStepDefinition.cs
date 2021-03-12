@@ -2,27 +2,27 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using SpecFlowDreanLotteryHome.Drivers;
+using SpecFlowDreanLotteryHome.pages.admin;
 using SpecFlowDreanLotteryHome.utils;
 using System;
+using TechTalk.SpecFlow;
 
 namespace SpecFlowDreanLotteryHome.Steps
 {
     public class BaseStepDefinition : LoggerContainer {
         protected static IWebDriver WebDriver = SingletonDriver.GetInstance();
-        public WebDriverWait Waiter { get; }
+        public WebDriverWait Waiter { get; }     
 
         protected static string MainUserPageURL =
             //""
-            "http://localhost:8000"
-            
+            "http://localhost:8000"           
             ;
         public static string LOGIN_USER_VAL = MainUserPageURL + "/sign-in";
 
 
         protected static string MainAdminPageURL =
-            //""
-            //"http://localhost:3000/"
-            "https://admin-staging.rafflehouse.com"
+            "http://localhost:3000/"
+            //"https://admin-staging.rafflehouse.com"
             ;
 
 

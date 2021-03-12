@@ -12,11 +12,26 @@ namespace SpecFlowDreanLotteryHome.pages
         public IWebDriver WebDriver { get;}
         public WebDriverWait Waiter { get; }
 
-        protected IWebElement SuccessPopup => WebDriver.FindElement(By.Id("client-snackbar"));
-        public string GetPopupText() => SuccessPopup.Text;
+        /*protected IWebElement SuccessPopup => WebDriver.FindElement(By.Id("client-snackbar"));
+        public string GetPopupText() => SuccessPopup.Text;*/
+
+        protected IWebElement Popup => WebDriver.FindElement(By.CssSelector("div.MuiSnackbarContent-message"));
+        public string GetPopupText()
+        {
+           if(Popup.Text.Length == 0)
+            {
+                return GetPopupText();
+            }else return Popup.Text;
+        }
 
         private IWebElement AddPrize => WebDriver.FindElement(By.CssSelector("a.add-button"));
         public void ClickAddPrize() => AddPrize.Click();
+
+        private IWebElement Addnew => WebDriver.FindElement(By.CssSelector("a[aria-label = 'Add new ']"));
+        public void ClickAddNew() => Addnew.Click();
+
+        private IWebElement SaveBtn => WebDriver.FindElement(By.CssSelector("div[role='toolbar'] button:nth-child(1)"));
+        public void ClickSave() => SaveBtn.Click();
 
         public BasePage(IWebDriver webDriver)
         {

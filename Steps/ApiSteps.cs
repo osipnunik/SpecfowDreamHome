@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using RestSharp;
 using RestSharp.Authenticators;
+using SpecFlowDreanLotteryHome.entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

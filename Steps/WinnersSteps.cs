@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SpecFlowDreanLotteryHome.pages.admin;
+using SpecFlowDreanLotteryHome.services;
 using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
@@ -10,17 +11,14 @@ namespace SpecFlowDreanLotteryHome.Steps
     public class WinnersSteps : BaseStepDefinition
     {
         private WinnersPage WinnP = new WinnersPage(WebDriver);
-        private LoginAdminPage loginPg = new LoginAdminPage(WebDriver);
-
-        [Given(@"admin logged in")]
-        public void GivenAdminLoggedIn()
-        {
-            WebDriver.Navigate().GoToUrl(WINNERS_ADM_VAL);
-            loginPg.InputLogin("testqaanuitex@gmail.com"); 
-            loginPg.InputPass("1111111");
-            loginPg.ClickSignIn();
-        }
+        private AutogeneratorService bogus = new AutogeneratorService();
+        private readonly ScenarioContext _scenarioContext;
         
+        public WinnersSteps(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
+
         [When(@"admin go to Winners page")]
         public void WhenAdminGoToWinnersPage()
         {
@@ -176,7 +174,11 @@ namespace SpecFlowDreanLotteryHome.Steps
                 Assert.IsTrue(WinnP.GetTitleData()[i].CompareTo(WinnP.GetTitleData()[i+1]) < 0);
             }
         }
-
+        [When(@"admin click on add new")]
+        public void WhenAdminClickOnAddNew()
+        {
+            WinnP.ClickAddNew();
+        }
         [When(@"admin click on add new winner")]
         public void WhenAdminClickOnAddNewWinner()
         {
@@ -193,10 +195,12 @@ namespace SpecFlowDreanLotteryHome.Steps
         {
             WinnP.ClickDescription();
         }
-        [When(@"input title as ""(.*)""")]
-        public void WhenInputTitleAs(string p0)
+        [When(@"input random title")]
+        public void WhenInputTitleAs()
         {
-            WinnP.InputDescriptTitle(p0);
+            string title = bogus.GenerateTitle();
+            WinnP.InputDescriptTitle(title);
+            _scenarioContext.Add("title", title);
         }
 
         [When(@"input picture")]
@@ -225,33 +229,33 @@ namespace SpecFlowDreanLotteryHome.Steps
         {
             WinnP.GetPaginationF().ClickLastPage();
         }
-        [Then(@"winner with title ""(.*)"" should present in winner list")]
-        public void ThenWinnerWithTitleShouldPresentInWinnerList(string p0)
+        [Then(@"winner with generated title should present in winner list")]
+        public void ThenWinnerWithTitleShouldPresentInWinnerList()
         {
             bool isPresent = false;
             List<string> titles = WinnP.GetTitleData();
             int i = 0;
             for (; i < titles.Count; i++)
             {
-                if (titles[i].Equals(p0))
+                if (titles[i].Equals(((string)_scenarioContext["title"])))
                 {
                     isPresent = true;
                 }
             }
             Assert.IsTrue(isPresent, "i: "+i);
         }
-        [When(@"delete winner with title ""(.*)""")]
-        public void WhenDeleteWinnerWithTitle(string title)
+        [When(@"delete winner with title")]
+        public void WhenDeleteWinnerWithTitle()
         {
-            WinnP.DeleteWinnersWithTitle(title);
+            WinnP.DeleteWinnersWithTitle((string)_scenarioContext["title"]);
         }
-        [Then(@"winner with title ""(.*)"" should not present in winner list")]
-        public void ThenWinnerWithTitleShouldNotPresentInWinnerList(string p0)
+        [Then(@"winner with title should not present in winner list")]
+        public void ThenWinnerWithTitleShouldNotPresentInWinnerList()
         {
             List<string> titles = WinnP.GetTitleData();
             for (int i = 0; i < titles.Count; i++)
             {
-                Assert.AreNotEqual(titles[i], p0);
+                Assert.AreNotEqual(titles[i], (string)_scenarioContext["title"]);
             }
                         
         }

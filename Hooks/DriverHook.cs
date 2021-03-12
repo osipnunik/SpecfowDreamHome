@@ -26,6 +26,11 @@ namespace SpecFlowDreanLotteryHome.Hooks
         {
            // SingletonDriver.GetInstance().Quit();
         }
+        //[AfterStep]
+        public void Step()
+        {
+            Thread.Sleep(800);
+        }
         
     }
 }

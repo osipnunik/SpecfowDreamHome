@@ -2,6 +2,7 @@
 using RestSharp;
 using RestSharp.Authenticators;
 using SpecFlowDreanLotteryHome.pages.admin;
+using SpecFlowDreanLotteryHome.services;
 using System;
 using TechTalk.SpecFlow;
 
@@ -34,16 +35,18 @@ namespace SpecFlowDreanLotteryHome.Steps
             dreamHomePg.clickAddNewDreamHome();
         }
 
-        [When(@"admin input title as ""(.*)""")]
-        public void WhenAdminInputTitleAs(string p0)
+        [When(@"admin input title randomly generated")]
+        public void WhenAdminInputTitleAs()
         {
-            dreamHomePg.inputTitle(p0);
+            string title = new AutogeneratorService().GenerateTitle();
+            _scenarioContext.Add("address_title", title);
+            dreamHomePg.inputTitle(title);//p0
         }
 
-        [When(@"admin input address as ""(.*)""")]
-        public void WhenAdminInputAddressAs(string p0)
+        [When(@"admin input address from adress title")]
+        public void WhenAdminInputAddressAs()
         {
-            dreamHomePg.inputAddress(p0);
+            dreamHomePg.inputAddress((string)_scenarioContext["address_title"]);
         }
 
         [When(@"choose start and finish date")]
@@ -111,6 +114,7 @@ namespace SpecFlowDreanLotteryHome.Steps
         [When(@"input in about ""(.*)"" text")]
         public void WhenInputInAboutText(string p0)
         {
+            Console.WriteLine(p0);
             dreamHomePg.InputAboutInput(p0);
         }
 
@@ -217,7 +221,8 @@ namespace SpecFlowDreanLotteryHome.Steps
         [Then(@"in new dream home table should be ""(.*)"" title")]
         public void ThenInNewDreamHomeTableShouldBeTitle(string p0)
         {
-            Assert.IsTrue(dreamHomePg.GetTitles().Contains(p0));
+            string title = (string)_scenarioContext["address_title"];
+            Assert.IsTrue(dreamHomePg.GetTitles().Contains(title)); //p0
         }
 
         [When(@"make ""(.*)"" active")]
@@ -229,12 +234,60 @@ namespace SpecFlowDreanLotteryHome.Steps
             }
             dreamHomePg.SetActiveDreamHomeWithTitle(p0);
         }
-        public void ApiMethod(){
-            var client = new RestClient("https://api.twitter.com/1.1");
-            client.Authenticator = new HttpBasicAuthenticator("username", "password");
-            var request = new RestRequest("statuses/home_timeline.json", DataFormat.Json);
-            var response = client.Get(request);
-            response.Content.Contains("");
+        
+        [When(@"click Discount in ticket")]
+        public void WhenClickDiscountInTicket()
+        {
+            dreamHomePg.ClickDiscountInTicket();
         }
+
+        [When(@"user input in discount is (.*)")]
+        public void WhenUserInputInDiscountIs(string p0)
+        {
+            dreamHomePg.InputDiscountIs(p0);
+        }
+
+        [Then(@"new price is should be (.*)")]
+        public void ThenNewPriceIsShouldBe(string p0)
+        {
+            Assert.AreEqual(p0, dreamHomePg.GetPriceIs());
+        }
+
+        [When(@"user input in new price is (.*)")]
+        public void WhenUserInputInNewPriceIs(string p0)
+        {
+            dreamHomePg.InputPriceIs(p0);
+        }
+
+        [Then(@"discount is should be (.*)")]
+        public void ThenDiscountIsShouldBe(string p0)
+        {
+            Assert.AreEqual(p0, dreamHomePg.GetDiscountIs());
+        }
+        [When(@"click on status in Discount tab")]
+        public void WhenClickOnStatusInDiscountTab()
+        {
+            dreamHomePg.ClickDiscountStatus();
+        }
+
+        [When(@"input new price is in discount tab (.*)")]
+        public void WhenInputNewPriceIsInDiscountTab(string p0)
+        {
+            dreamHomePg.InputPriceDiscountTab(p0);
+        }
+
+        [Then(@"""(.*)"" should be seen")]
+        public void ThenShouldBeSeen(string p0)
+        {
+            Assert.AreEqual(p0, dreamHomePg.GetMoneyAndCurrency());
+        }
+
+        [When(@"user click on £ checkbox")]
+        public void WhenUserClickOnCheckbox()
+        {
+            dreamHomePg.ClickCurrencyCheckbox();
+        }
+
+
     }
 }

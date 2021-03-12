@@ -35,12 +35,12 @@ Scenario: Create Winner and delete him
 	When admin click on add new winner
 	When admin choose product "test"
 	And go to description 
-	When input title as "TitleTest of Winner"
-	And input picture
+	When input random title
+	When input picture
 	And click Save
 	When click Winners
 	When Change pagination to 25
 	When click Last page
-	Then winner with title "TitleTest of Winner" should present in winner list
-	When delete winner with title "TitleTest of Winner" 
-	Then winner with title "TitleTest of Winner" should not present in winner list
+	Then winner with generated title should present in winner list
+	When delete winner with title
+	Then winner with title should not present in winner list

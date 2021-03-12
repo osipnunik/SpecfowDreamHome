@@ -43,7 +43,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         internal void UploadMainNonHomePicture()
         {
-            throw new NotImplementedException();
+            GeneralPicInput.SendKeys(MainNonHomePicPath);
         }
     }
 }
