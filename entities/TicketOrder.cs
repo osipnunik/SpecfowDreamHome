@@ -21,8 +21,5 @@ namespace SpecFlowDreanLotteryHome.entities
             return this.Competiotion + " " + this.Product + " " + this.NumberOfTicket + " " + this.DrawDate;
         }
     }
-
-    internal class ctor
-    {
-    }
+       
 }

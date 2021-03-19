@@ -23,10 +23,13 @@ namespace SpecFlowDreanLotteryHome.Steps
         [Given(@"user logged in as admin with ""(.*)"" email and ""(.*)"" password")]
         public void GivenUserLoggedInAsAdminWithEmailAndPassword(string p0, string p1)
         {
-            WebDriver.Navigate().GoToUrl(LoginAdminUrl);
-            loginPg.InputLogin(p0);
-            loginPg.InputPass(p1);
-            loginPg.ClickSignIn();
+            WebDriver.Navigate().GoToUrl(DREAM_HOME_ADM_VAL);
+            if (WebDriver.Url.Equals(LoginAdminUrl))
+            {
+                loginPg.InputLogin(p0);
+                loginPg.InputPass(p1);
+                loginPg.ClickSignIn();
+            }
         }
 
         [Given(@"click add new dream home")]
@@ -212,14 +215,19 @@ namespace SpecFlowDreanLotteryHome.Steps
         {
             dreamHomePg.InputDefaultNumbersOfTickets(p0);
         }
+        [When(@"input Number of tickets value (.*)")]
+        public void WhenInputNumberOfTicketsValue(string p0)
+        {
+            dreamHomePg.InputNumbersOfTickets(p0);
+        }
 
         [When(@"click save button")]
         public void WhenClickSaveButton()
         {
             dreamHomePg.ClickSaveBtn();
         }
-        [Then(@"in new dream home table should be ""(.*)"" title")]
-        public void ThenInNewDreamHomeTableShouldBeTitle(string p0)
+        [Then(@"in new dream home table should be title generated earlier")]
+        public void ThenInNewDreamHomeTableShouldBeTitle()
         {
             string title = (string)_scenarioContext["address_title"];
             Assert.IsTrue(dreamHomePg.GetTitles().Contains(title)); //p0

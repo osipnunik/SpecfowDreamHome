@@ -39,6 +39,7 @@ Scenario: Create Winner and delete him
 	When input picture
 	And click Save
 	When click Winners
+	Then message with text "Winner saved" should appeared
 	When Change pagination to 25
 	When click Last page
 	Then winner with generated title should present in winner list

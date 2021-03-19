@@ -11,6 +11,7 @@ Scenario: Create fixed odds Prize
 	When go to Discount & ticket tab at Life prize
     When input ticket price value 6
     When input default number of tickets 15
+	When input Number of tickets value 10
     When click save button
 	
 	

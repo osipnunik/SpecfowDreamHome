@@ -24,5 +24,6 @@ namespace SpecFlowDreanLotteryHome.services
             user.Country = "Australia";
             return user;
         }
+                
     }
 }

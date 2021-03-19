@@ -33,7 +33,7 @@ Scenario: As an administrator, I want to add new prizes for other users to view.
     When input ticket price value 6
     When input default number of tickets 15
     When click save button
-    Then in new dream home table should be "testHome11" title
+    Then in new dream home table should be title generated earlier
     #When make "testHome11" active    working 
 
 Scenario: Discount of ticket tab in create dream home
@@ -62,8 +62,8 @@ Scenario: Discount of ticket tab in Discount section in create dream home
     When input default number of tickets 20 
     When click on status in Discount tab
     When input new price is in discount tab 10
-    Then "new price is9.0 £" should be seen
+    Then "new price is9.00 £" should be seen
     When user click on £ checkbox
     And input new price is in discount tab 8
-    Then "discount is20.0 %" should be seen
+    Then "discount is20.00 %" should be seen
     

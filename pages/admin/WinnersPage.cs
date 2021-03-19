@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SpecFlowDreanLotteryHome.pages.admin.fragments;
+using SpecFlowDreanLotteryHome.utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +12,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 {
     class WinnersPage : BasePage
     {
-        private string MainHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\main_pic.png");
+        private string MainHomePicPath = PathGiver.GetPicturePath() + "main_pic.png";
         public static PaginationFragment Paginats;
 
         public WinnersPage(IWebDriver webDriver) : base(webDriver) {

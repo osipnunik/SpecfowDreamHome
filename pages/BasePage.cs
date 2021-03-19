@@ -33,6 +33,15 @@ namespace SpecFlowDreanLotteryHome.pages
         private IWebElement SaveBtn => WebDriver.FindElement(By.CssSelector("div[role='toolbar'] button:nth-child(1)"));
         public void ClickSave() => SaveBtn.Click();
 
+        public void ScrollDown()
+        {
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)WebDriver;
+            jse.ExecuteScript("scroll(0, 800)"); // if the element is on top.                       
+        }
+        public void JSClick(IWebElement el)
+        {
+            ((IJavaScriptExecutor)WebDriver).ExecuteScript("arguments[0].click();", el);//scrollIntoView()
+        }
         public BasePage(IWebDriver webDriver)
         {
             this.WebDriver = webDriver;

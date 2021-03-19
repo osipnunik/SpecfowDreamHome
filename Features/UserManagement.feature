@@ -13,7 +13,7 @@ Scenario: creation of user and remooving him
 	When delete last user
 	Then last user should not be as generated
 
-Scenario: while edditing user add 2 ticket
+Scenario: while edditing user add 1 ticket
 	Given admin logged in
 	When admin go to UserManagement page
 	When admin click on add new user

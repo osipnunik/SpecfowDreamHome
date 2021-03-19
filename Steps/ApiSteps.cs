@@ -5,6 +5,7 @@ using RestSharp.Authenticators;
 using SpecFlowDreanLotteryHome.entities;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using TechTalk.SpecFlow;
 
@@ -37,6 +38,40 @@ namespace SpecFlowDreanLotteryHome.Steps
             Console.WriteLine(response.StatusCode);
             Console.WriteLine(response.IsSuccessful);*/
         }
+
+
+        [When(@"get list of basket items id")]
+        public void WhenGetListOfBasketItemsId()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"delete product")]
+        public void ThenDeleteProduct()
+        {          
+            var client = new RestClient("https://staging-api.rafflehouse.com");
+            client.Authenticator = new HttpBasicAuthenticator("proton001@lenta.ru", "sobaka");
+            var request = new RestRequest("/api/orders", Method.DELETE); ///{id}
+            //request.AddParameter("id", "6054a7297c3eef003daa7821");
+            request.AddParameter("text/xml", "{order: \"6054abc17c3eef003daa7840\"}", ParameterType.RequestBody);
+            var response = client.Execute(request);
+            HttpStatusCode statusCode = response.StatusCode;
+            int numericStatusCode = (int)statusCode;
+            Assert.AreEqual(200, numericStatusCode);
+        }
+
+        /*[Then(@"get all fixed odds")]
+        public void ThenGetAllFixedOdds()
+        {
+            var client = new RestClient("https://staging-api.rafflehouse.com/api/fixedOdds?pageNumber=1&pageCount=12");
+            client.Authenticator = new HttpBasicAuthenticator("proton001@lenta.ru", "sobaka");
+            var request = new RestRequest("/api/orders/{id}", Method.GET);
+            //request.AddParameter("id", "6054a7297c3eef003daa7821");
+
+            var response = client.Execute(request);
+            
+            Assert.AreEqual("", JsonConvert.DeserializeObject<List<Object>>(response.Content)[0]);
+        }*/
 
     }
 }

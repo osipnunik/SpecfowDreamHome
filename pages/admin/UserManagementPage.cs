@@ -17,7 +17,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             Paginats = new PaginationFragment(webDriver);
         }
 
-        private IWebElement UserManagementHref => Waiter.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("a[title='User management']")));
+        private IWebElement UserManagementHref => Waiter.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[text()='User management']")));
         private IWebElement FirstNameInput => WebDriver.FindElement(By.Name("name"));
         private IWebElement LastNameInput => WebDriver.FindElement(By.Name("surname"));
         private IWebElement EmailInput => WebDriver.FindElement(By.Name("email"));
@@ -52,7 +52,9 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         internal void ChooseCountry(string country) { 
             CountryChooser.Click();
-            WebDriver.FindElement(By.CssSelector("li[data-value='" + country + "']")).Click();
+            var li = WebDriver.FindElement(By.CssSelector("li[data-value='" + country + "']"));
+            JSClick(li);
+            //li.Click();
         }
 
         internal User GetLastUser()

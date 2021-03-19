@@ -14,10 +14,13 @@ namespace SpecFlowDreanLotteryHome.Steps
         [Given(@"admin logged in")]
         public void GivenAdminLoggedIn()
         {
-            WebDriver.Navigate().GoToUrl(DREAM_HOME_VAL);
-            loginPg.InputLogin("testqaanuitex@gmail.com");
-            loginPg.InputPass("1111111");
-            loginPg.ClickSignIn();
+            WebDriver.Navigate().GoToUrl(DREAM_HOME_ADM_VAL);
+            if (WebDriver.Url.Equals(LOGIN_ADMiN_VAL))
+            {
+                loginPg.InputLogin("testqaanuitex@gmail.com");
+                loginPg.InputPass("1111111");
+                loginPg.ClickSignIn();
+            }
         }
     }
 }

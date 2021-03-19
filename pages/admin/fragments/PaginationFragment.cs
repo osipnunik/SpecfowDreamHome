@@ -30,16 +30,22 @@ namespace SpecFlowDreanLotteryHome.pages.admin.fragments
             Waiter.Until(ExpectedConditions.ElementToBeClickable(PreviousPage));
         }
         public void ClickLastPageWithWithoutScroll()
-        {           
+        {
+            Actions act = new Actions(WebDriver);
+            act.MoveToElement(LastPage);
+            act.Perform();
+            //ScrollDown();
             Waiter.Until(ExpectedConditions.ElementToBeClickable(LastPage));
             LastPage.Click();
-            Waiter.Until(ExpectedConditions.ElementToBeClickable(PreviousPage));
+            Waiter.Until(ExpectedConditions.ElementExists(By.CssSelector("button.Mui-disabled[title='Next page']")));//prev
+            //Waiter.Until(ExpectedConditions.ElementToBeClickable(PreviousPage));
+                
         }
         public void ClickFirstPage() => FirstPage.Click();
 
         public void ChooseSelect(int perNum)
-        {
-            //Waiter.Until(ExpectedConditions.ElementExists(RowsPerPageChooserBy));
+        {           
+            Waiter.Until(ExpectedConditions.ElementExists(RowsPerPageChooserBy));
             RowsPerPageChooser.Click();
             WebDriver.FindElement(By.XPath("//li[text()='" + perNum + "']")).Click();
         }

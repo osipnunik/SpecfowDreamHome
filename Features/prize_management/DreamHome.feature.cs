@@ -191,7 +191,7 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.When("click save button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 36
-    testRunner.Then("in new dream home table should be \"testHome11\" title", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("in new dream home table should be title generated earlier", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -325,7 +325,7 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.When("input new price is in discount tab 10", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 65
-    testRunner.Then("\"new price is9.0 £\" should be seen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("\"new price is9.00 £\" should be seen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 66
     testRunner.When("user click on £ checkbox", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -334,7 +334,7 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.And("input new price is in discount tab 8", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 68
-    testRunner.Then("\"discount is20.0 %\" should be seen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("\"discount is20.00 %\" should be seen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

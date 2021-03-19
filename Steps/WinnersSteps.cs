@@ -227,7 +227,7 @@ namespace SpecFlowDreanLotteryHome.Steps
         [When(@"click Last page")]
         public void WhenClickLastPage()
         {
-            WinnP.GetPaginationF().ClickLastPage();
+            WinnP.GetPaginationF().ClickLastPageWithWithoutScroll();
         }
         [Then(@"winner with generated title should present in winner list")]
         public void ThenWinnerWithTitleShouldPresentInWinnerList()
@@ -240,9 +240,12 @@ namespace SpecFlowDreanLotteryHome.Steps
                 if (titles[i].Equals(((string)_scenarioContext["title"])))
                 {
                     isPresent = true;
+                    break;
                 }
             }
-            Assert.IsTrue(isPresent, "i: "+i);
+            Assert.IsTrue(isPresent, "i: " + i + (string)_scenarioContext["title"]+
+                "  title[last-1]:"+ titles[i-1]);
+            
         }
         [When(@"delete winner with title")]
         public void WhenDeleteWinnerWithTitle()

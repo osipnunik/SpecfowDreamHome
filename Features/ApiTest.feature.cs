@@ -98,9 +98,6 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
- testRunner.When("api testing", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
             }
             this.ScenarioCleanup();
         }

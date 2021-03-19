@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using SpecFlowDreanLotteryHome.utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,11 +12,11 @@ namespace SpecFlowDreanLotteryHome.pages.admin
     {
         public DreamHomePage(IWebDriver webDriver) : base(webDriver) { }
 
-        string MainHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\main_pic.png");
-        string BadroomHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\badroom_pic.png");
-        string BathroomHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\bathroom_pic.jpg");
-        string OutspaceHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\outspace_pic.jpg");
-        string FloorPlanHomePicPath = Environment.CurrentDirectory.Replace("TestResults", "\\SpecFlowDreanLotteryHome\\pictures\\floor_plan_pic.png");
+        string MainHomePicPath = PathGiver.GetPicturePath() + "main_pic.png";
+        string BadroomHomePicPath = PathGiver.GetPicturePath() + "badroom_pic.png";
+        string BathroomHomePicPath = PathGiver.GetPicturePath() + "bathroom_pic.jpg";
+        string OutspaceHomePicPath = PathGiver.GetPicturePath() + "outspace_pic.jpg";
+        string FloorPlanHomePicPath = PathGiver.GetPicturePath() + "floor_plan_pic.png";
 
 
         private IList<IWebElement> Titles => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-of-type(1)"));
@@ -84,6 +85,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         private IWebElement TicketPriceInput => WebDriver.FindElement(By.Id("ticketPrice"));
         private IWebElement DefaultTicketNumberInput => WebDriver.FindElement(By.Id("defaultTickets"));
+        private IWebElement TicketNumberInput => WebDriver.FindElement(By.Id("maxTickets"));
+
         private IWebElement DiscountFromTicket => WebDriver.FindElement(By.Id("isActiveDiscount"));
         private IWebElement PriceIs => WebDriver.FindElement(By.XPath("(//h6[text()='Tickets']/..//input)[5]"));
         private IWebElement ErrorMessage => WebDriver.FindElement(By.XPath("div.date-error"));
@@ -92,7 +95,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement DiscountNewPrice => WebDriver.FindElement(By.XPath("(//h6[text()='Discount']/..//input)[5]"));
         private IWebElement CurrencyCheckbox => WebDriver.FindElement(By.Id("property.discountCategory_cash"));
         private IWebElement DiscountStatus => WebDriver.FindElement(By.Id("isDiscountRates"));
-
+               
         public void InputGeneralPictureInput() => GeneralPicInput.SendKeys(MainHomePicPath);//"C:\\Users\\PC\\G.PNG")         
         
         public void InputBadRoomInputPic() => BadRoomInputPic.SendKeys(BadroomHomePicPath);
@@ -164,7 +167,10 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         {
             DefaultTicketNumberInput.SendKeys(p0);
         }
-
+        internal void InputNumbersOfTickets(string p0)
+        {
+            TicketNumberInput.SendKeys(p0);
+        }
         internal bool IsNoActive()
         {
             if(noActiveMessages.Count == 1) { return true; }
