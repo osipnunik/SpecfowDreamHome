@@ -198,7 +198,7 @@ namespace SpecFlowDreanLotteryHome.Steps
         [When(@"input random title")]
         public void WhenInputTitleAs()
         {
-            string title = bogus.GenerateTitle();
+            string title = bogus.GenerateStreetAddressTitle();
             WinnP.InputDescriptTitle(title);
             _scenarioContext.Add("title", title);
         }

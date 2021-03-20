@@ -4,6 +4,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace SpecFlowDreanLotteryHome.pages.admin.fragments
 {
@@ -40,6 +41,19 @@ namespace SpecFlowDreanLotteryHome.pages.admin.fragments
             Waiter.Until(ExpectedConditions.ElementExists(By.CssSelector("button.Mui-disabled[title='Next page']")));//prev
             //Waiter.Until(ExpectedConditions.ElementToBeClickable(PreviousPage));
                 
+        }
+        public void ClickLastPageAtDreamHome()
+        {
+            Thread.Sleep(2000);
+            LastPage.Click();
+            while(Waiter.Until(ExpectedConditions.ElementExists(By.CssSelector("button.Mui-disabled[title='Previous page']"))).Displayed);//Previous
+            {
+                Waiter.Until(ExpectedConditions.ElementToBeClickable(LastPage));
+                LastPage.Click();
+                JSClick(LastPage);
+                //Waiter.Until(ExpectedConditions.ElementExists(By.CssSelector("button.Mui-disabled[title='Next page']")));
+            }
+            LastPage.Click();
         }
         public void ClickFirstPage() => FirstPage.Click();
 

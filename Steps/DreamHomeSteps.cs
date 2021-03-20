@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using RestSharp;
 using RestSharp.Authenticators;
 using SpecFlowDreanLotteryHome.pages.admin;
@@ -41,7 +42,7 @@ namespace SpecFlowDreanLotteryHome.Steps
         [When(@"admin input title randomly generated")]
         public void WhenAdminInputTitleAs()
         {
-            string title = new AutogeneratorService().GenerateTitle();
+            string title = new AutogeneratorService().GenerateStreetAddressTitle();
             _scenarioContext.Add("address_title", title);
             dreamHomePg.inputTitle(title);//p0
         }
@@ -220,15 +221,43 @@ namespace SpecFlowDreanLotteryHome.Steps
         {
             dreamHomePg.InputNumbersOfTickets(p0);
         }
+        [When(@"click save button at dreamHome")]
+        public void WhenClickSaveButtonAtDreamHome()
+        {
+            dreamHomePg.ClickSaveBtnWithoutWaiting();
+        }
 
         [When(@"click save button")]
         public void WhenClickSaveButton()
         {
             dreamHomePg.ClickSaveBtn();
         }
+
+        [When(@"user reload page")]
+        public void WhenUserReloadPage()
+        {
+            WebDriver.Navigate().Refresh();
+        }
+
+        [Then(@"popup with message ""(.*)"" appears")]
+        public void ThenPopupWithMessageAppears(string message)
+        {
+            string popupText;
+            try {
+                popupText = dreamHomePg.GetPopupText();
+            
+            }catch(StaleElementReferenceException e)
+            {
+                popupText = dreamHomePg.GetPopupText();
+            }
+            Assert.AreEqual(message, popupText);
+        }
+        
+
         [Then(@"in new dream home table should be title generated earlier")]
         public void ThenInNewDreamHomeTableShouldBeTitle()
         {
+            dreamHomePg.GetPagination().ClickLastPageAtDreamHome();
             string title = (string)_scenarioContext["address_title"];
             Assert.IsTrue(dreamHomePg.GetTitles().Contains(title)); //p0
         }

@@ -10,8 +10,8 @@ Scenario: as a user i want to buy on basket from account dream home
 	Then product popup appeares
 	When user choose number randomly
 	Then he will see that number in TICKETS QUANITY
-	Then user check total price, total saving
-	When notice price, total price, 
+	Then user check total price, total saving, them currency %Off
+	#When notice price, total price, 
 	When notice Credit earned if they exist
 	When user click on buy now 
 	Then user on basket page

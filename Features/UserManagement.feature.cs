@@ -130,12 +130,12 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("while edditing user add 1 ticket", SourceLine=15)]
-        public virtual void WhileEdditingUserAdd1Ticket()
+        [TechTalk.SpecRun.ScenarioAttribute("while edditing and remooving user add 1 ticket", SourceLine=15)]
+        public virtual void WhileEdditingAndRemoovingUserAdd1Ticket()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("while edditing user add 1 ticket", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("while edditing and remooving user add 1 ticket", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 16
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

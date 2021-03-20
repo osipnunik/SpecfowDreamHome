@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Support.UI;
+using SpecFlowDreanLotteryHome.pages.admin.fragments;
 using SpecFlowDreanLotteryHome.utils;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,12 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 {
     class DreamHomePage : BasePage
     {
-        public DreamHomePage(IWebDriver webDriver) : base(webDriver) { }
+        public static PaginationFragment Paginats;
+
+        public DreamHomePage(IWebDriver webDriver) : base(webDriver)
+        {
+            Paginats = new PaginationFragment(webDriver);
+        }
 
         string MainHomePicPath = PathGiver.GetPicturePath() + "main_pic.png";
         string BadroomHomePicPath = PathGiver.GetPicturePath() + "badroom_pic.png";
@@ -170,6 +177,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         internal void InputNumbersOfTickets(string p0)
         {
             TicketNumberInput.SendKeys(p0);
+            TicketNumberInput.SendKeys(Keys.Enter);
         }
         internal bool IsNoActive()
         {
@@ -214,7 +222,14 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         public void InputSizeInp(string inp) => SizeInp.SendKeys(inp);
         public void InputEnergyInp(string inp) => EnergyInp.SendKeys(inp);
 
-        public void ClickSaveBtn() => SaveBtn.Click();
+        public void ClickSaveBtn() {
+            Waiter.Until(ExpectedConditions.InvisibilityOfElementLocated(base.PopupBy));
+            SaveBtn.Click(); 
+        }
+        public void ClickSaveBtnWithoutWaiting()
+        {
+            SaveBtn.Click();
+        }
         /*public void Input(string inp) => .SendKeys(inp);
         public void Input(string inp) => .SendKeys(inp);*/
 
@@ -272,6 +287,11 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             /*AmPm2.SendKeys("A");
             AmPm2.SendKeys(Keys.Enter);*/
             //dataTimePicker2.SendKeys(Keys.Enter);
+        }
+
+        public PaginationFragment GetPagination()
+        {
+            return Paginats;
         }
     }
 }

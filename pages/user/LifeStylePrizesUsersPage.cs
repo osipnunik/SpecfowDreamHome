@@ -12,7 +12,8 @@ namespace SpecFlowDreanLotteryHome.pages.user
 {
     class LifeStylePrizesUsersPage : BasePage
     {
-     
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public LifeStylePrizesUsersPage(IWebDriver webDriver) : base(webDriver) { }
 
         private List<Product> ProductList = new List<Product>();
@@ -55,7 +56,6 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement DiscountNewPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.discount-new-price"));
         private IWebElement DiscountPercent => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.discount-percent"));
         private IWebElement BuyNowBtn => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("div.price button:first-child")));
-        private IWebElement QuantityTicSecond => WebDriver.FindElement(By.CssSelector("div.priceGreyContainer div:last-child p.quantitiValue"));
         private IWebElement TotalPrice => WebDriver.FindElement(By.CssSelector("div.priceGreyContainer div:last-child p.totalValue"));
         private IWebElement TotalSaving => WebDriver.FindElement(By.CssSelector("div.priceGreyContainer div:last-child p.savingValue"));
         private IWebElement CreditEarned => WebDriver.FindElement(By.CssSelector("div.priceGreyContainer div:last-child p.creditValue"));
@@ -74,7 +74,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         internal void ClickDreamHome() => DreamHomeHref.Click(); 
 
         public string GetDiscountPercent() => DiscountPercent.Text;
-        public string GetQuantityTicSecond() => QuantityTicSecond.Text;
+        
         public string GetTotalPrice() => TotalPrice.Text;
         public string GetTotalSaving() => TotalSaving.Text;
         public string GetCreditEarned() => CreditEarned.Text;
@@ -172,7 +172,8 @@ namespace SpecFlowDreanLotteryHome.pages.user
                     try
                     {
                         product.CategoryName = category;
-                        product.SubcategoryName = subcategory;                         
+                        product.SubcategoryName = subcategory;
+                        log.Info("Products[i] i:" + i);
                         product.ImgHref = Products[i].FindElement(ProductImages).Text;
                         try { product.Title = Products[i].FindElement(ProductTitles).Text; }
                         catch (StaleElementReferenceException e)

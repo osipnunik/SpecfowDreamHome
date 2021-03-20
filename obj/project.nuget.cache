@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7WzNnIKQC9Mglv/Zjlf9Msd0JJhh+ISnAd5oit+LHrqii6IziyvFJbUXJJCLSjxtjHVS/0eY74eonymlz0MFdw==",
+  "dgSpecHash": "WFwXPLS53NivLHMnSWoN+u8p+qwxGvND8g0De+lKHFfbR3uVTQYWf6QEZKlmZ1VjuBwCrTRJDGpZx6XaqlSeMw==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\source\\repos\\SpecFlowDreanLotteryHome\\SpecFlowDreanLotteryHome\\SpecFlowDreanLotteryHome.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\PC\\.nuget\\packages\\fluentassertions\\5.10.3\\fluentassertions.5.10.3.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\gherkin\\6.0.0\\gherkin.6.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\google.protobuf\\3.7.0\\google.protobuf.3.7.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\log4net\\2.0.12\\log4net.2.0.12.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\1.0.3\\microsoft.dotnet.platformabstractions.1.0.3.nupkg.sha512",

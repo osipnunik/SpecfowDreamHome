@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SpecFlowDreanLotteryHome.entities.user;
 using SpecFlowDreanLotteryHome.pages.admin;
+using SpecFlowDreanLotteryHome.services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,8 @@ namespace SpecFlowDreanLotteryHome.Steps
     {
         private readonly ScenarioContext _scenarioContext;
         private LifeStylePrizesPage LfStylePPage = new LifeStylePrizesPage(WebDriver);
-        private FixedOddsPage FixedOddsP = new FixedOddsPage(WebDriver); 
+        private FixedOddsPage FixedOddsP = new FixedOddsPage(WebDriver);
+        private AutogeneratorService generator = new AutogeneratorService();
 
         public LifeStylePrizesAdminSteps(ScenarioContext scenarioContext)
         {
@@ -41,10 +43,20 @@ namespace SpecFlowDreanLotteryHome.Steps
         {
             LfStylePPage.ChooseCategory(p0);
         }
-        [When(@"input Life Style prize title as ""(.*)""")]
-        public void WhenInputLifeStylePrizeTitleAs(string p0)
+
+        [When(@"choose subcategoty ""(.*)""")]
+        public void WhenChooseSubcategoty(string p0)
         {
-            LfStylePPage.InputTitle(p0);
+            LfStylePPage.ChooseSubCategory(p0);
+        }
+
+
+        [When(@"input Life Style prize \(car\) title randomly generated")]
+        public void WhenInputLifeStylePrizeTitleAs()
+        {
+            string title = generator.GenerateNonHouseVehiclePrizeTitle();
+            _scenarioContext.Add("title", title);
+            LfStylePPage.InputTitle(title);
         }
         [When(@"go to Discount & ticket tab at Life prize")]
         public void WhenGoToDiscountTicketTabAtLifePrize()
@@ -102,6 +114,39 @@ namespace SpecFlowDreanLotteryHome.Steps
                 }
                 Assert.IsTrue(equal, "no isTrue: " + adminPros[i].ToString());
             }
+        }
+       
+        [Then(@"Life Style prize title generated earlier is present with category ""(.*)""")]
+        public void ThenLifeStylePrizeTitleIsPresentWithCategory(string category)
+        {
+            string title = (string)_scenarioContext["title"];
+            bool productSame = false;
+            LfStylePPage.GetPagination().ClickLastPageWithWithoutScroll();
+            var products = LfStylePPage.GetAllProducts();
+            foreach(Product prod in products)
+            {
+                if (prod.Title.Equals(title) && prod.CategoryName.Equals(category))
+                {
+                    productSame = true;break;
+                }
+            }
+            Assert.IsTrue(productSame);
+        }
+        [Then(@"created title exist in list")]
+        public void ThenCreatedTitleExistInList()
+        {
+            bool titlePresent = false;
+            string title = (string)_scenarioContext["title"];
+            LfStylePPage.GetPagination().ClickLastPageWithWithoutScroll();
+            var titles = LfStylePPage.GetTitles();
+            foreach (string titleFromTable in titles)
+            {
+                if (titleFromTable.Equals(title))
+                {
+                    titlePresent = true; break;
+                }
+            }
+            Assert.IsTrue(titlePresent);
         }
 
     }

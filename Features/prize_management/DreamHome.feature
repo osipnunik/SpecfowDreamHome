@@ -33,6 +33,9 @@ Scenario: As an administrator, I want to add new prizes for other users to view.
     When input ticket price value 6
     When input default number of tickets 15
     When click save button
+    Then popup with message "Dream home saved" appears
+    When user reload page
+    #When Change pagination to 100
     Then in new dream home table should be title generated earlier
     #When make "testHome11" active    working 
 

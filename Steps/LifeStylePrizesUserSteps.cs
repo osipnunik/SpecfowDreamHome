@@ -85,14 +85,7 @@ namespace SpecFlowDreanLotteryHome.Steps
         {
             var expectedProd = ((Product)_scenarioContext["product"]);
             Assert.AreEqual(expectedProd.Title, lifeStylePage.GetTitle());
-        }
-                
-
-        [Then(@"he will see that number in TICKETS QUANITY")]
-        public void ThenHeWillSeeThatNumberInTICKETSQUANITY()
-        {
-            Assert.AreEqual((string)_scenarioContext["ticketQuantity"], lifeStylePage.GetQuantityTicSecond());
-        }
+        }                         
 
         [When(@"check total price on product dialog popup and totalSaving")]
         public void WhenCheckTotalPriceOnProductDialogPopup()
@@ -101,10 +94,10 @@ namespace SpecFlowDreanLotteryHome.Steps
             var expectedProd = ((Product)_scenarioContext["product"]);
             int productPrice = int.Parse((expectedProd.NonDiscountPrice == null ? expectedProd.NewPrice : expectedProd.NonDiscountPrice).Replace("£", ""));
             //_scenarioContext.Add("productPrice", productPrice);
-            double amount = double.Parse((string)_scenarioContext["ticketQuantity"]);
-            double expectedTotal = amount * productPrice;
+            int amount = ((int)_scenarioContext["ticketQuantity"]);
+            int expectedTotal = amount * productPrice;
 
-            double totalSavingsShould = dialogP.GetAppropriateDiscount(amount) * expectedTotal/100; //int.Parse(lifeStylePage.GetLastDiscount()
+            double totalSavingsShould = dialogP.GetAppropriateDiscount(amount) * expectedTotal / 100; //int.Parse(lifeStylePage.GetLastDiscount()
             
             string totalSavingFromDialog = lifeStylePage.GetTotalSaving();
             Assert.AreEqual("£ " + Math.Round(totalSavingsShould, 2) + ".00", totalSavingFromDialog);

@@ -10,9 +10,9 @@ namespace SpecFlowDreanLotteryHome.services
     {
         private Faker Faker = new Faker();
 
-        public string GenerateTitle()
+        public string GenerateStreetAddressTitle()
         {        
-            return Faker.Address.FullAddress();
+            return Faker.Address.StreetAddress();
         }
         public User GetUser()
         {
@@ -24,6 +24,10 @@ namespace SpecFlowDreanLotteryHome.services
             user.Country = "Australia";
             return user;
         }
-                
+
+        internal string GenerateNonHouseVehiclePrizeTitle()
+        {
+            return Faker.Vehicle.Model();
+        }
     }
 }
