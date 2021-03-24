@@ -11,7 +11,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
     {
         public RegisterUserPage(IWebDriver webDriver) : base(webDriver) { }
 
-        private IWebElement SignupFromHeader => WebDriver.FindElement(By.CssSelector("a.btnSignUpHeader"));
+        private IWebElement SignupFromHeader => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[href = '/sign-up']")));//("a[href = '/sign-up']"));
         private IWebElement SignInHereHref => WebDriver.FindElement(By.CssSelector("div.signInHere a"));
         private By SignUpHeaderBy = By.CssSelector("div.loginGroupSignUp h3");
         private IWebElement SignUpHeader => WebDriver.FindElement(SignUpHeaderBy);
@@ -22,7 +22,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement EmailInput => WebDriver.FindElement(By.CssSelector("input[name='email']"));
         private IWebElement CountryInput => WebDriver.FindElement(By.CssSelector("input[name='country']"));
         private IWebElement PasswordInput => WebDriver.FindElement(By.CssSelector("input[name='password']"));
-        private IWebElement SignUpBtn => WebDriver.FindElement(By.CssSelector("button.signUpBtnUp"));
+        private IWebElement SignUpBtn => WebDriver.FindElement(By.XPath("//button[text()='Sign up']"));
         private IWebElement AgeCheckbox => WebDriver.FindElement(By.Id("ageCheck"));
         private IWebElement IAgree => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("button.yellow-btn-round")));
         private IWebElement LogedName => WebDriver.FindElement(By.CssSelector("button[aria-controls='simple-menu'] div.header-drop-name span"));
@@ -85,10 +85,11 @@ namespace SpecFlowDreanLotteryHome.pages.user
             //IJavaScriptExecutor js = (IJavaScriptExecutor)WebDriver;
             //js.ExecuteScript("arguments[0].setAttribute('style', arguments[1])");
             //js.ExecuteScript("arguments[0].setAttribute('class', arguments[1])", WebDriver.FindElement(By.XPath("//input[@type='file']/../../div[2]")), "a");
-            var lastElement = WebDriver.FindElement(By.CssSelector("body div > p:nth-child(128)"));
-            Actions actions = new Actions(WebDriver);
+            var lastElement = WebDriver.FindElement(By.CssSelector("body div.custom-scroll > p:last-child"));
+            ScrollToBottomOfElement(lastElement);
+           /* Actions actions = new Actions(WebDriver);
             actions.MoveToElement(lastElement);
-            actions.Perform();
+            actions.Perform();*/
         }
     }
 }

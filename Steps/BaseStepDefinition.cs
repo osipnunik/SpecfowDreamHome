@@ -25,7 +25,6 @@ namespace SpecFlowDreanLotteryHome.Steps
             "https://admin-staging.rafflehouse.com"
             ;
 
-
         public static string DREAM_HOME_ADM_VAL = MainAdminPageURL + "/#/dreamHome";
         public static string LIFE_STYLEPRIZES_VAL = MainAdminPageURL + "/#/prizes";
         public static string FIXED_ODDS_VAL = MainAdminPageURL + "/#/fixedOdds";

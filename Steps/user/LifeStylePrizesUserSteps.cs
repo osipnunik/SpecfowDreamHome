@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
-namespace SpecFlowDreanLotteryHome.Steps
+namespace SpecFlowDreanLotteryHome.Steps.user
 {
     [Binding]
     public class LifeStylePrizesUserSteps : BaseStepDefinition
@@ -75,7 +75,7 @@ namespace SpecFlowDreanLotteryHome.Steps
             {
                 Assert.AreEqual(expectedProd.NewPrice, lifeStylePage.GetDiscountNewPrice());
                 Assert.AreEqual(expectedProd.OldPrice, lifeStylePage.GetDiscountOldPrice());
-                Assert.AreEqual(expectedProd.DiscountOff, lifeStylePage.GetDiscountPercent());
+               // Assert.AreEqual(expectedProd.DiscountOff, lifeStylePage.GetDiscountPercent());
             }
             
         }
@@ -92,21 +92,28 @@ namespace SpecFlowDreanLotteryHome.Steps
         {
             //_scenarioContext["ticketQuantity"]
             var expectedProd = ((Product)_scenarioContext["product"]);
-            int productPrice = int.Parse((expectedProd.NonDiscountPrice == null ? expectedProd.NewPrice : expectedProd.NonDiscountPrice).Replace("£", ""));
+            double productPrice = double.Parse((expectedProd.NonDiscountPrice == null ? expectedProd.NewPrice.Replace("£", "") : expectedProd.NonDiscountPrice).Replace("£", ""));
             //_scenarioContext.Add("productPrice", productPrice);
+            double priceMaximum = expectedProd.OldPrice==null ?double.Parse(expectedProd.OldPrice.Substring(1)): double.Parse(expectedProd.NonDiscountPrice.Substring(1));
             int amount = ((int)_scenarioContext["ticketQuantity"]);
-            int expectedTotal = amount * productPrice;
-
-            double totalSavingsShould = dialogP.GetAppropriateDiscount(amount) * expectedTotal / 100; //int.Parse(lifeStylePage.GetLastDiscount()
+            double expectedTotal = amount * productPrice;
+            int percentDiscount = 0;
+            if(expectedProd.DiscountOff != null)
+            {
+                string intString = expectedProd.DiscountOff.Substring(1, 2);
+                percentDiscount = int.Parse(intString);
+            }
             
+            double totalPrice = productPrice * amount * (1 - (dialogP.GetAppropriateDiscount(amount) / 100));
+            double totalSavingsShould = priceMaximum * amount - totalPrice;
             string totalSavingFromDialog = lifeStylePage.GetTotalSaving();
-            Assert.AreEqual("£ " + Math.Round(totalSavingsShould, 2) + ".00", totalSavingFromDialog);
+            Assert.AreEqual("£ " + totalSavingsShould.ToString("N2") /*+ ".00"*/, totalSavingFromDialog);
 
             _scenarioContext.Add("totalSaving", totalSavingFromDialog);
 
-            double expectedDoubleTotalPrice = expectedTotal - totalSavingsShould;
-            _scenarioContext.Add("productPrice", expectedDoubleTotalPrice/amount);
-            Assert.AreEqual("£ " + expectedDoubleTotalPrice + ".00" , lifeStylePage.GetTotalPrice());
+            //double expectedDoubleTotalPrice = expectedTotal - totalSavingsShould;
+            _scenarioContext.Add("productPrice", totalPrice / amount);
+            Assert.AreEqual("£ " + totalPrice.ToString("N2") , lifeStylePage.GetTotalPrice());
         }
 
         [When(@"notice Credit earned if they exist")]
@@ -126,7 +133,7 @@ namespace SpecFlowDreanLotteryHome.Steps
             lifeStylePage.ClickDreamHome();
 
             WebDriver.Manage().Cookies.DeleteAllCookies();
-            WebDriver.Navigate().Refresh();
+            //WebDriver.Navigate().Refresh();
         }
 
 

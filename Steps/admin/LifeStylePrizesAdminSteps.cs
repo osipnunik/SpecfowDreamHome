@@ -5,9 +5,10 @@ using SpecFlowDreanLotteryHome.services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using TechTalk.SpecFlow;
 
-namespace SpecFlowDreanLotteryHome.Steps
+namespace SpecFlowDreanLotteryHome.Steps.admin
 {
     [Binding]
     class LifeStylePrizesAdminSteps : BaseStepDefinition
@@ -104,11 +105,11 @@ namespace SpecFlowDreanLotteryHome.Steps
                             equal = true;
                             break;
                         }
-                        else
+                        /*else
                         {
-                            Assert.AreEqual(userProd.CategoryName, adminPros[i].CategoryName, "categ name");
+                            Assert.AreEqual(userProd.CategoryName, adminPros[i].CategoryName, "categ name, title is:"+userProd.Title);
                             Assert.AreEqual(userProd.SubcategoryName, adminPros[i].SubcategoryName, "subcateg name");
-                        }
+                        }*/
                     }
                     
                 }
@@ -147,6 +148,55 @@ namespace SpecFlowDreanLotteryHome.Steps
                 }
             }
             Assert.IsTrue(titlePresent);
+        }
+
+        [When(@"notice all prizes titles quantity")]
+        public void WhenNoticeAllPrizesTitlesQuantity()
+        {
+            
+            int all = LfStylePPage.GetTitesCount();
+            _scenarioContext.Add("allPrizesQuantity", all);
+        }
+
+        [When(@"click on Active prizes")]
+        public void WhenClickOnActivePrizes()
+        {
+            LfStylePPage.ClickActivePrizes();
+            Thread.Sleep(300);
+        }
+
+        [When(@"notice active prizes titles quantity")]
+        public void WhenNoticeActivePrizesTitlesQuantity()
+        {
+            int titleCount = LfStylePPage.GetTitesCount();
+            string paginTableSize = LfStylePPage.GetPagination().GetSizeOfTable();
+            Assert.AreEqual(titleCount.ToString(), paginTableSize);
+            _scenarioContext.Add("activePrizesQuantity", titleCount);
+        }
+
+        [When(@"click on Unactive prizes")]
+        public void WhenClickOnUnactivePrizes()
+        {
+            Thread.Sleep(500);
+            LfStylePPage.ClickUnActivePrizes();
+            Thread.Sleep(200);
+        }
+
+        [When(@"notice unactive prizes titles quantity")]
+        public void WhenNoticeUnactivePrizesTitlesQuantity()
+        {
+            int titleCount = LfStylePPage.GetTitesCount();
+            string paginTableSize = LfStylePPage.GetPagination().GetSizeOfTable();
+            Assert.AreEqual(titleCount.ToString(), paginTableSize);
+            _scenarioContext.Add("unactivePrizesQuantity", titleCount);
+        }
+
+        [Then(@"all prizes should be equal the sum of active and unactive")]
+        public void ThenAllPrizesShouldBeEqualTheSumOfActiveAndUnactive()
+        {
+            Assert.AreEqual((int)_scenarioContext["allPrizesQuantity"],
+            (int)_scenarioContext["activePrizesQuantity"] +
+            (int)_scenarioContext["unactivePrizesQuantity"], "active: "+ (int)_scenarioContext["activePrizesQuantity"]);
         }
 
     }

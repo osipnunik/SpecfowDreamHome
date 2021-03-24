@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlowDreanLotteryHome.Features
+namespace SpecFlowDreanLotteryHome.Features.Admin
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace SpecFlowDreanLotteryHome.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("UserManagement", Description="\tall scenarion from UserManagement", SourceFile="Features\\UserManagement.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("UserManagement", Description="\tall scenarion from UserManagement", SourceFile="Features\\admin\\UserManagement.feature", SourceLine=0)]
     public partial class UserManagementFeature
     {
         
@@ -34,7 +34,7 @@ namespace SpecFlowDreanLotteryHome.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "UserManagement", "\tall scenarion from UserManagement", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin", "UserManagement", "\tall scenarion from UserManagement", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         

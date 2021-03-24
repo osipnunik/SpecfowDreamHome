@@ -103,7 +103,7 @@ namespace SpecFlowDreanLotteryHome.Features.User
     testRunner.And("input in email value \"proton001@lenta.ru\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 6
-    testRunner.And("input in password \"sobaka\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("input in password \"sobaka1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 7
     testRunner.And("click submit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

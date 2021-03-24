@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
-namespace SpecFlowDreanLotteryHome.Steps
+namespace SpecFlowDreanLotteryHome.Steps.admin
 {
     [Binding]
     public class WinnersSteps : BaseStepDefinition
@@ -29,8 +29,8 @@ namespace SpecFlowDreanLotteryHome.Steps
         [When(@"admin click on down sorting button")]
         public void WhenAdminClickOnDownSortingButton()
         {
-            WinnP.ClickCompetitionHeaderDownSort();
-            WinnP.ClickCompetitionSharpHeaderDownSort();
+            //WinnP.ClickCompetitionHeaderDownSort();
+            //WinnP.ClickCompetitionSharpHeaderDownSort();
             WinnP.ClickFinishDateHeaderDownSort();
             WinnP.ClickTitleHeaderDownSort();
         }
@@ -38,8 +38,8 @@ namespace SpecFlowDreanLotteryHome.Steps
         [When(@"user click on up sorting button")]
         public void WhenUserClickOnUpSortingButton()
         {
-            WinnP.ClickCompetitionHeaderUpSort();
-            WinnP.ClickCompetitionSharpHeaderUpSort();
+            //WinnP.ClickCompetitionHeaderUpSort();
+            //WinnP.ClickCompetitionSharpHeaderUpSort();
             WinnP.ClickFinishDateHeaderUpSort();
             WinnP.ClickTitleHeaderUpSort();
         }
@@ -53,13 +53,13 @@ namespace SpecFlowDreanLotteryHome.Steps
             }
         }      
        
-        [When(@"admin click downsorting on column CompetitionSharp")]
+        /*[When(@"admin click downsorting on column CompetitionSharp")]
         public void WhenAdminClickDownsortingOnColumnCompetitionSharp()
         {
             WinnP.ClickCompetitionSharpHeaderDownSort();
-        }
+        }*/
 
-        [Then(@"All competitionSharp sorted downward")]
+        /*[Then(@"All competitionSharp sorted downward")]
         public void ThenAllCompetitionSharpSortedDownward()
         {
             Log.Info("size: " + WinnP.GetSizeOfWinnersTable());
@@ -68,22 +68,22 @@ namespace SpecFlowDreanLotteryHome.Steps
             {
                 Assert.IsTrue(WinnP.GetCompetitionShartData()[i].CompareTo(WinnP.GetCompetitionShartData()[i+1]) > 0);              
             }
-        }
+        }*/
 
-        [When(@"admin click downsorting on column Competition")]
+       /* [When(@"admin click downsorting on column Competition")]
         public void WhenAdminClickDownsortingOnColumnCompetition()
         {
             WinnP.ClickCompetitionHeaderDownSort();
-        }
+        }*/
 
-        [Then(@"All competition sorted downward")]
+       /* [Then(@"All competition sorted downward")]
         public void ThenAllCompetitionSortedDownward()
         {
             for (int i = 0; i > WinnP.GetSizeOfWinnersTable() - 1; i++)
             {
                 Assert.IsTrue(WinnP.GetCompetitionData()[i].CompareTo(WinnP.GetCompetitionData()[i+1]) > 0);               
             }
-        }
+        }*/
 
         [When(@"admin click downsorting on column FinishDate")]
         public void WhenAdminClickDownsortingOnColumnFinishDate()
@@ -115,35 +115,35 @@ namespace SpecFlowDreanLotteryHome.Steps
             }
         }
 
-        [When(@"admin click upsorting on column CompetitionSharp")]
+        /*[When(@"admin click upsorting on column CompetitionSharp")]
         public void WhenAdminClickUpsortingOnColumnCompetitionSharp()
         {
             WinnP.ClickCompetitionSharpHeaderUpSort();
-        }
+        }*/
 
-        [Then(@"All competitionSharp sorted upward")]
+        /*[Then(@"All competitionSharp sorted upward")]
         public void ThenAllCompetitionSharpSortedUpward()
         {
             for (int i = 0; i > WinnP.GetSizeOfWinnersTable() - 1; i++)
             {
                 Assert.IsTrue(WinnP.GetCompetitionShartData()[i].CompareTo(WinnP.GetCompetitionShartData()[i + 1]) < 0);
             }
-        }
+        }*/
 
-        [When(@"admin click upsorting on column Competition")]
+       /* [When(@"admin click upsorting on column Competition")]
         public void WhenAdminClickUpsortingOnColumnCompetition()
         {
             WinnP.ClickCompetitionHeaderUpSort();
-        }
+        }*/
 
-        [Then(@"All competition sorted upward")]
+        /*[Then(@"All competition sorted upward")]
         public void ThenAllCompetitionSortedUpward()
         {
             for (int i = 0; i > WinnP.GetSizeOfWinnersTable() - 1; i++)
             {
                 Assert.IsTrue(WinnP.GetCompetitionData()[i].CompareTo(WinnP.GetCompetitionData()[i + 1]) < 0);
             }
-        }
+        }*/
 
         [When(@"admin click upsorting on column FinishDate")]
         public void WhenAdminClickUpsortingOnColumnFinishDate()
@@ -224,6 +224,11 @@ namespace SpecFlowDreanLotteryHome.Steps
         {
             WinnP.GetPaginationF().ChooseSelect(p0);
         }
+        [When(@"Change pagination to (.*) with wait")]
+        public void WhenChangePaginationToWithWait(int p0)
+        {
+            WinnP.GetPaginationF().ChooseSelectWithWait(p0);
+        }
         [When(@"click Last page")]
         public void WhenClickLastPage()
         {
@@ -242,10 +247,9 @@ namespace SpecFlowDreanLotteryHome.Steps
                     isPresent = true;
                     break;
                 }
-            }
-            Assert.IsTrue(isPresent, "i: " + i + (string)_scenarioContext["title"]+
-                "  title[last-1]:"+ titles[i-1]);
-            
+            }           
+                Assert.IsTrue(isPresent, "i: " + i + (string)_scenarioContext["title"] +
+                    "  title[last-1]:" + titles[i - 1]);                       
         }
         [When(@"delete winner with title")]
         public void WhenDeleteWinnerWithTitle()

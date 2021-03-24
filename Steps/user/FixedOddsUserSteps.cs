@@ -1,8 +1,9 @@
-﻿using SpecFlowDreanLotteryHome.pages.user;
+﻿using SpecFlowDreanLotteryHome.entities.user;
+using SpecFlowDreanLotteryHome.pages.user;
 using System;
 using TechTalk.SpecFlow;
 
-namespace SpecFlowDreanLotteryHome.Steps
+namespace SpecFlowDreanLotteryHome.Steps.user
 {
     [Binding]
     public class FixedOddsUserSteps : BaseStepDefinition
@@ -21,17 +22,24 @@ namespace SpecFlowDreanLotteryHome.Steps
         [When(@"notice all info about first product from fixedOddsList")]
         public void WhenNoticeAllInfoAboutFirstProduct()
         {
-            FixedOddsP.GetFirstTitle();
+            //Product prod = new Product();
+            _scenarioContext.Add("titleFromList", FixedOddsP.GetFirstTitle());
             if (FixedOddsP.IsProductDiscount())
             {
-                _scenarioContext.Add("OldPriceFromList",FixedOddsP.GetOldPrice());
-                _scenarioContext.Add("NewPriceFromList", FixedOddsP.GetNewPrice());
-                _scenarioContext.Add("DiscountFromList", FixedOddsP.GetDiscount());
+                _scenarioContext.Add("OldPriceFromList", FixedOddsP.GetDiscountOldPrice());
+                _scenarioContext.Add("NewPriceFromList", FixedOddsP.GetDiscountNewPrice());
+                _scenarioContext.Add("DiscountFromList", FixedOddsP.GetDiscountPercent());
             }
             else
             {
                 _scenarioContext.Add("NonDiscountPriceFromList", FixedOddsP.GetNonDiscountPrice());
             }
         }
+        [When(@"click on first Fixed Odds prize")]
+        public void WhenClickOnFirstFixedOddsPrize()
+        {
+            FixedOddsP.ClickOnFirstProduct();
+        }
+
     }
 }

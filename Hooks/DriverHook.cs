@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using SpecFlowDreanLotteryHome.Drivers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,7 +25,7 @@ namespace SpecFlowDreanLotteryHome.Hooks
         [AfterTestRun]
         public static void Quete()
         {
-           // SingletonDriver.GetInstance().Quit();
+           //SingletonDriver.GetInstance().Quit();
         }
         //[AfterStep]
         public void Step()

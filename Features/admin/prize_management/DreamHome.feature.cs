@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlowDreanLotteryHome.Features.Prize_Management
+namespace SpecFlowDreanLotteryHome.Features.Admin.Prize_Management
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace SpecFlowDreanLotteryHome.Features.Prize_Management
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("DreamHome scenarios", Description="\tSimple ", SourceFile="Features\\prize_management\\DreamHome.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("DreamHome scenarios", Description="\tSimple ", SourceFile="Features\\admin\\prize_management\\DreamHome.feature", SourceLine=0)]
     public partial class DreamHomeScenariosFeature
     {
         
@@ -34,7 +34,7 @@ namespace SpecFlowDreanLotteryHome.Features.Prize_Management
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/prize_management", "DreamHome scenarios", "\tSimple ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin/prize_management", "DreamHome scenarios", "\tSimple ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         

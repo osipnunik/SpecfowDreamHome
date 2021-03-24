@@ -100,7 +100,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement DiscountIs => WebDriver.FindElement(By.XPath("(//h6[text()='Tickets']/..//input)[4]"));
         private IWebElement MoneyCurrency => WebDriver.FindElement(By.XPath("(//span[@class='discount-is']/..)[2]"));
         private IWebElement DiscountNewPrice => WebDriver.FindElement(By.XPath("(//h6[text()='Discount']/..//input)[5]"));
-        private IWebElement CurrencyCheckbox => WebDriver.FindElement(By.Id("property.discountCategory_cash"));
+        private IWebElement CurrencyCheckbox => WebDriver.FindElement(By.Id("discountCategory_cash"));
         private IWebElement DiscountStatus => WebDriver.FindElement(By.Id("isDiscountRates"));
                
         public void InputGeneralPictureInput() => GeneralPicInput.SendKeys(MainHomePicPath);//"C:\\Users\\PC\\G.PNG")         

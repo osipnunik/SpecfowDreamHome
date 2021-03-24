@@ -18,7 +18,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             Paginats = new PaginationFragment(webDriver);
         }
 
-        string MainNonHomePicPath = PathGiver.GetPicturePath() + "watch_xiaomi.png";
+        string MainNonHomePicPath = PathGiver.GetPicturePath() + "Car.jpg";
 
         private IWebElement PrizeManagementHref => WebDriver.FindElement(By.XPath("//span[text()='Prize Management']"));
         private IWebElement LifeStylePrizesLink => WebDriver.FindElement(By.CssSelector("a[title='Lifestyle Prizes']"));
@@ -33,7 +33,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IList<IWebElement> Titles => WebDriver.FindElements(By.CssSelector("table tbody tr td:nth-child(2)"));
         private IList<IWebElement> Categories => WebDriver.FindElements(By.CssSelector("table tbody tr td:nth-child(3)"));
 
-        
+        private IWebElement ActivePrizes => WebDriver.FindElement(By.CssSelector(".button-group button:nth-child(2)"));
+        private IWebElement UnActivePrizes => WebDriver.FindElement(By.CssSelector(".button-group button:nth-child(3)"));
 
         private IList<IWebElement> SubCategories => WebDriver.FindElements(By.CssSelector("table tbody tr td:nth-child(4)"));
         private IList<IWebElement> Discount => WebDriver.FindElements(By.CssSelector("table tbody tr td:nth-child(5)"));
@@ -53,7 +54,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         internal void ClickActiveLifeStilePrizes()
         {
             JSClick(ActiveLifeStilePrizes);
-            //ActiveLifeStilePrizes.Click();
+            //ActiveLifeStilePrizes.Click();            
         }
 
         internal void ChooseCategory(string p0)
@@ -116,5 +117,21 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             }
             return titles;
         }
+
+        internal int GetTitesCount() => Titles.Count;
+
+        internal void ClickActivePrizes()
+        {
+            JSClick(ActivePrizes);
+            Waiter.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector(".button-group button:nth-child(2).active-button")));
+        }
+
+        internal void ClickUnActivePrizes()
+        {
+            JSClick(UnActivePrizes);
+            Waiter.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector(".button-group button:nth-child(3).active-button")));
+            //Waiter.Until(ExpectedConditions.StalenessOf(WebDriver.FindElement(By.CssSelector("table.MuiTable-root"))));
+        }
+                
     }
 }

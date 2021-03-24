@@ -50,14 +50,14 @@ namespace SpecFlowDreanLotteryHome.Steps
         public void ThenDeleteProduct()
         {          
             var client = new RestClient("https://staging-api.rafflehouse.com");
-            client.Authenticator = new HttpBasicAuthenticator("proton001@lenta.ru", "sobaka");
-            var request = new RestRequest("/api/orders", Method.DELETE); ///{id}
-            //request.AddParameter("id", "6054a7297c3eef003daa7821");
-            request.AddParameter("text/xml", "{order: \"6054abc17c3eef003daa7840\"}", ParameterType.RequestBody);
+            client.Authenticator = new HttpBasicAuthenticator("proton001@lenta.ru", "sobaka1");
+            var request = new RestRequest("/api/orders/", Method.DELETE); ///{id}
+            //request.AddParameter("order", "6059b30c43924400342eb1c8");
+            request.AddParameter("application/json", "{order: \"6059e7fd43924400342f4078\"}", ParameterType.RequestBody);
             var response = client.Execute(request);
             HttpStatusCode statusCode = response.StatusCode;
             int numericStatusCode = (int)statusCode;
-            Assert.AreEqual(200, numericStatusCode);
+            Assert.AreEqual(200, numericStatusCode, response.Content);
         }
 
         /*[Then(@"get all fixed odds")]

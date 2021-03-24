@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using TechTalk.SpecFlow;
 
-namespace SpecFlowDreanLotteryHome.Steps
+namespace SpecFlowDreanLotteryHome.Steps.user
 {
     [Binding]
     class BasketUserSteps : BaseStepDefinition
@@ -24,7 +24,7 @@ namespace SpecFlowDreanLotteryHome.Steps
         [Then(@"user on basket page")]
         public void ThenUserOnBasketPage()
         {
-            Waiter.Until(ExpectedConditions.ElementExists(By.XPath("//thead//th[text()='ITEMS']")));
+            basketP.WaitWhileBeOnBasketPage();
             Assert.IsTrue(WebDriver.Url.EndsWith("basket"));
             Assert.AreEqual("Raffle House", WebDriver.Title);
         }
@@ -33,16 +33,23 @@ namespace SpecFlowDreanLotteryHome.Steps
         public void ThenUserSeePricePerTicketTotalAmountOfTicketAndTotalPriceAsExpected()
         {
             var expectedProd = ((Product)_scenarioContext["product"]);
-            double expectedPrice = (double)_scenarioContext["productPrice"];
-            expectedPrice = Math.Round(expectedPrice, 2);
-            int expectAmount = int.Parse((string)_scenarioContext["ticketQuantity"]);
+            double expectedPrice = double.Parse((expectedProd.NonDiscountPrice == null ? expectedProd.OldPrice : expectedProd.NonDiscountPrice).Substring(1));
+            int expectAmount = (int)_scenarioContext["ticketQuantity"];
             double expectedTotalPrice = expectedPrice * expectAmount;
-            Assert.AreEqual(expectedProd.Title, basketP.GetFirstProductTitle());
-            Assert.IsTrue(basketP.GetFirstProductPrice().StartsWith("£ " + expectedPrice.ToString()));
-            Assert.AreEqual(expectAmount.ToString(), basketP.GetFirstProductAmount());
-            string expectedTotalPriceRounded = "£ " + (expectedTotalPrice.ToString().Contains(".")?Math.Round(expectedTotalPrice, 2).ToString(): expectedTotalPrice+".00");
-            Assert.AreEqual(expectedTotalPriceRounded, basketP.GetFirstProductTotalPrice());
-            Assert.IsTrue(double.Parse(basketP.GetTotalPriceValue().Replace("£", ""))/Math.Round(expectedTotalPrice, 2) % 1 == 0);
+            Assert.AreEqual(expectedProd.Title, basketP.GetLastProductTitle());
+            Assert.AreEqual("£ " + expectedPrice.ToString("N2").Replace(",", ""), basketP.GetLastProductPrice());
+            Assert.AreEqual(expectAmount.ToString(), basketP.GetLastProductAmount());
+            string expectedTotalPriceRounded = "£ " + expectedTotalPrice.ToString("N2").Replace(",", "");
+            Assert.IsTrue(expectedTotalPriceRounded.StartsWith(basketP.GetLastProductTotalPrice()));
+            //Assert.IsTrue(double.Parse(basketP.GetTotalPriceValue().Replace("£", ""))/Math.Round(expectedTotalPrice, 2) % 1 == 0);
+        }
+        [Then(@"user calculate data from multiple products")]
+        public void ThenUserCalculateDataFromMultipleProducts()
+        {
+            double yourPricesSum = basketP.GetYourPricesSumCheckCurrency();
+            Assert.AreEqual("£ " + yourPricesSum.ToString("N2").Replace(",", ""), basketP.GetTotalPriceValue());
+            string diff = (basketP.GetTotalPricesSumCheckCurrency() - yourPricesSum).ToString("N2").Replace(",", "");
+            Assert.AreEqual("£ " + diff, basketP.GetTotalSaving());
         }
 
         [Then(@"user see Total Saving and Credit earned as expected if they exist")]
@@ -64,7 +71,7 @@ namespace SpecFlowDreanLotteryHome.Steps
         public void ThenUserRedirectedToCardsPaymentPage()
         {
             Waiter.Until(ExpectedConditions.ElementExists(By.XPath("//h3[text()='Pay by Card']")));
-            Assert.IsTrue(WebDriver.Url.EndsWith("basket/card/0"));
+            Assert.IsTrue(WebDriver.Url.EndsWith("basket/card/0/"));
             Assert.AreEqual("Raffle House", WebDriver.Title);
         }
         [When(@"user input card data")]

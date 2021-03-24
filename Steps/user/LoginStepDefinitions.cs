@@ -8,7 +8,7 @@ using SpecFlowDreanLotteryHome.pages.user;
 using SpecFlowDreanLotteryHome.services;
 using TechTalk.SpecFlow;
 
-namespace SpecFlowDreanLotteryHome.Steps
+namespace SpecFlowDreanLotteryHome.Steps.user
 {
     [Binding]
     public sealed class LoginStepDefinitions : BaseStepDefinition

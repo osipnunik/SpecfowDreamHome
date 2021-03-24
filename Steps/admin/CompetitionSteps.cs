@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using TechTalk.SpecFlow;
 
-namespace SpecFlowDreanLotteryHome.Steps
+namespace SpecFlowDreanLotteryHome.Steps.admin
 {
     [Binding]
     class CompetitionSteps : BaseStepDefinition

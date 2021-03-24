@@ -25,24 +25,24 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement Addnew => WebDriver.FindElement(By.CssSelector("a[aria-label = 'Add new ']"));
         private IWebElement ProductChooser => WebDriver.FindElement(By.Id("search-input"));//By.Id("search-input"));
 
-        private IWebElement CompetitionSharpHeaderDownSort => WebDriver.FindElement(By.CssSelector("th:nth-child(1) div.arrow-wrapper svg:last-child"));
-        private IWebElement CompetitionSharpHeaderUpSort => WebDriver.FindElement(By.CssSelector("th:nth-child(1) div.arrow-wrapper svg:first-child"));
-        private IWebElement CompetitionHeader => WebDriver.FindElement(By.CssSelector("th:nth-child(2) span.column-title"));
-        private IWebElement CompetitionHeaderDownSort => WebDriver.FindElement(By.CssSelector("th:nth-child(2) div.arrow-wrapper svg:last-child"));
-        private IWebElement CompetitionHeaderUpSort => WebDriver.FindElement(By.CssSelector("th:nth-child(2) div.arrow-wrapper svg:first-child"));
-        private IWebElement FinishDate => WebDriver.FindElement(By.CssSelector("th:nth-child(3) span.column-title"));
-        private IWebElement FinishDateHeaderDownSort => WebDriver.FindElement(By.CssSelector("th:nth-child(3) div.arrow-wrapper svg:last-child"));
-        private IWebElement FinishDateHeaderUpSort => WebDriver.FindElement(By.CssSelector("th:nth-child(3) div.arrow-wrapper svg:first-child"));
-        private IWebElement Title => WebDriver.FindElement(By.CssSelector("th:nth-child(4) span.column-title"));
-        private IWebElement TitleHeaderDownSort => WebDriver.FindElement(By.CssSelector("th:nth-child(4) div.arrow-wrapper svg:last-child"));
-        private IWebElement TitleHeaderUpSort => WebDriver.FindElement(By.CssSelector("th:nth-child(4) div.arrow-wrapper svg:first-child"));
+        //private IWebElement CompetitionSharpHeaderDownSort => WebDriver.FindElement(By.CssSelector("th:nth-child(1) div.arrow-wrapper svg:last-child"));
+        //private IWebElement CompetitionSharpHeaderUpSort => WebDriver.FindElement(By.CssSelector("th:nth-child(1) div.arrow-wrapper svg:first-child"));
+        //private IWebElement CompetitionHeader => WebDriver.FindElement(By.CssSelector("th:nth-child(2) span.column-title"));
+        //private IWebElement CompetitionHeaderDownSort => WebDriver.FindElement(By.CssSelector("th:nth-child(2) div.arrow-wrapper svg:last-child"));
+        //private IWebElement CompetitionHeaderUpSort => WebDriver.FindElement(By.CssSelector("th:nth-child(2) div.arrow-wrapper svg:first-child"));
+        private IWebElement FinishDate => WebDriver.FindElement(By.CssSelector("th:nth-child(1) span.column-title"));
+        private IWebElement FinishDateHeaderDownSort => WebDriver.FindElement(By.CssSelector("th:nth-child(1) div.arrow-wrapper svg:last-child"));
+        private IWebElement FinishDateHeaderUpSort => WebDriver.FindElement(By.CssSelector("th:nth-child(1) div.arrow-wrapper svg:first-child"));
+        private IWebElement Title => WebDriver.FindElement(By.CssSelector("th:nth-child(2) span.column-title"));
+        private IWebElement TitleHeaderDownSort => WebDriver.FindElement(By.CssSelector("th:nth-child(2) div.arrow-wrapper svg:last-child"));
+        private IWebElement TitleHeaderUpSort => WebDriver.FindElement(By.CssSelector("th:nth-child(2) div.arrow-wrapper svg:first-child"));
 
-        private IWebElement ActionsHeader => WebDriver.FindElement(By.CssSelector("th:nth-child(5)"));
+        private IWebElement ActionsHeader => WebDriver.FindElement(By.CssSelector("th:nth-child(3)"));
 
-        private IList<IWebElement> CompetitionShartData => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(1)"));
-        private IList<IWebElement> CompetitionData => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(2)"));
-        private IList<IWebElement> FinishDateData => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(3)"));
-        private IList<IWebElement> TitleData => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(4)"));
+        //private IList<IWebElement> CompetitionShartData => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(1)"));
+        //private IList<IWebElement> CompetitionData => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(2)"));
+        private IList<IWebElement> FinishDateData => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(1)"));
+        private IList<IWebElement> TitleData => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(2)"));
         string TitleText;
         private IWebElement DeleteTitle => WebDriver.FindElement(By.XPath("//tbody/tr/td[text()='"+TitleText+"']/following-sibling::td//*[@class='MuiSvgIcon-root delete-icon']"));
         private IWebElement ApproveRemove => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("button.user-remove-button span")));
@@ -67,13 +67,13 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         }
 
         public void ClickAddNew() => Addnew.Click();
-        public void ClickCompetitionSharpHeaderDownSort() => CompetitionSharpHeaderDownSort.Click();
-        public void ClickCompetitionHeaderDownSort() => CompetitionHeaderDownSort.Click();
+        //public void ClickCompetitionSharpHeaderDownSort() => CompetitionSharpHeaderDownSort.Click();
+        //public void ClickCompetitionHeaderDownSort() => CompetitionHeaderDownSort.Click();
         public void ClickFinishDateHeaderDownSort() => FinishDateHeaderDownSort.Click();
         public void ClickTitleHeaderDownSort() => TitleHeaderDownSort.Click();
 
-        public void ClickCompetitionSharpHeaderUpSort() => CompetitionSharpHeaderUpSort.Click();
-        public void ClickCompetitionHeaderUpSort() => CompetitionHeaderUpSort.Click();
+        //public void ClickCompetitionSharpHeaderUpSort() => CompetitionSharpHeaderUpSort.Click();
+        //public void ClickCompetitionHeaderUpSort() => CompetitionHeaderUpSort.Click();
         public void ClickFinishDateHeaderUpSort() => FinishDateHeaderUpSort.Click();
         public void ClickTitleHeaderUpSort() => TitleHeaderUpSort.Click();
 
@@ -87,12 +87,12 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             }
             else
             {
-                WinnerSize = CompetitionShartData.Count;
+                WinnerSize = TitleData.Count;
             }
             return WinnerSize;
         }
 
-        public List<string> GetCompetitionShartData()
+       /* public List<string> GetCompetitionShartData()
         {
             List<string> data = new List<string>();
             foreach(var el in CompetitionShartData)
@@ -100,8 +100,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
                 data.Add(el.Text);
             }
             return data;
-        }
-        public List<string> GetCompetitionData()
+        }*/
+        /*public List<string> GetCompetitionData()
         {
             List<string> data = new List<string>();
             foreach (var el in CompetitionData)
@@ -109,7 +109,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
                 data.Add(el.Text);
             }
             return data;
-        }
+        }*/
         public List<string> GetFinishDateData()
         {
             List<string> data = new List<string>();

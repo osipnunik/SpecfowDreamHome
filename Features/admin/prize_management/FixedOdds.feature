@@ -17,4 +17,13 @@ Scenario: Create fixed odds Prize
 	Then popup with message "Fixed Odds saved" appears
 	And created title exist in list
 	
-	
+	Scenario: check arithmetically active, unactive and all Fixed Odds
+	Given user logged in as admin with "testqaanuitex@gmail.com" email and "1111111" password
+    And click Fixed odds
+	When Change pagination to 100 with wait
+	When notice all prizes titles quantity
+	When click on Active prizes
+	When notice active prizes titles quantity
+	When click on Unactive prizes
+	When notice unactive prizes titles quantity
+	Then all prizes should be equal the sum of active and unactive

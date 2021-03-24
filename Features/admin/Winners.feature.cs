@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlowDreanLotteryHome.Features
+namespace SpecFlowDreanLotteryHome.Features.Admin
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace SpecFlowDreanLotteryHome.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Winners", Description="\tSimple Winners scenarios", SourceFile="Features\\Winners.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("Winners", Description="\tSimple Winners scenarios", SourceFile="Features\\admin\\Winners.feature", SourceLine=0)]
     public partial class WinnersFeature
     {
         
@@ -34,7 +34,7 @@ namespace SpecFlowDreanLotteryHome.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Winners", "\tSimple Winners scenarios", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin", "Winners", "\tSimple Winners scenarios", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -107,10 +107,6 @@ this.ScenarioInitialize(scenarioInfo);
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "columns"});
                 table1.AddRow(new string[] {
-                            "Competition#"});
-                table1.AddRow(new string[] {
-                            "Competition"});
-                table1.AddRow(new string[] {
                             "Finish date"});
                 table1.AddRow(new string[] {
                             "Title"});
@@ -118,21 +114,6 @@ this.ScenarioInitialize(scenarioInfo);
                             "Actions"});
 #line 8
  testRunner.Then("admin see following colume:", ((string)(null)), table1, "Then ");
-#line hidden
-#line 15
- testRunner.When("admin click downsorting on column CompetitionSharp", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 16
- testRunner.Then("All competitionSharp sorted downward", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 17
- testRunner.When("admin click downsorting on column Competition", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 18
- testRunner.Then("All competition sorted downward", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 19
- testRunner.When("admin click downsorting on column FinishDate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 20
  testRunner.Then("All FinishDate sorted downward", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -142,18 +123,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 22
  testRunner.Then("All Titles sorted downward", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 23
- testRunner.When("admin click upsorting on column CompetitionSharp", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 24
- testRunner.Then("All competitionSharp sorted upward", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 25
- testRunner.When("admin click upsorting on column Competition", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 26
- testRunner.Then("All competition sorted upward", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 27
  testRunner.When("admin click upsorting on column FinishDate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -205,12 +174,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 35
  testRunner.When("admin click on add new winner", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 36
- testRunner.When("admin choose product \"test\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 37
- testRunner.And("go to description", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 38
  testRunner.When("input random title", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

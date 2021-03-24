@@ -12,7 +12,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
 {
     class LifeStylePrizesUsersPage : BasePage
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public LifeStylePrizesUsersPage(IWebDriver webDriver) : base(webDriver) { }
 
@@ -129,7 +129,6 @@ namespace SpecFlowDreanLotteryHome.pages.user
                     actions.Perform();
                     Console.WriteLine("categoryName - i: " + i);
                     CategoryNames[i].Click();
-
                     WaitUntilPreviosProductShouldHaveDifferentTitle();
                 }
                 if (SubCategoryNames.Count == 0)
@@ -146,6 +145,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
                         {
                             JSClick(SubCategoryNames[j + 1]);
                             //SubCategoryNames[j + 1].Click();
+                            WaitUntilPreviosProductShouldHaveDifferentTitle();
                         }
                     }
                 }
@@ -173,7 +173,6 @@ namespace SpecFlowDreanLotteryHome.pages.user
                     {
                         product.CategoryName = category;
                         product.SubcategoryName = subcategory;
-                        log.Info("Products[i] i:" + i);
                         product.ImgHref = Products[i].FindElement(ProductImages).Text;
                         try { product.Title = Products[i].FindElement(ProductTitles).Text; }
                         catch (StaleElementReferenceException e)

@@ -70,12 +70,10 @@ namespace SpecFlowDreanLotteryHome.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("API test", new string[] {
-                "mytag"}, SourceLine=4)]
+        [TechTalk.SpecRun.ScenarioAttribute("API test", SourceLine=4)]
         public virtual void APITest()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("API test", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
@@ -98,6 +96,9 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 8
+ testRunner.Then("delete product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

@@ -7,7 +7,7 @@ using SpecFlowDreanLotteryHome.services;
 using System;
 using TechTalk.SpecFlow;
 
-namespace SpecFlowDreanLotteryHome.Steps
+namespace SpecFlowDreanLotteryHome.Steps.admin
 {
     [Binding]
     public class DreamHomeSteps : BaseStepDefinition
