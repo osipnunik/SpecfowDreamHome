@@ -2,7 +2,7 @@
 	Simple 
 
 Scenario: As an administrator, I want to add new prizes for other users to view.
-    Given user logged in as admin with "testqaanuitex@gmail.com" email and "1111111" password
+    Given user logged in as admin with "testqaanuitex@mail.com" email and "000000" password
     And click add new dream home
     When admin input title randomly generated
     When admin input address from adress title
@@ -39,8 +39,9 @@ Scenario: As an administrator, I want to add new prizes for other users to view.
     Then in new dream home table should be title generated earlier
     #When make "testHome11" active    working 
 
+
 Scenario: Discount of ticket tab in create dream home
-    Given user logged in as admin with "testqaanuitex@gmail.com" email and "1111111" password
+    Given admin logged in
     And click add new dream home
     When go to Discount & ticket tab
     When input ticket price value 10
@@ -58,7 +59,7 @@ Scenario: Discount of ticket tab in create dream home
     Then new price is should be 10
 
 Scenario: Discount of ticket tab in Discount section in create dream home
-    Given user logged in as admin with "testqaanuitex@gmail.com" email and "1111111" password
+    Given admin logged in
     And click add new dream home
     When go to Discount & ticket tab
     When input ticket price value 10

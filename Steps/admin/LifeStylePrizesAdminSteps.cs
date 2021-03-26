@@ -22,17 +22,24 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             _scenarioContext = scenarioContext;
         }
+        [When(@"click opened Life Style prize")]
+        public void WhenClickOpenedLifeStylePrize()
+        {
+            //LfStylePPage.ClickLifeStylePrizesOpened();
+            LfStylePPage.ClickLifeStylePrizesOpened();
+        }
+
         [Given(@"click Life Style prize")]
         public void GivenClickLifeStylePrize()
         {
-            LfStylePPage.ClickLifeStylePrizes();
+            LfStylePPage.ClickLifeStylePrizesUniversal();
         }
         [Given(@"click Fixed odds")]
         public void GivenClickFixedOdds()
         {
-            FixedOddsP.ClickFixedOdds();
+            FixedOddsP.ClickFixedOddsUniversal();
         }
-
+        
         [When(@"click add new prize")]
         public void WhenClickAddNewPrize()
         {

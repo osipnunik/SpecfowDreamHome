@@ -257,7 +257,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [Then(@"in new dream home table should be title generated earlier")]
         public void ThenInNewDreamHomeTableShouldBeTitle()
         {
-            dreamHomePg.GetPagination().ClickLastPageAtDreamHome();
+            //dreamHomePg.GetPagination().ClickLastPageAtDreamHome();
             string title = (string)_scenarioContext["address_title"];
             Assert.IsTrue(dreamHomePg.GetTitles().Contains(title)); //p0
         }

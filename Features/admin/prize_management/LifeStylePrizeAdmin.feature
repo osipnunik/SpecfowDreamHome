@@ -2,7 +2,7 @@
 	
 @mytag
 Scenario: Create Life Style Prize
-	Given user logged in as admin with "testqaanuitex@gmail.com" email and "1111111" password
+	Given admin logged in
     And click Life Style prize
 	When click add new prize
     When input Life Style prize (car) title randomly generated
@@ -17,8 +17,8 @@ Scenario: Create Life Style Prize
 	Then popup with message "Prize saved" appears
 	And Life Style prize title generated earlier is present with category "Luxury"
 
-	Scenario: check arithmetically active, unactive and all LifeStilePrizes
-	Given user logged in as admin with "testqaanuitex@gmail.com" email and "1111111" password
+Scenario: check arithmetically active, unactive and all LifeStilePrizes
+	Given admin logged in
     And click Life Style prize
 	When Change pagination to 100 with wait
 	When notice all prizes titles quantity

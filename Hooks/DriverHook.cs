@@ -30,7 +30,7 @@ namespace SpecFlowDreanLotteryHome.Hooks
         //[AfterStep]
         public void Step()
         {
-            Thread.Sleep(800);
+            Thread.Sleep(1000);
         }
         
     }

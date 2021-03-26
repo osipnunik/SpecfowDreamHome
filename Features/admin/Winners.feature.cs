@@ -115,6 +115,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 8
  testRunner.Then("admin see following colume:", ((string)(null)), table1, "Then ");
 #line hidden
+#line 19
+ testRunner.When("admin click downsorting on column FinishDate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 20
  testRunner.Then("All FinishDate sorted downward", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

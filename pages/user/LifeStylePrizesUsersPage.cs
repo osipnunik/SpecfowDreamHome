@@ -174,7 +174,9 @@ namespace SpecFlowDreanLotteryHome.pages.user
                         product.CategoryName = category;
                         product.SubcategoryName = subcategory;
                         product.ImgHref = Products[i].FindElement(ProductImages).Text;
-                        try { product.Title = Products[i].FindElement(ProductTitles).Text; }
+                        try { 
+                            product.Title = Products[i].FindElement(ProductTitles).Text;
+                        }
                         catch (StaleElementReferenceException e)
                         {
                             product.Title = Products[i].FindElement(ProductTitles).Text;

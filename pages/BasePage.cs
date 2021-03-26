@@ -38,6 +38,11 @@ namespace SpecFlowDreanLotteryHome.pages
             IJavaScriptExecutor jse = (IJavaScriptExecutor)WebDriver;
             jse.ExecuteScript("scroll(0, 800)"); // if the element is on top.                       
         }
+        public void ScrollToElement(IWebElement el)
+        {
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)WebDriver;
+            jse.ExecuteScript("arguments[0].scrollIntoView();", el);
+        }
         public void ScrollToBottomOfElement(IWebElement el)
         {
             IJavaScriptExecutor jse = (IJavaScriptExecutor)WebDriver;

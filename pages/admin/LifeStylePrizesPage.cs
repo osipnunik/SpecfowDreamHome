@@ -21,7 +21,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         string MainNonHomePicPath = PathGiver.GetPicturePath() + "Car.jpg";
 
         private IWebElement PrizeManagementHref => WebDriver.FindElement(By.XPath("//span[text()='Prize Management']"));
-        private IWebElement LifeStylePrizesLink => WebDriver.FindElement(By.CssSelector("a[title='Lifestyle Prizes']"));
+        private IWebElement LifeStylePrizesLink => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[title='Lifestyle Prizes']")));
+        private IList<IWebElement> PrizeManagementList => WebDriver.FindElements(By.CssSelector(".MuiCollapse-container a"));
         private IWebElement DiscountTicketsTab => WebDriver.FindElement(By.XPath("//span[text()='Discount & tickets']"));
         private IWebElement CategoryChooser => WebDriver.FindElement(By.Id("prizeCategory"));
         private IWebElement SubCategoryChooser => WebDriver.FindElement(By.Id("subCategory"));
@@ -40,14 +41,26 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IList<IWebElement> Discount => WebDriver.FindElements(By.CssSelector("table tbody tr td:nth-child(5)"));
 
         string Category;
-         private IWebElement CategoryItem => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//li/span[text()='" + Category + "']")));
+        private IWebElement CategoryItem => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//li/span[text()='" + Category + "']")));
         string SubCategory;
         private IWebElement SubCategoryItem => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//li/span[text()='" + SubCategory + "']")));
 
         public void InputGeneralPictureInput() => GeneralPicInput.SendKeys(MainNonHomePicPath);
 
-        public void ClickLifeStylePrizes() {
+        public void ClickLifeStylePrizesClosed() {
             PrizeManagementHref.Click();
+            LifeStylePrizesLink.Click();
+        }
+        public void ClickLifeStylePrizesUniversal()
+        {
+            if(PrizeManagementList.Count == 0) {
+                PrizeManagementHref.Click();
+            }          
+            LifeStylePrizesLink.Click();
+        }
+       
+        public void ClickLifeStylePrizesOpened()
+        {
             LifeStylePrizesLink.Click();
         }
 
@@ -118,7 +131,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             return titles;
         }
 
-        internal int GetTitesCount() => Titles.Count;
+        internal int GetTitesCount() => Titles.Count;    
 
         internal void ClickActivePrizes()
         {

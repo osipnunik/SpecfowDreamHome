@@ -16,7 +16,7 @@ Scenario: Sorting and displaying should work properly
 	#Then All competitionSharp sorted downward
 	#When admin click downsorting on column Competition
 	#Then All competition sorted downward
-	#When admin click downsorting on column FinishDate
+	When admin click downsorting on column FinishDate
 	Then All FinishDate sorted downward
 	When admin click downsorting on column Title
 	Then All Titles sorted downward
