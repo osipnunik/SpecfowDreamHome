@@ -71,12 +71,12 @@ namespace SpecFlowDreanLotteryHome.Features.User
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("as user i want to see all info on LyfeSycle prize site as on admin LifeSycle priz" +
-            "e page", new string[] {
-                "mytag"}, SourceLine=3)]
+            "e page", SourceLine=3)]
+        [TechTalk.SpecRun.IgnoreAttribute()]
         public virtual void AsUserIWantToSeeAllInfoOnLyfeSyclePrizeSiteAsOnAdminLifeSyclePrizePage()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "ignore"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("as user i want to see all info on LyfeSycle prize site as on admin LifeSycle priz" +
                     "e page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
@@ -101,8 +101,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 5
- testRunner.Given("user logged in as admin with \"testqaanuitex@gmail.com\" email and \"1111111\" passwo" +
-                        "rd", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("admin logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
     testRunner.And("click Life Style prize", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

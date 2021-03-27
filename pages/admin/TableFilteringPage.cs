@@ -65,6 +65,16 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             }
             return data;
         }
+        public List<string> GetFirstRowCategoriesDatatd()
+        {
+            List<string> data = new List<string>();
+            Waiter.Until(ExpectedConditions.ElementIsVisible(RefreshBy));
+            for (int i = 0; i < FirstRowDatatd.Count; i++)
+            {
+                data.Add(FirstRowDatatd[i].Text);
+            }
+            return data;
+        }
         internal string GetLastCellInFirstColumn() => LastCellInFirstColumn.Text;
         public string GetFirstCellTextInSecondColumn() => FirstCellInSecondColumn.Text;
         public string GetLastCellTextInSecondColumn() => LastCellInSecondColumn.Text;

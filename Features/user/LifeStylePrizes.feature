@@ -1,8 +1,8 @@
 ﻿Feature: LifeStylePrizesUser
 
-@mytag
+@ignore
 Scenario: as user i want to see all info on LyfeSycle prize site as on admin LifeSycle prize page
-	Given user logged in as admin with "testqaanuitex@gmail.com" email and "1111111" password
+	Given admin logged in
     And click Life Style prize
 	When change paginarion prizes per page as 100   
 	When go to active life style prizes          

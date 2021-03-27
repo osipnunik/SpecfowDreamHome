@@ -21,7 +21,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement TicketQuantityElement => WebDriver.FindElement(By.XPath("//div[@class='checkQuanityBlock']/p[text()='" + TicketNumber + "']"));
         private IWebElement TotalPrice => WebDriver.FindElement(By.CssSelector("div:nth-child(2) > p.order-data.totalValue"));
         private IWebElement QuantityTicSecond => WebDriver.FindElement(By.CssSelector("div.priceGreyContainer div:last-child p.quantitiValue"));
-        private IList<IWebElement> PricesP => WebDriver.FindElements(By.CssSelector(".productPrices p"));
+        private IList<IWebElement> PricesP => WebDriver.FindElements(By.CssSelector(".infoModalMainTitle .productPrices p"));
         private IWebElement Picture => WebDriver.FindElement(By.CssSelector(".slider .slick-active img"));
 
         public string GetQuantityTicSecond() => QuantityTicSecond.Text;
@@ -67,6 +67,11 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         internal string GetNonDiscountPrice() => NonDiscountPrice.Text;
 
-        internal bool IsPriceNonDiscount() => PricesP.Count == 1;
+        internal bool IsPriceNonDiscount()
+        {
+            int c = PricesP.Count;
+            return c == 1;
+
+        }
     }
 }

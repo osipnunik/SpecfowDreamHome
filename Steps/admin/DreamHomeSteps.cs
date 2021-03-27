@@ -259,7 +259,11 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             //dreamHomePg.GetPagination().ClickLastPageAtDreamHome();
             string title = (string)_scenarioContext["address_title"];
-            Assert.IsTrue(dreamHomePg.GetTitles().Contains(title)); //p0
+            bool areOnFirstPage = dreamHomePg.GetTitles().Contains(title); //p0
+            if (areOnFirstPage) return; 
+            dreamHomePg.GetPagination().ClickLastPage();
+            bool areOnLastPage = dreamHomePg.GetTitles().Contains(title);
+            Assert.IsTrue(areOnFirstPage || areOnLastPage);
         }
 
         [When(@"make ""(.*)"" active")]

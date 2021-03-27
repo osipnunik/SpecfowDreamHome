@@ -112,7 +112,12 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         internal string GetTicketTitleText()
         {
-            return TicketTitle.Text;
+            string text = TicketTitle.Text;
+            if(text.Length != 0)
+            {
+                return text;
+            }
+            return GetTicketTitleText();
         }
 
         internal void ClickEditLastUser() => EditLastUserIcon.Click();

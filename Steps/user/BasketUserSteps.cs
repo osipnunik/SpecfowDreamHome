@@ -87,7 +87,12 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void WhenClickPayButton() => basketP.ClickCardPayBtn();
 
         [Then(@"user see order completed header")]
-        public void ThenUserSeeOrderCompletedHeader() => Assert.IsTrue(basketP.OrderCompletedVisible());
+        public void ThenUserSeeOrderCompletedHeader()
+        {
+            string newUrl = WebDriver.Url.Replace("http://localhost:8000/", "https://staging.rafflehouse.com/");
+            WebDriver.Navigate().GoToUrl(newUrl);
+            Assert.IsTrue(basketP.OrderCompletedVisible());
+        }
 
     }
 }

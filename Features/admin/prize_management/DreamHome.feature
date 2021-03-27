@@ -36,7 +36,6 @@ Scenario: As an administrator, I want to add new prizes for other users to view.
     Then popup with message "Dream home saved" appears
     When user reload page
     #When Change pagination to 100
-
     Then in new dream home table should be title generated earlier
     #When make "testHome11" active    working 
 

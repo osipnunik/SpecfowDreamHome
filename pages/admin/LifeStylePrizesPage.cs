@@ -51,11 +51,24 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         }
         public void ClickLifeStylePrizesUniversal()
         {
-            if(PrizeManagementList.Count == 0) {
-                PrizeManagementHref.Click();
-            }          
-            LifeStylePrizesLink.Click();
+            /*while (PrizeManagementList.Count == 0)
+            {*/
+            try
+            {
+                if (PrizeManagementList.Count == 0)
+                {
+                    PrizeManagementHref.Click();
+                }
+            
+                LifeStylePrizesLink.Click();
+            }
+            catch (NoSuchElementException e)
+            {
+                PrizeManagementHref.Click(); 
+                LifeStylePrizesLink.Click();
+            }
         }
+      
        
         public void ClickLifeStylePrizesOpened()
         {

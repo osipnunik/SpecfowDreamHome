@@ -201,7 +201,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             for (int i = 0; i < firstNames.Count - 1; i++)
             {
                 int nextMore = firstNames[i].Trim().CompareTo(firstNames[i + 1].Trim());
-                Assert.IsTrue(nextMore >= 0);
+                Assert.IsTrue(nextMore >= 0, firstNames[i]+"~"+ firstNames[i + 1]);
             }
         }
 
