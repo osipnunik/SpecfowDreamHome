@@ -9,6 +9,7 @@
 
   Scenario: checking link sign up here and sign up in upper footer
     When user go to login page
+    When user log out
     When user click on Sign up link at top of the page
     Then user see Sign up page
     When user go to login page

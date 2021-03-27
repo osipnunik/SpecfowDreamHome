@@ -73,3 +73,4 @@ Scenario: Sorting on staff management
 	Then all last names should be upsorted
 	When click upsort email address
 	Then all email addresses should be upsorted
+

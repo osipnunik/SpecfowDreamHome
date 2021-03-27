@@ -14,6 +14,8 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement SignupFromHeader => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[href = '/sign-up']")));//("a[href = '/sign-up']"));
         private IWebElement SignInHereHref => WebDriver.FindElement(By.CssSelector("div.signInHere a"));
         private By SignUpHeaderBy = By.CssSelector("div.loginGroupSignUp h3");
+        private IWebElement AccountBtn => WebDriver.FindElement(By.CssSelector("button.dropdownAccount"));
+        private IWebElement LogoutBtn => WebDriver.FindElement(By.CssSelector("ul li:nth-child(2) a"));
         private IWebElement SignUpHeader => WebDriver.FindElement(SignUpHeaderBy);
 
         private IWebElement FirstNameInput => WebDriver.FindElement(By.CssSelector("input[name='name']"));
@@ -24,10 +26,11 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement PasswordInput => WebDriver.FindElement(By.CssSelector("input[name='password']"));
         private IWebElement SignUpBtn => WebDriver.FindElement(By.XPath("//button[text()='Sign up']"));
         private IWebElement AgeCheckbox => WebDriver.FindElement(By.Id("ageCheck"));
-        private IWebElement IAgree => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("button.yellow-btn-round")));
+        private IWebElement SecondAgeCheckbox => WebDriver.FindElement(By.XPath("(//div[@class='mainModalBtnGroup']//input)[1]"));
+        private IWebElement IAgreeSignUp => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("div.mainModalBtnGroup button")));
         private IWebElement LogedName => WebDriver.FindElement(By.CssSelector("button[aria-controls='simple-menu'] div.header-drop-name span"));
         private IWebElement EighteenCheckbox => WebDriver.FindElement(By.XPath("//p[text()='I am 18 years or older']/../..//input"));
-
+        private IWebElement LastElement => WebDriver.FindElement(By.CssSelector("div.mainModalWrap p:last-child"));
         public string GetLoggedName()
         {
             //Console.WriteLine(WebDriver.FindElement(By.CssSelector("div.header-drop-name")).Text);
@@ -41,6 +44,10 @@ namespace SpecFlowDreanLotteryHome.pages.user
             }*/
 
         }
+
+        internal void ClickAccountButton() => AccountBtn.Click();
+
+        internal void ClickLogoutBtn() => LogoutBtn.Click();
 
         public string GetLoggedName(string nameSurname)
         {
@@ -61,13 +68,11 @@ namespace SpecFlowDreanLotteryHome.pages.user
         public void ClickIAgree()
         {
             //Waiter.Until(ExpectedConditions.ElementExists(IAgree));
-            IAgree.Click();
+            IAgreeSignUp.Click();
         }
 
-        internal void Ckeckbox18First()
-        {
-            EighteenCheckbox.Click();
-        }
+        internal void Ckeckbox18First() => EighteenCheckbox.Click();
+        internal void ClickSecondAgeCheckbox() => JSClick(SecondAgeCheckbox);//SecondAgeCheckbox.Click();
 
         public void InputFirstNameInput(string inp) => FirstNameInput.SendKeys(inp);
         public void InputLastNameInput(string inp) => LastNameInput.SendKeys(inp);
@@ -84,9 +89,8 @@ namespace SpecFlowDreanLotteryHome.pages.user
         {
             //IJavaScriptExecutor js = (IJavaScriptExecutor)WebDriver;
             //js.ExecuteScript("arguments[0].setAttribute('style', arguments[1])");
-            //js.ExecuteScript("arguments[0].setAttribute('class', arguments[1])", WebDriver.FindElement(By.XPath("//input[@type='file']/../../div[2]")), "a");
-            var lastElement = WebDriver.FindElement(By.CssSelector("body div.custom-scroll > p:last-child"));
-            ScrollToBottomOfElement(lastElement);
+            //js.ExecuteScript("arguments[0].setAttribute('class', arguments[1])", WebDriver.FindElement(By.XPath("//input[@type='file']/../../div[2]")), "a");           
+            ScrollToBottomOfElement(LastElement);
            /* Actions actions = new Actions(WebDriver);
             actions.MoveToElement(lastElement);
             actions.Perform();*/

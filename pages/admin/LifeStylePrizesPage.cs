@@ -24,7 +24,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement LifeStylePrizesLink => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[title='Lifestyle Prizes']")));
         private IList<IWebElement> PrizeManagementList => WebDriver.FindElements(By.CssSelector(".MuiCollapse-container a"));
         private IWebElement DiscountTicketsTab => WebDriver.FindElement(By.XPath("//span[text()='Discount & tickets']"));
-        private IWebElement CategoryChooser => WebDriver.FindElement(By.Id("prizeCategory"));
+        private IWebElement CategoryChooser => WebDriver.FindElement(By.Id("prizeCategory"));//"search-input"));
         private IWebElement SubCategoryChooser => WebDriver.FindElement(By.Id("subCategory"));
 
         private IWebElement Title => WebDriver.FindElement(By.Id("title"));
@@ -41,10 +41,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IList<IWebElement> Discount => WebDriver.FindElements(By.CssSelector("table tbody tr td:nth-child(5)"));
 
         string Category;
-        private IWebElement CategoryItem => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//li/span[text()='" + Category + "']")));
-        string SubCategory;
-        private IWebElement SubCategoryItem => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//li/span[text()='" + SubCategory + "']")));
-
+        private IWebElement CategoryItem => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//ul/li/span[text()='" + Category + "']")));
+        
         public void InputGeneralPictureInput() => GeneralPicInput.SendKeys(MainNonHomePicPath);
 
         public void ClickLifeStylePrizesClosed() {
@@ -78,19 +76,9 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             catch (StaleElementReferenceException)
             {
                 JSClick(CategoryItem);
-            }
-                     
+            }                     
         }
-        internal void ChooseSubCategory(string p0)
-        {
-            SubCategory = p0;
-            SubCategoryChooser.Click();
-            try { SubCategoryItem.Click(); }
-            catch (StaleElementReferenceException)
-            {
-                JSClick(CategoryItem);
-            }
-        }
+        
         internal void InputTitle(string p0)
         {
             Title.SendKeys(p0);

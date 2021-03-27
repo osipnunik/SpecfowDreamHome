@@ -1,4 +1,5 @@
-﻿using SpecFlowDreanLotteryHome.pages.admin;
+﻿using NUnit.Framework;
+using SpecFlowDreanLotteryHome.pages.admin;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,61 +31,76 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"click add category")]
         public void WhenClickAddCategory()
         {
-            catSubc.ClickAddNew(); //?will work
+            catSubc.ClickAddNewCategory_Sub(); 
         }
 
         [Then(@"Title Add category is displayed")]
         public void ThenTitleAddCategoryIsDisplayed()
         {
-            catSubc.PopupWithTextDisplayed("category");
+            Assert.AreEqual("Add category", catSubc.GetDialogPopupText());
+        }
+        [Then(@"Title Add Sub-category is displayed")]
+        public void ThenTitleAddSub_CategoryIsDisplayed()
+        {
+            Assert.AreEqual("Add sub-category", catSubc.GetDialogPopupText());
         }
 
         [When(@"input animal category picture")]
         public void WhenInputAnimalCategoryPicture()
         {
-            ScenarioContext.Current.Pending();
+            catSubc.inputPicture();
         }
 
         [When(@"make status active")]
         public void WhenMakeStatusActive()
         {
-            ScenarioContext.Current.Pending();
+            catSubc.ClickOnStatus();
         }
 
         [When(@"admin input title ""(.*)""")]
         public void WhenAdminInputTitle(string p0)
         {
-            ScenarioContext.Current.Pending();
+            catSubc.InputTitle(p0);
         }
 
         [When(@"click save category")]
         public void WhenClickSaveCategory()
         {
-            ScenarioContext.Current.Pending();
+            catSubc.ClickSaveCategSub();
         }
 
         [Then(@"category with title ""(.*)"" exist")]
         public void ThenCategoryWithTitleExist(string p0)
         {
-            ScenarioContext.Current.Pending();
+            Assert.IsTrue(catSubc.GetFirstRowDatatd().Contains(p0));
+        }
+        [Then(@"popup with text ""(.*)"" appears")]
+        public void ThenPopupWithTextAppears(string expectedMessage)
+        {
+            Assert.AreEqual(expectedMessage, catSubc.GetPopupText());
         }
 
         [When(@"click Add Sub-category")]
         public void WhenClickAddSub_Category()
         {
-            catSubc.ClickAddNew(); //?will work
+            catSubc.ClickAddNewCategory_Sub(); 
         }
 
         [When(@"input animal sub-category picture")]
         public void WhenInputAnimalSub_CategoryPicture()
         {
-            ScenarioContext.Current.Pending();
+            catSubc.inputPicture();
+        }
+        [When(@"choose category in subcategory ""(.*)""")]
+        public void WhenChooseCategoryInSubcategory(string p0)
+        {
+            catSubc.ChooseSubCategory(p0);
         }
 
         [Then(@"Sub-category with title ""(.*)"" exist")]
         public void ThenSub_CategoryWithTitleExist(string p0)
         {
-            ScenarioContext.Current.Pending();
+            Assert.IsTrue(catSubc.GetFirstRowDatatd().Contains(p0));
         }
 
 

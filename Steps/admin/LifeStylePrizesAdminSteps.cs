@@ -55,7 +55,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"choose subcategoty ""(.*)""")]
         public void WhenChooseSubcategoty(string p0)
         {
-            LfStylePPage.ChooseSubCategory(p0);
+            LfStylePPage.ChooseCategory(p0);
         }
 
 

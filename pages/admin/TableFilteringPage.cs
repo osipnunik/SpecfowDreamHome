@@ -30,6 +30,9 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement TitleLiEl => WebDriver.FindElement(By.XPath("//span[@class='category-title' and text()='" +TitleLi+"']"));
         private IWebElement FirstHeader => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("th:nth-child(1) div.title-dropdown")));
         private IWebElement SecondHeader => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("th:nth-child(2) div.title-dropdown")));
+
+       
+
         private IWebElement ThirdHeader => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("th:nth-child(3) div.title-dropdown")));
         private IWebElement FourthHeader => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("th:nth-child(4) div.title-dropdown")));
         private IWebElement FifthHeader => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("th:nth-child(5) div.title-dropdown")));
@@ -37,6 +40,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IList<IWebElement> FirstRowDatatd => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(1)"));
         By SecondData = By.CssSelector("tbody tr td:nth-child(2)");
         private IList<IWebElement> SecondRowDatatd => WebDriver.FindElements(SecondData);
+        private IWebElement LastCellInFirstColumn => WebDriver.FindElement(By.CssSelector("tbody:last-child tr td:nth-child(1)"));
         private IWebElement FirstCellInSecondColumn => WebDriver.FindElement(SecondData);
         private IWebElement LastCellInSecondColumn => WebDriver.FindElement(By.CssSelector("tbody:last-child tr td:nth-child(2)"));
         private IWebElement LastCellInThirdColumn => WebDriver.FindElement(By.CssSelector("tbody:last-child tr td:nth-child(3)"));
@@ -61,6 +65,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             }
             return data;
         }
+        internal string GetLastCellInFirstColumn() => LastCellInFirstColumn.Text;
         public string GetFirstCellTextInSecondColumn() => FirstCellInSecondColumn.Text;
         public string GetLastCellTextInSecondColumn() => LastCellInSecondColumn.Text;
 

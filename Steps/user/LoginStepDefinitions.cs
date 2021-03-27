@@ -64,6 +64,12 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         {
             regsPg.ClickSignupFromHeader();
         }
+        [When(@"user log out")]
+        public void WhenUserLogOut()
+        {
+            regsPg.ClickAccountButton();
+            regsPg.ClickLogoutBtn();
+        }
 
         [Then(@"user see Sign up page")]
         public void ThenUserSeeSignUpPage()
@@ -101,7 +107,8 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void WhenUserCheckIMCheckboxAndScrollDown(int p0)
         {
             regsPg.ScrollUntillIAgreeIsActive();
-            regsPg.ClickAgeCheckbox();
+            //regsPg.ClickAgeCheckbox();  elem not exist
+            regsPg.ClickSecondAgeCheckbox();
             
         }
         [When(@"click i agree")]

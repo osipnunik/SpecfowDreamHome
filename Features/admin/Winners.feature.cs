@@ -208,6 +208,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 47
  testRunner.Then("winner with title should not present in winner list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+#line 48
+ testRunner.Then("message with text \"Winner has been deleted.\" should appeared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

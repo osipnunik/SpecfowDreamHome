@@ -36,11 +36,11 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             double expectedPrice = double.Parse((expectedProd.NonDiscountPrice == null ? expectedProd.OldPrice : expectedProd.NonDiscountPrice).Substring(1));
             int expectAmount = (int)_scenarioContext["ticketQuantity"];
             double expectedTotalPrice = expectedPrice * expectAmount;
-            Assert.AreEqual(expectedProd.Title, basketP.GetLastProductTitle());
-            Assert.AreEqual("£ " + expectedPrice.ToString("N2").Replace(",", ""), basketP.GetLastProductPrice());
-            Assert.AreEqual(expectAmount.ToString(), basketP.GetLastProductAmount());
+            Assert.AreEqual(expectedProd.Title, basketP.GetFirstProductTitle());
+            Assert.AreEqual("£ " + expectedPrice.ToString("N2").Replace(",", ""), basketP.GetFirstProductPrice());
+            Assert.AreEqual(expectAmount.ToString(), basketP.GetFirstProductAmount());
             string expectedTotalPriceRounded = "£ " + expectedTotalPrice.ToString("N2").Replace(",", "");
-            Assert.IsTrue(expectedTotalPriceRounded.StartsWith(basketP.GetLastProductTotalPrice()));
+            Assert.IsTrue(expectedTotalPriceRounded.StartsWith(basketP.GetFirstProductTotalPrice()));
             //Assert.IsTrue(double.Parse(basketP.GetTotalPriceValue().Replace("£", ""))/Math.Round(expectedTotalPrice, 2) % 1 == 0);
         }
         [Then(@"user calculate data from multiple products")]
@@ -71,7 +71,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void ThenUserRedirectedToCardsPaymentPage()
         {
             Waiter.Until(ExpectedConditions.ElementExists(By.XPath("//h3[text()='Pay by Card']")));
-            Assert.IsTrue(WebDriver.Url.EndsWith("basket/card/0/"));
+            Assert.IsTrue(WebDriver.Url.Contains("basket/card/0/"));
             Assert.AreEqual("Raffle House", WebDriver.Title);
         }
         [When(@"user input card data")]
