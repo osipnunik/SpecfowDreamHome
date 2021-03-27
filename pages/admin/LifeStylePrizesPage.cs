@@ -91,7 +91,16 @@ namespace SpecFlowDreanLotteryHome.pages.admin
                 JSClick(CategoryItem);
             }                     
         }
-        
+        internal void ChooseSubCategory(string p0)
+        {
+            Category = p0;
+            SubCategoryChooser.Click();
+            try { CategoryItem.Click(); }
+            catch (StaleElementReferenceException)
+            {
+                JSClick(CategoryItem);
+            }
+        }
         internal void InputTitle(string p0)
         {
             Title.SendKeys(p0);

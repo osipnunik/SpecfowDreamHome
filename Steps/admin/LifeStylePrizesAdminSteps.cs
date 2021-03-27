@@ -55,7 +55,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"choose subcategoty ""(.*)""")]
         public void WhenChooseSubcategoty(string p0)
         {
-            LfStylePPage.ChooseCategory(p0);
+            LfStylePPage.ChooseSubCategory(p0);
         }
 
 
@@ -160,9 +160,9 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"notice all prizes titles quantity")]
         public void WhenNoticeAllPrizesTitlesQuantity()
         {
-            
-            int all = LfStylePPage.GetTitesCount();
-            _scenarioContext.Add("allPrizesQuantity", all);
+
+            string paginTableSize = LfStylePPage.GetPagination().GetSizeOfTable();
+            _scenarioContext.Add("allPrizesQuantity", paginTableSize);
         }
 
         [When(@"click on Active prizes")]
@@ -175,10 +175,8 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"notice active prizes titles quantity")]
         public void WhenNoticeActivePrizesTitlesQuantity()
         {
-            int titleCount = LfStylePPage.GetTitesCount();
             string paginTableSize = LfStylePPage.GetPagination().GetSizeOfTable();
-            Assert.AreEqual(titleCount.ToString(), paginTableSize);
-            _scenarioContext.Add("activePrizesQuantity", titleCount);
+            _scenarioContext.Add("activePrizesQuantity", paginTableSize);
         }
 
         [When(@"click on Unactive prizes")]
@@ -192,18 +190,18 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"notice unactive prizes titles quantity")]
         public void WhenNoticeUnactivePrizesTitlesQuantity()
         {
-            int titleCount = LfStylePPage.GetTitesCount();
+            
             string paginTableSize = LfStylePPage.GetPagination().GetSizeOfTable();
-            Assert.AreEqual(titleCount.ToString(), paginTableSize);
-            _scenarioContext.Add("unactivePrizesQuantity", titleCount);
+            _scenarioContext.Add("unactivePrizesQuantity", paginTableSize);
         }
 
         [Then(@"all prizes should be equal the sum of active and unactive")]
         public void ThenAllPrizesShouldBeEqualTheSumOfActiveAndUnactive()
         {
-            Assert.AreEqual((int)_scenarioContext["allPrizesQuantity"],
-            (int)_scenarioContext["activePrizesQuantity"] +
-            (int)_scenarioContext["unactivePrizesQuantity"], "active: "+ (int)_scenarioContext["activePrizesQuantity"]);
+            int all = int.Parse((string)_scenarioContext["allPrizesQuantity"]);
+            int active = int.Parse((string)_scenarioContext["activePrizesQuantity"]);
+            int nonAct = int.Parse((string)_scenarioContext["unactivePrizesQuantity"]);
+            Assert.AreEqual(all ,(active + nonAct) , "active: "+ active);
         }
 
     }

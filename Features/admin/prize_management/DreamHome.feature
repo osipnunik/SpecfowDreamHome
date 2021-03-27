@@ -40,6 +40,44 @@ Scenario: As an administrator, I want to add new prizes for other users to view.
     #When make "testHome11" active    working 
 
 
+Scenario: As an administrator, I want to update new prizes for other users to view.
+    Given user logged in as admin with "testqaanuitex@mail.com" email and "000000" password
+    When click Last page at Dream home
+    When click adit at last user
+    When admin update title randomly generated
+    When admin update address from adress title
+    #When update start and finish date
+    When upload main picture
+    When go to Description tab
+    When update badroom desctiption as "updated badroom description"
+    When upload badroom picture
+    When update bathroom desctiption as "updated bathroom description"
+    When upload bathroom picture
+    When update Outspace desctiption as "updated Outspace description"
+    When upload Outspace picture
+    When update in about "updated about" text
+    When upload floor plan picture
+    When update in Take a Tour with Sara "updated Tour" text
+    When update in 3d Tour "updated 3d tour" text
+    When update price as "1.40"
+    When update Bed as "bed updated"
+    When update Bath as "Bath updated"
+    When update Garden as "Garden good"
+    When update Transport as "Transport good"
+    When update location as "Updated address"
+    When update Freehold as "updated Freehold"
+    When update Tax as "17.99"
+    When update Size as 18.6
+    When update Energy as "nuclear reactor"
+    When go to Discount & ticket tab
+    When update ticket price value 16
+    When update default number of tickets 18
+    When click save button
+    Then popup with message "Dream home updated" appears
+    When user reload page
+    #When Change pagination to 100
+    Then in new dream home table should be title generated earlier
+
 Scenario: Discount of ticket tab in create dream home
     Given admin logged in
     And click add new dream home

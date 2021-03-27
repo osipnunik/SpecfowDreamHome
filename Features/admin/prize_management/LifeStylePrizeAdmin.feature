@@ -9,7 +9,7 @@ Scenario: Create Life Style Prize
 	When upload non house main picture
 	When input in about "this car is very expansive and perfect" text
 	When choose category "Luxury"
-	#When choose subcategoty "Cars"
+	When choose subcategoty "Ferrary"
 	When go to Discount & ticket tab at Life prize
     When input ticket price value 6
     When input default number of tickets 15

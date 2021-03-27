@@ -119,6 +119,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 11
  testRunner.When("choose category \"Luxury\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 12
+ testRunner.When("choose subcategoty \"Ferrary\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 13
  testRunner.When("go to Discount & ticket tab at Life prize", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden

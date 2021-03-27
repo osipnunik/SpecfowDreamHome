@@ -252,7 +252,17 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             }
             Assert.AreEqual(message, popupText);
         }
-        
+
+        [When(@"click Last page at Dream home")]
+        public void WhenClickLastPageAtDreamHome()
+        {
+            dreamHomePg.GetPagination().ClickLastPage();
+        }
+        [When(@"click adit at last user")]
+        public void WhenClickAditAtLastUser()
+        {
+            dreamHomePg.ClickLastUpdate();
+        }
 
         [Then(@"in new dream home table should be title generated earlier")]
         public void ThenInNewDreamHomeTableShouldBeTitle()
@@ -329,6 +339,133 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             dreamHomePg.ClickCurrencyCheckbox();
         }
 
+        [When(@"admin update title randomly generated")]
+        public void WhenAdminUpdateTitleRandomlyGenerated()
+        {
+            string title = new AutogeneratorService().GenerateStreetAddressTitle();
+            _scenarioContext.Add("address_title", title);
+            dreamHomePg.inputTitle(title, true);
+        }
+
+        [When(@"admin update address from adress title")]
+        public void WhenAdminUpdateAddressFromAdressTitle()
+        {
+            dreamHomePg.inputAddress((string)_scenarioContext["address_title"], true);
+        }
+
+        [When(@"update start and finish date")]
+        public void WhenUpdateStartAndFinishDate()
+        {
+            
+        }
+
+        [When(@"update badroom desctiption as ""(.*)""")]
+        public void WhenUpdateBadroomDesctiptionAs(string p0)
+        {
+            dreamHomePg.inputBadroomDescription(p0, true);
+        }
+
+        [When(@"update bathroom desctiption as ""(.*)""")]
+        public void WhenUpdateBathroomDesctiptionAs(string p0)
+        {
+            dreamHomePg.InputBathDescription(p0, true);
+        }
+
+        [When(@"update Outspace desctiption as ""(.*)""")]
+        public void WhenUpdateOutspaceDesctiptionAs(string p0)
+        {
+            dreamHomePg.InputOutSpaceDescription(p0, true);
+        }
+
+        [When(@"update in about ""(.*)"" text")]
+        public void WhenUpdateInAboutText(string p0)
+        {
+            dreamHomePg.InputAboutInput(p0, true);
+        }
+
+        [When(@"update in Take a Tour with Sara ""(.*)"" text")]
+        public void WhenUpdateInTakeATourWithSaraText(string p0)
+        {
+            dreamHomePg.InputAddLink(p0, true);
+        }
+
+        [When(@"update in (.*)d Tour ""(.*)"" text")]
+        public void WhenUpdateInDTourText(int p0, string p1)
+        {
+            dreamHomePg.InputTour3D(p1, true);
+        }
+
+        [When(@"update price as ""(.*)""")]
+        public void WhenUpdatePriceAs(string p0)
+        {
+            dreamHomePg.InputPriceInp(p0, true);
+        }
+
+        [When(@"update Bed as ""(.*)""")]
+        public void WhenUpdateBedAs(string p0)
+        {
+            dreamHomePg.InputBadInp(p0, true);
+        }
+
+        [When(@"update Bath as ""(.*)""")]
+        public void WhenUpdateBathAs(string p0)
+        {
+            dreamHomePg.InputBathInp(p0, true);
+        }
+
+        [When(@"update Garden as ""(.*)""")]
+        public void WhenUpdateGardenAs(string p0)
+        {
+            dreamHomePg.InputGardenInp(p0, true);
+        }
+
+        [When(@"update Transport as ""(.*)""")]
+        public void WhenUpdateTransportAs(string p0)
+        {
+            dreamHomePg.InputTransportInp(p0, true);
+        }
+
+        [When(@"update location as ""(.*)""")]
+        public void WhenUpdateLocationAs(string p0)
+        {
+            dreamHomePg.InputLocationInp(p0, true);
+        }
+
+        [When(@"update Freehold as ""(.*)""")]
+        public void WhenUpdateFreeholdAs(string p0)
+        {
+            dreamHomePg.InputFreeHoldInp(p0, true);
+        }
+
+        [When(@"update Tax as ""(.*)""")]
+        public void WhenUpdateTaxAs(string p0)
+        {
+            dreamHomePg.InputTaxInp(p0, true);
+        }
+
+        [When(@"update Size as (.*)")]
+        public void WhenUpdateSizeAs(string p0)
+        {
+            dreamHomePg.InputSizeInp(p0, true);
+        }
+
+        [When(@"update Energy as ""(.*)""")]
+        public void WhenUpdateEnergyAs(string p0)
+        {
+            dreamHomePg.InputEnergyInp(p0, true);
+        }
+
+        [When(@"update ticket price value (.*)")]
+        public void WhenUpdateTicketPriceValue(string p0)
+        {
+            dreamHomePg.InputTicketPrice(p0, true);
+        }
+
+        [When(@"update default number of tickets (.*)")]
+        public void WhenUpdateDefaultNumberOfTickets(string p0)
+        {
+            dreamHomePg.InputDefaultNumbersOfTickets(p0, true);
+        }
 
     }
 }
