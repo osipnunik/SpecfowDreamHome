@@ -1,7 +1,7 @@
-﻿Feature: Referrals
+﻿@admin
+Feature: Referrals
 	All tests for referrals
 
-@mytag
 Scenario: Saving default values for user
 	Given admin logged in
 	And go to referrals	

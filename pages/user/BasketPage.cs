@@ -46,6 +46,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement CVCActivator => WebDriver.FindElement(By.Id("cvv"));
         private IWebElement PayButton => WebDriver.FindElement(By.Id("pay-button"));
         private IWebElement OrderCompletedHeader => WebDriver.FindElement(By.CssSelector("h1.orderCompleted"));
+        private IList<IWebElement> ErrorMessage => WebDriver.FindElements(By.CssSelector("span.error-message"));
 
         internal double GetYourPricesSumCheckCurrency()
         {
@@ -116,16 +117,18 @@ namespace SpecFlowDreanLotteryHome.pages.user
         {
             ((IJavaScriptExecutor)WebDriver).ExecuteScript("arguments[0].click();", PayButton);
         }
-
+        public string GetCardNumber() => CardNumberActivator.Text;
+        public bool ErrorMessageExist() => ErrorMessage.Count > 0;
+        public bool CardNumberTextEmptyNull() => CardNumberActivator.GetAttribute("value") != "";
         internal void InputCardName(string v)
         {
 
-            try { CardNameInput.SendKeys(v); }
+            /*try { CardNameInput.SendKeys(v); }
             catch (NoSuchElementException e)
-            {
+            {*/
                 CardNumberActivator.SendKeys(v);
                 //CardNumberActivator.SendKeys("1122");
-            }
+            
         }
         internal void InputExpDate(string v) {
             //try { ExpDateInput.SendKeys(v); }
@@ -137,11 +140,11 @@ namespace SpecFlowDreanLotteryHome.pages.user
         }
         internal void InputCVC(string v)
         {
-            try { CVC.SendKeys(v); }
+           /* try { CVC.SendKeys(v); }
             catch (NoSuchElementException e)
-            {
+            {*/
                 CVCActivator.SendKeys(v);
-            }
+            
         }
         public bool OrderCompletedVisible() => OrderCompletedHeader.Displayed;
     }

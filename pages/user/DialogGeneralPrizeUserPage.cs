@@ -36,16 +36,17 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         internal double GetAppropriateDiscount(int amount)
         {
-            Dictionary<int, int> dict = new Dictionary<int, int>();
+            Dictionary<int, double> dict = new Dictionary<int, double>();
             for (int i = Discounts.Count - 2; i >= 0; i = i - 2)
             {
-                var percVal = (Discounts[i + 1].Text).Replace("%", "");
+                string percVal = (Discounts[i + 1].Text).Replace("%", "");
+                double doublePercVal = double.Parse(percVal);
                 dict.Add(int.Parse(Discounts[i].Text),
-                    int.Parse(percVal));
+                    doublePercVal);
                 if (double.Parse(Discounts[i].Text) <= amount)
                 {
-                    Assert.IsTrue(amount >= double.Parse(Discounts[i].Text));
-                    return double.Parse((Discounts[i + 1].Text).Replace("%", ""));
+                    Assert.IsTrue(amount >= int.Parse(Discounts[i].Text));
+                    return doublePercVal;
                 }
                 else if (int.Parse(Discounts[i].Text) < amount)
                 {

@@ -11,5 +11,9 @@ namespace SpecFlowDreanLotteryHome.utils
         {
             return PicturePath;
         }
+        public static string GetEmailFilePath()
+        {
+            return PicturePath;
+        }
     }
 }

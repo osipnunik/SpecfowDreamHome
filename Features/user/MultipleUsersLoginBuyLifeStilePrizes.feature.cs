@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlowDreanLotteryHome.Features.Admin
+namespace SpecFlowDreanLotteryHome.Features.User
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,25 +19,22 @@ namespace SpecFlowDreanLotteryHome.Features.Admin
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Referrals", new string[] {
-            "admin"}, Description="\tAll tests for referrals", SourceFile="Features\\admin\\Referrals.feature", SourceLine=1)]
-    public partial class ReferralsFeature
+    [TechTalk.SpecRun.FeatureAttribute("MultipleUsersLoginBuyLifeStilePrizes", Description="\tSimple calculator for adding two numbers", SourceFile="Features\\user\\MultipleUsersLoginBuyLifeStilePrizes.feature", SourceLine=0)]
+    public partial class MultipleUsersLoginBuyLifeStilePrizesFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = new string[] {
-                "admin"};
+        private string[] _featureTags = ((string[])(null));
         
-#line 1 "Referrals.feature"
+#line 1 "MultipleUsersLoginBuyLifeStilePrizes.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin", "Referrals", "\tAll tests for referrals", ProgrammingLanguage.CSharp, new string[] {
-                        "admin"});
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/user", "MultipleUsersLoginBuyLifeStilePrizes", "\tSimple calculator for adding two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -73,12 +70,14 @@ namespace SpecFlowDreanLotteryHome.Features.Admin
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Saving default values for user", SourceLine=4)]
-        public virtual void SavingDefaultValuesForUser()
+        [TechTalk.SpecRun.ScenarioAttribute("MultipleUsersLoginBuyLifeStilePrizes", new string[] {
+                "mytag"}, SourceLine=4)]
+        public virtual void MultipleUsersLoginBuyLifeStilePrizes()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Saving default values for user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MultipleUsersLoginBuyLifeStilePrizes", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -100,28 +99,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
- testRunner.Given("admin logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 7
- testRunner.And("go to referrals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 8
- testRunner.When("admin check first user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 9
- testRunner.And("input in default amount random number from 0 to 250", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 10
- testRunner.And("click Save default values for users", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 11
- testRunner.Then("admin see referrals page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 12
- testRunner.Then("the first user has default value as generated earlier", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 13
- testRunner.Then("text message \"default value has been set\" appeared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("DoCicle", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             }
             this.ScenarioCleanup();

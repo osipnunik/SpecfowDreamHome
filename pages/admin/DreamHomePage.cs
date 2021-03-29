@@ -103,6 +103,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement CurrencyCheckbox => WebDriver.FindElement(By.Id("discountCategory_cash"));
         private IWebElement DiscountStatus => WebDriver.FindElement(By.Id("isDiscountRates"));
         private IWebElement LastHomeUpdate => WebDriver.FindElement(By.XPath("(//table//a[@aria-label='Edit'])[last()]"));
+        private IWebElement LastHomeCreate => WebDriver.FindElement(By.XPath("(//table//a[@aria-label='Clone'])[last()]"));
 
         public void InputGeneralPictureInput() => GeneralPicInput.SendKeys(MainHomePicPath);//"C:\\Users\\PC\\G.PNG")         
 
@@ -146,6 +147,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             OutSpaceDescription.SendKeys(inp);
         }
         internal void ClickLastUpdate() => LastHomeUpdate.Click();
+
+        internal void ClickLastCreate() => LastHomeCreate.Click();
 
         internal void ClickDiscountInTicket()
         {

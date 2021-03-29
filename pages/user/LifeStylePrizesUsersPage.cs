@@ -20,7 +20,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         private IList<IWebElement> CategoryNames => WebDriver.FindElements(By.CssSelector("div.cardsItems:first-child div.itemName"));
         private IList<IWebElement> CategoryItems => WebDriver.FindElements(By.CssSelector("div.cardsItems:first-child .buttonItem"));
-        private IList<IWebElement> SubCategoryNames => WebDriver.FindElements(By.CssSelector("div.secondItems div.itemName"));
+        private IList<IWebElement> SubCategoryNames => WebDriver.FindElements(By.CssSelector("div.secondItem div.itemName"));
         private IList<IWebElement> Products => WebDriver.FindElements(By.CssSelector("div.lifestyleProduct-mob"));
         private IWebElement FirstProductTitle => WebDriver.FindElement(By.CssSelector("div.productTitle p"));
         private IWebElement DreamHomeHref => WebDriver.FindElement(By.CssSelector("a[href = '/dreamhome']"));
@@ -28,7 +28,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         private IWebElement ProductContainer => WebDriver.FindElement(By.CssSelector("div.lifestyleProductList"));
         private IWebElement ActiveCategoryName => WebDriver.FindElement(By.CssSelector("div.buttonItem.active div.itemName"));
-        private IWebElement ActiveSubcategName => WebDriver.FindElement(By.CssSelector("div.secondItems div.buttonItem.active div.itemName"));
+        private IWebElement ActiveSubcategName => WebDriver.FindElement(By.CssSelector("div.secondItem div.buttonItem.active div.itemName"));
         private IWebElement FirstProduct => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("div.lifestyleProduct-mob:first-child img")));//"div.productTitle"));
         internal void ClickLifeStylePrizes() => LifeStylePrizesHref.Click();
 

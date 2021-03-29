@@ -77,14 +77,21 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         [When(@"user input card data")]
         public void WhenUserInputCardData()
         {
+            Thread.Sleep(1000);
             basketP.InputCardName("5436 0310 3060 6378");
             //basketP.InputExpDate("22");
+            Thread.Sleep(1000);
             basketP.InputExpDate("1122");
             basketP.InputCVC("257");
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
+            
         }
         [When(@"click pay button")]
-        public void WhenClickPayButton() => basketP.ClickCardPayBtn();
+        public void WhenClickPayButton()
+        {
+            basketP.ClickCardPayBtn();
+            if (basketP.ErrorMessageExist()) { WhenUserInputCardData(); }
+        }
 
         [Then(@"user see order completed header")]
         public void ThenUserSeeOrderCompletedHeader()

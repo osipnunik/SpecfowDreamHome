@@ -22,11 +22,11 @@ namespace SpecFlowDreanLotteryHome.Hooks
             //SingletonDriver.GetInstance().Navigate().Refresh();
             //Thread.Sleep(2);
         }
-        [AfterTestRun]
+        /*[AfterTestRun]
         public static void Quete()
         {
-           //SingletonDriver.GetInstance().Quit();
-        }
+           SingletonDriver.GetInstance().Quit();
+        }*/
         //[AfterStep]
         public void Step()
         {

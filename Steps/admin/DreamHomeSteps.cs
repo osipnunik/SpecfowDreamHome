@@ -258,12 +258,16 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             dreamHomePg.GetPagination().ClickLastPage();
         }
-        [When(@"click adit at last user")]
+        [When(@"click edit at last user")]
         public void WhenClickAditAtLastUser()
         {
             dreamHomePg.ClickLastUpdate();
         }
-
+        [When(@"click clone at last user")]
+        public void WhenClickCloneAtLastUser()
+        {
+            dreamHomePg.ClickLastCreate();
+        }
         [Then(@"in new dream home table should be title generated earlier")]
         public void ThenInNewDreamHomeTableShouldBeTitle()
         {

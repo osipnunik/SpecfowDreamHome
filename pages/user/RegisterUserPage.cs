@@ -28,7 +28,8 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement AgeCheckbox => WebDriver.FindElement(By.Id("ageCheck"));
         private IWebElement SecondAgeCheckbox => WebDriver.FindElement(By.XPath("(//div[@class='mainModalBtnGroup']//input)[1]"));
         private IWebElement IAgreeSignUp => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("div.mainModalBtnGroup button")));
-        private IWebElement LogedName => WebDriver.FindElement(By.CssSelector("button[aria-controls='simple-menu'] div.header-drop-name span"));
+        private By LoggedNameBy => By.CssSelector("button[aria-controls='simple-menu'] div.header-drop-name span");
+        private IWebElement LogedName => WebDriver.FindElement(LoggedNameBy);
         private IWebElement EighteenCheckbox => WebDriver.FindElement(By.XPath("//p[text()='I am 18 years or older']/../..//input"));
         private IWebElement LastElement => WebDriver.FindElement(By.CssSelector("div.mainModalWrap p:last-child"));
         public string GetLoggedName()
@@ -42,9 +43,11 @@ namespace SpecFlowDreanLotteryHome.pages.user
             {
                 return GetLoggedName();
             }*/
-
         }
-
+        public void WaitLoggedNameIsVisible()
+        {
+            Waiter.Until(ExpectedConditions.ElementIsVisible(LoggedNameBy));
+        }
         internal void ClickAccountButton() => AccountBtn.Click();
 
         internal void ClickLogoutBtn() => LogoutBtn.Click();

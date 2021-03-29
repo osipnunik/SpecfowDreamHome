@@ -66,6 +66,7 @@ Scenario: Sorting on staff management
 	When click downsort last name
 	Then all last names should be downsorted
 	When click downsort email address
+	Then all email addresses should be downsorted
 
 	When click upsort first name
 	Then all first names should be upsorted
@@ -73,4 +74,3 @@ Scenario: Sorting on staff management
 	Then all last names should be upsorted
 	When click upsort email address
 	Then all email addresses should be upsorted
-
