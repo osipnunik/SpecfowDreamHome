@@ -48,8 +48,10 @@ namespace SpecFlowDreanLotteryHome.pages.user
         }
 
         private By PricesOld => By.CssSelector("p.discount-old-price");
+        private By DialogPopupBy => By.CssSelector("div[role = 'dialog']");
+        private IWebElement ProductPopup => Waiter.Until(ExpectedConditions.ElementExists(DialogPopupBy));
+        private IList<IWebElement> DialogPopupForExist => WebDriver.FindElements(DialogPopupBy);
 
-        private IWebElement ProductPopup => Waiter.Until(ExpectedConditions.ElementExists(By.CssSelector("div[role='dialog']")));
         private IWebElement Title => WebDriver.FindElement(By.CssSelector("div.ModalInfoTitle h3"));
         private IWebElement NonDiscountPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.none-discount"));
         private IWebElement DiscountOldPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.discount-old-price"));                      
@@ -104,11 +106,10 @@ namespace SpecFlowDreanLotteryHome.pages.user
             return product;
         }
 
-        internal bool IsProductPopupAppeared()
-        {
-            return ProductPopup.Displayed;
-        }
-
+        internal bool IsProductPopupAppeared() => ProductPopup.Displayed;
+        
+        internal bool IsProductPopupDisAppeared() => DialogPopupForExist.Count == 0;
+                
         private By PricesNewDiscount => By.CssSelector("p.discount-new-price");
         private By DiscountPercents => By.CssSelector("p.discount-percent");
 

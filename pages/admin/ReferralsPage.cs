@@ -35,7 +35,6 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement CreditsSaveBtn => WebDriver.FindElement(By.XPath("(//button/span[contains(text(), 'Save')])[2]"));
         private IWebElement FirstRefferalCheckbox => WebDriver.FindElement(By.CssSelector("table tbody:nth-child(2) tr td input"));
 
-
         internal void ClickFirstReferals() => JSClick(FirstRefferalCheckbox);//FirstRefferalCheckbox.Click();
 
         private IList<IWebElement> SixthRowDatatd => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(6)"));

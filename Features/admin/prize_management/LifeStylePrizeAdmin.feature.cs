@@ -19,13 +19,15 @@ namespace SpecFlowDreanLotteryHome.Features.Admin.Prize_Management
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("LifeStylePrizeAdmin", SourceFile="Features\\admin\\prize_management\\LifeStylePrizeAdmin.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("LifeStylePrizeAdmin", new string[] {
+            "admin"}, SourceFile="Features\\admin\\prize_management\\LifeStylePrizeAdmin.feature", SourceLine=1)]
     public partial class LifeStylePrizeAdminFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = ((string[])(null));
+        private string[] _featureTags = new string[] {
+                "admin"};
         
 #line 1 "LifeStylePrizeAdmin.feature"
 #line hidden
@@ -34,7 +36,8 @@ namespace SpecFlowDreanLotteryHome.Features.Admin.Prize_Management
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin/prize_management", "LifeStylePrizeAdmin", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin/prize_management", "LifeStylePrizeAdmin", null, ProgrammingLanguage.CSharp, new string[] {
+                        "admin"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -70,12 +73,10 @@ namespace SpecFlowDreanLotteryHome.Features.Admin.Prize_Management
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create Life Style Prize", new string[] {
-                "mytag"}, SourceLine=3)]
+        [TechTalk.SpecRun.ScenarioAttribute("Create Life Style Prize", SourceLine=3)]
         public virtual void CreateLifeStylePrize()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create Life Style Prize", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 4

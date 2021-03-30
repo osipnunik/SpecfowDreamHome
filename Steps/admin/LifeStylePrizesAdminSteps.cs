@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using SpecFlowDreanLotteryHome.entities;
 using SpecFlowDreanLotteryHome.entities.user;
 using SpecFlowDreanLotteryHome.pages.admin;
 using SpecFlowDreanLotteryHome.pages.admin.fragments;
@@ -206,6 +207,6 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             int nonAct = int.Parse((string)_scenarioContext["unactivePrizesQuantity"]);
             Assert.AreEqual(all ,(active + nonAct) , "active: "+ active);
         }
-
+        
     }
 }

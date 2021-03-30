@@ -1,7 +1,7 @@
 ﻿Feature: CategorySubCategory
 	Simple calculator for adding two numbers
 
-@mytag
+@admin
 Scenario: Category and Sub-category creation
 	Given admin logged in
     And click Life Style prize
@@ -21,4 +21,5 @@ Scenario: Category and Sub-category creation
 	When choose category in subcategory "Animal"
 	When admin input title "Dog"
 	When click save category
+	When click on subcategories
 	Then Sub-category with title "Dog" exist

@@ -71,11 +71,11 @@ namespace SpecFlowDreanLotteryHome.Features.Admin.Prize_Management
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Category and Sub-category creation", new string[] {
-                "mytag"}, SourceLine=4)]
+                "admin"}, SourceLine=4)]
         public virtual void CategoryAndSub_CategoryCreation()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "admin"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Category and Sub-category creation", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
@@ -153,6 +153,9 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("click save category", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 24
+ testRunner.When("click on subcategories", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 25
  testRunner.Then("Sub-category with title \"Dog\" exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

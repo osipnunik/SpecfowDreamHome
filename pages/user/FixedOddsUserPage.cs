@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace SpecFlowDreanLotteryHome.pages.user
 {
@@ -14,27 +15,30 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IList<IWebElement> FirstProductPricesP => WebDriver.FindElements(By.CssSelector(".lifestyleProductList.container div.lifestyleProduct-mob:first-child div.productPrices div p"));
         
         private IWebElement FirstTitle => WebDriver.FindElement(By.CssSelector("div.lifestyleProductList div.productTitle p"));
+       
         private IWebElement NonDiscountPrice => WebDriver.FindElement(By.CssSelector("p.none-discount"));
         private IWebElement DiscountNewPrice => WebDriver.FindElement(By.CssSelector("p.discount-new-price"));
         private IWebElement DiscountOldPrice => WebDriver.FindElement(By.CssSelector("div.lifestyleProductList p.discount-old-price"));
         private IWebElement DiscountPercent => WebDriver.FindElement(By.CssSelector("p.discount-percent"));
 
+        private IList<IWebElement> FixedOdds => WebDriver.FindElements(By.CssSelector(".lifestyleProduct-mob .productTitle"));//.productTitle
+        private IWebElement LastFixedOddsTitle => WebDriver.FindElement(By.CssSelector(".lifestyleProduct-mob:last-child .productTitle p"));
+
         public void ClickFixedOddsHref() => FixedOddsHref.Click();
 
-        internal void ClickOnFirstProduct() => FirstTitle.Click();
+        internal void ClickOnFirstProduct() => JSClick(FirstTitle);//FirstTitle.Click();
 
-        /*public bool IsFirstProductDiscount()
+        internal void ScrollAllPrizes()
         {
-            if(FirstElementPrices.Count == 3)
+            string previousLastTitle;
+            do
             {
-                return true;
-            }else if (FirstElementPrices.Count == 1)
-            {
-                return false;
-            }
-            else { throw new Exception("1 or 3 p in .productPrices"); }
-        }*/
-
+                previousLastTitle = LastFixedOddsTitle.Text;
+                ScrollToElement(LastFixedOddsTitle);
+                Thread.Sleep(1000);
+            } while (!LastFixedOddsTitle.Text.Equals(previousLastTitle));
+        }
+        
         internal bool IsProductDiscount()
         {
             if(FirstProductPricesP.Count == 3)
@@ -50,6 +54,8 @@ namespace SpecFlowDreanLotteryHome.pages.user
             }
         }
 
+        internal int GetSizeOfFixedOddsList() => FixedOdds.Count;
+
         internal string GetFirstTitle() => FirstTitle.Text;
 
         internal string GetDiscountNewPrice() => DiscountNewPrice.Text;
@@ -60,5 +66,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         internal string GetNonDiscountPrice() => NonDiscountPrice.Text;
 
+        internal void ClickOnNthFixedOdds(int v) => JSClick(FixedOdds[v]);//FixedOdds[v].Click();
+        
     }
 }

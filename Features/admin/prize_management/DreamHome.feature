@@ -77,6 +77,7 @@ Scenario: (update dream home)As an administrator, I want to update new prizes fo
     When user reload page
     #When Change pagination to 100
     Then in new dream home table should be title generated earlier
+    When click edit at last user
 
 Scenario: (clone dream home)As an administrator, I want to create new prizes for other users to view.
     Given user logged in as admin with "testqaanuitex@mail.com" email and "000000" password

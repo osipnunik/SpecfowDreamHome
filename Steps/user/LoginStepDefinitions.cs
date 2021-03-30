@@ -29,6 +29,10 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void WhenUserGoToLoginPage()
         {
              WebDriver.Navigate().GoToUrl(LoginUserURL);
+            if (!WebDriver.Url.Equals(LoginUserURL))
+            {
+                WhenUserLogOut();
+            }
         }
 
         [When(@"input in email value ""(.*)""")]

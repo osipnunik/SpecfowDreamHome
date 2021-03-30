@@ -26,9 +26,12 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void WhenUserClientLoginOnWebWithLoginAndPass(string email, string pass)
         {
             WebDriver.Navigate().GoToUrl(LOGIN_USER_VAL);
-            logUP.InputLogin(email);
-            logUP.InputPass(pass);
-            logUP.ClickSignIn();
+            if (WebDriver.Url.Equals(LOGIN_USER_VAL))
+            {
+                logUP.InputLogin(email);
+                logUP.InputPass(pass);
+                logUP.ClickSignIn();
+            }
         }
         
         [When(@"user go to lifestyleprizes")]
@@ -62,7 +65,11 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         {
             Assert.IsTrue(lifeStylePage.IsProductPopupAppeared());
         }
-
+        [Then(@"product popup disappeares")]
+        public void ThenProductPopupDisAppeares()
+        {
+            Assert.IsTrue(lifeStylePage.IsProductPopupDisAppeared());
+        }
         [Then(@"price should be as was on product")]
         public void ThenPriceShouldBeAsWasOnProduct()
         {

@@ -1,6 +1,6 @@
-﻿Feature: Fixed odds scenarios
-	
-@mytag
+﻿@admin
+Feature: Fixed odds scenarios	
+
 Scenario: Create fixed odds Prize
 	Given admin logged in
     And click Fixed odds
@@ -27,3 +27,22 @@ Scenario: check arithmetically active, unactive and all Fixed Odds
 	When click on Unactive prizes
 	When notice unactive prizes titles quantity
 	Then all prizes should be equal the sum of active and unactive
+
+Scenario: check tickets creation of fixed odds prizes and quontity decreasing 
+	Given admin logged in
+    And click Fixed odds
+	When click on Active prizes
+	When notice titles, Number of tickets and Tickets left
+	When admin go to UserManagement page
+	When click edit last user
+	When go to ticket tab
+	When add first 10 fixed odds tickets 
+	Given click Fixed odds
+	When click on Active prizes
+	Then tickets left should decrease on 2, Numbers of tickets should be the same as a Titles
+	#When click Add ticket
+	#Then form with title "Add tickets" should appeared
+	#When choose Fixed Odds ticket
+	#When notice Competition and Product and number
+	#When click save
+	#Then last ticket should be with product and competition type as expected

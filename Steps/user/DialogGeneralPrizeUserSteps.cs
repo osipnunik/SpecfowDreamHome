@@ -57,7 +57,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
                 prod.DiscountOff = dialogP.GetDiscountPercent();
                 Assert.IsTrue(dialogP.GetDiscountPercent().Contains("%"));
             }
-            Assert.IsTrue(price.StartsWith(Currency));
+            Assert.IsTrue(price.StartsWith(Currency), price);
             string totalPrice = dialogP.GetTotalPrice();
             Assert.AreEqual(Currency, totalPrice.Split(" ")[0]);
             double discount = dialogP.GetAppropriateDiscount(amount) / 100;
@@ -70,5 +70,10 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             _scenarioContext.Add("title", title);
         }
 
+        [When(@"user close dialog of first element")]
+        public void WhenUserCloseDialogOfFirstElement()
+        {
+            dialogP.CloseDialog();
+        }
     }
 }

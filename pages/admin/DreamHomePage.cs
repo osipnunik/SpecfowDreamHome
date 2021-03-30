@@ -3,6 +3,7 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using SpecFlowDreanLotteryHome.pages.admin.fragments;
 using SpecFlowDreanLotteryHome.utils;
+using SpecFlowDreanLotteryHome.utils.helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,7 +19,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         {
             Paginats = new PaginationFragment(webDriver);
         }
-
+        private ClearHelper Clearer = new ClearHelper();
         string MainHomePicPath = PathGiver.GetPicturePath() + "main_pic.png";
         string BadroomHomePicPath = PathGiver.GetPicturePath() + "badroom_pic.png";
         string BathroomHomePicPath = PathGiver.GetPicturePath() + "bathroom_pic.jpg";
@@ -112,38 +113,38 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         public void InputOutSpaceInputPic() => OutSpaceInputPic.SendKeys(OutspaceHomePicPath);
         public void InputAboutInput(string inp, bool update = false)
         {
-            if (update) { ClearInput(AboutInput); }
+            if (update) { Clearer.ClearInput(AboutInput); }
             AboutInput.SendKeys(inp);
         }
         public void InputFloorPlanInputPic() => FloorPlanInputPic.SendKeys(FloorPlanHomePicPath);
         public void InputAddLink(string inp, bool update = false)
         {
-            if (update) { ClearInput(AddLink); }
+            if (update) { Clearer.ClearInput(AddLink); }
             AddLink.SendKeys(inp);
         }
         public void InputTour3D(string inp, bool update = false)
         {
-            if (update) { ClearInput(Tour3D); }
+            if (update) { Clearer.ClearInput(Tour3D); }
             Tour3D.SendKeys(inp);
         }
         public void InputPriceInp(string inp, bool update = false)
         {
-            if (update) { ClearInput(PriceInp); }
+            if (update) { Clearer.ClearInput(PriceInp); }
             PriceInp.SendKeys(inp);
         }
         public void InputBadInp(string inp, bool update = false)
         {
-            if (update) { ClearInput(BadInp); }
+            if (update) { Clearer.ClearInput(BadInp); }
             BadInp.SendKeys(inp);
         }
         public void InputBathDescription(string inp, bool update = false)
         {
-            if (update) { ClearInput(BathDescription); }
+            if (update) { Clearer.ClearInput(BathDescription); }
             BathDescription.SendKeys(inp);
         }
         public void InputOutSpaceDescription(string inp, bool update = false)
         {
-            if (update) { ClearInput(OutSpaceDescription); }
+            if (update) { Clearer.ClearInput(OutSpaceDescription); }
             OutSpaceDescription.SendKeys(inp);
         }
         internal void ClickLastUpdate() => LastHomeUpdate.Click();
@@ -163,7 +164,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         public void InputBathInp(string inp, bool update = false)
         {
-            if (update) { ClearInput(BathInp); }
+            if (update) { Clearer.ClearInput(BathInp); }
             BathInp.SendKeys(inp);
         }
         internal string GetPriceIs()
@@ -173,7 +174,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         public void InputGardenInp(string inp, bool update = false)
         {
-            if (update) { ClearInput(GardenInp); }
+            if (update) { Clearer.ClearInput(GardenInp); }
             GardenInp.SendKeys(inp);
         }
         internal void ClickDiscountStatus() => DiscountStatus.Click();
@@ -199,7 +200,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         public void InputTransportInp(string inp, bool update = false)
         {
-            if (update) { ClearInput(TransportInp); }
+            if (update) { Clearer.ClearInput(TransportInp); }
             TransportInp.SendKeys(inp);
         }
         internal string GetDiscountIs()
@@ -214,12 +215,12 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         internal void InputDefaultNumbersOfTickets(string p0, bool update = false)
         {
-            if (update) { ClearInput(DefaultTicketNumberInput); }
+            if (update) { Clearer.ClearInput(DefaultTicketNumberInput); }
             DefaultTicketNumberInput.SendKeys(p0);
         }
         internal void InputNumbersOfTickets(string p0, bool update = false)
         {
-            if (update) { ClearInput(TicketNumberInput); }
+            if (update) { Clearer.ClearInput(TicketNumberInput); }
             TicketNumberInput.SendKeys(p0);
             TicketNumberInput.SendKeys(Keys.Enter);
         }
@@ -234,14 +235,14 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         internal void InputTicketPrice(string p0, bool update = false)
         {
-            if (update) { ClearInput(TicketPriceInput); }
+            if (update) { Clearer.ClearInput(TicketPriceInput); }
             //TicketPriceInput.Click();
             TicketPriceInput.SendKeys(p0);
         }
 
         public void InputLocationInp(string inp, bool update = false)
         {
-            if (update) { ClearInput(LocationInp); }
+            if (update) { Clearer.ClearInput(LocationInp); }
             LocationInp.SendKeys(inp);
         }
         internal List<string> GetTitles()
@@ -267,22 +268,22 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         public void InputFreeHoldInp(string inp, bool update = false)
         {
-            if (update) { ClearInput(FreeHoldInp); }
+            if (update) { Clearer.ClearInput(FreeHoldInp); }
             FreeHoldInp.SendKeys(inp);
         }
         public void InputTaxInp(string inp, bool update = false)
         {
-            if (update) { ClearInput(TaxInp); }
+            if (update) { Clearer.ClearInput(TaxInp); }
             TaxInp.SendKeys(inp);
         }
         public void InputSizeInp(string inp, bool update = false)
         {
-            if (update) { ClearInput(SizeInp); }
+            if (update) { Clearer.ClearInput(SizeInp); }
             SizeInp.SendKeys(inp);
         }
         public void InputEnergyInp(string inp , bool update = false)
         {
-            if (update) { ClearInput(EnergyInp);
+            if (update) { Clearer.ClearInput(EnergyInp);
             }
             EnergyInp.SendKeys(inp);
         }
@@ -303,17 +304,13 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         public void inputTitle(String inp, bool update = false)
         {
-            if (update) { ClearInput(title); }
+            if (update) { Clearer.ClearInput(title); }
             title.SendKeys(inp);
         }
-        protected void ClearInput(IWebElement el)
-        {
-            el.SendKeys(Keys.Control + "a");
-            el.SendKeys(Keys.Delete);
-        }
+        
         public void inputAddress(String inp, bool update = false)
         {
-            if (update) { ClearInput(address); }
+            if (update) { Clearer.ClearInput(address); }
             address.SendKeys(inp);
         }
 
@@ -337,7 +334,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         public void inputBadroomDescription(string desc, bool update = false)
         {
-            if (update) { ClearInput(BadroomDescriptonInput); }
+            if (update) { Clearer.ClearInput(BadroomDescriptonInput); }
             BadroomDescriptonInput.SendKeys(desc);
         }
 
@@ -358,7 +355,11 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             AmPm2.SendKeys(Keys.Enter);*/
             //dataTimePicker2.SendKeys(Keys.Enter);
         }
-
+        /*protected void ClearInput(IWebElement el)
+        {
+            el.SendKeys(Keys.Control + "a");
+            el.SendKeys(Keys.Delete);
+        }*/
         public PaginationFragment GetPagination()
         {
             return Paginats;

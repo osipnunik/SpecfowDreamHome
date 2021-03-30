@@ -82,6 +82,32 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             usersP.ClickTicketsTab();
         }
+        [When(@"add first 10 fixed odds tickets")]
+        public void WhenAddFirstFixedOddsTickets()
+        {
+            
+            FixedOdd[] fixedOdds = (FixedOdd[])_scenarioContext["fixedOdds"];
+            //Assert.AreEqual("Add tickets" , usersP.GetTicketTitleText());   after addTicket
+            for (int i = 0; i < fixedOdds.Length; i++)
+            {
+                usersP.ClickAddTicket();
+                usersP.ChooseCompetitionFixedOdds();
+                usersP.ChooseProduct(fixedOdds[i].Title);
+                if (fixedOdds[i].TicketsLeft < 0)
+                {
+                    throw new Exception("your " + fixedOdds[i].Title + " has negative TicketsLeft " + fixedOdds[i].TicketsLeft);
+                }else
+                if (fixedOdds[i].TicketsLeft > 1)
+                {
+                    usersP.SetTicketsAmountTwo();
+                } else if(fixedOdds[i].TicketsLeft == 1)
+                {
+
+                }
+                usersP.ClickSaveBtn();
+            }
+        }
+        
 
         [When(@"click Add ticket")]
         public void WhenClickAddTicket()

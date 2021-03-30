@@ -28,7 +28,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
 
         private IWebElement LifeStylePrizesLinkNotClickable => Waiter.Until(ExpectedConditions.ElementExists(By.CssSelector("a[title='Lifestyle Prizes']")));
-        private IList<IWebElement> PrizeManagementList => WebDriver.FindElements(By.CssSelector(".MuiCollapse-container a"));
+        private IList<IWebElement> PrizeManagementList => WebDriver.FindElements(By.CssSelector(".MuiCollapse-container a[href='#/dreamHome']"));
         private IWebElement DiscountTicketsTab => WebDriver.FindElement(By.XPath("//span[text()='Discount & tickets']"));
         private IWebElement CategoryChooser => WebDriver.FindElement(By.Id("prizeCategory"));//"search-input"));
         private IWebElement SubCategoryChooser => WebDriver.FindElement(By.Id("subCategory"));

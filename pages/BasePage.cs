@@ -11,6 +11,7 @@ namespace SpecFlowDreanLotteryHome.pages
     {
         public IWebDriver WebDriver { get;}
         public WebDriverWait Waiter { get; }
+        //private WebDriverWait FrequentWebDriverWait;
 
         /*protected IWebElement SuccessPopup => WebDriver.FindElement(By.Id("client-snackbar"));
         public string GetPopupText() => SuccessPopup.Text;*/
@@ -63,6 +64,8 @@ namespace SpecFlowDreanLotteryHome.pages
             this.WebDriver = webDriver;
             WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(6);
             Waiter = new WebDriverWait(WebDriver, TimeSpan.FromMilliseconds(6_000));
+
+            //FrequentWebDriverWait = new WebDriverWait(, WebDriver, TimeSpan.FromMilliseconds(6_000), TimeSpan.FromMilliseconds(500))
         }
     }
 }

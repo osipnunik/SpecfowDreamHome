@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using SpecFlowDreanLotteryHome.entities;
 using SpecFlowDreanLotteryHome.pages.admin;
 using System;
 using System.Collections.Generic;
@@ -68,7 +69,37 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             Thread.Sleep(1000);
             sortPage.ClickSecondColumnDownSort();
         }
-
+        [When(@"notice titles, Number of tickets and Tickets left")]
+        public void WhenNoticeTitlesNumberOfTicketsAndTicketsLeft()
+        {
+            List<string> titles = sortPage.GetSecondRowDatatd();
+            List<string> numberOfTickets = sortPage.GetFourthRowDatatd();
+            List<string> ticketsLeft = sortPage.GetFifthRowDatatd();
+            FixedOdd[] fixedOdds = new FixedOdd[titles.Count];
+            for(int i = 0; i < titles.Count; i++)
+            {
+                FixedOdd fixedOdd = new FixedOdd();
+                fixedOdd.Title = titles[i];
+                fixedOdd.NumberOfTickets = int.Parse(numberOfTickets[i]);
+                fixedOdd.TicketsLeft = int.Parse(ticketsLeft[i]);
+                fixedOdds[i] = fixedOdd;
+            }
+            _scenarioContext.Add("fixedOdds", fixedOdds);
+        }
+        [Then(@"tickets left should decrease on 2, Numbers of tickets should be the same as a Titles")]
+        public void ThenTicketsLeftShouldDecreaseOnNumbersOfTicketsShouldBeTheSameAsATitles(int p0)
+        {
+            FixedOdd[] fixedOdds = (FixedOdd[])_scenarioContext["fixedOdds"];
+            List<string> titles = sortPage.GetSecondRowDatatd();
+            List<string> numberOfTickets = sortPage.GetFourthRowDatatd();
+            List<string> ticketsLeft = sortPage.GetFifthRowDatatd();
+            for (int i = 0; i < titles.Count; i++)
+            {
+                fixedOdds[i].Title.Equals(titles[0]);
+                fixedOdds[i].NumberOfTickets.Equals(numberOfTickets[i]);
+                fixedOdds[i]
+            }
+            }
         [Then(@"all Titles should be downsorted")]
         public void ThenAllTitlesShouldBeDownsorted()
         {

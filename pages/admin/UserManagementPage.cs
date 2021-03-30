@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using SpecFlowDreanLotteryHome.entities;
 using SpecFlowDreanLotteryHome.pages.admin.fragments;
+using SpecFlowDreanLotteryHome.utils.helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,8 +11,9 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 {
     class UserManagementPage : BasePage
     {
+        private ClearHelper Clearer = new ClearHelper();
         public static PaginationFragment Paginats;
-
+        
         
         public UserManagementPage(IWebDriver webDriver) : base(webDriver) {
             Paginats = new PaginationFragment(webDriver);
@@ -39,6 +41,12 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement TicketNumberInput => WebDriver.FindElement(By.CssSelector("div.add-tickets-field input[type='number']"));
         private IWebElement SaveBtn => WebDriver.FindElement(By.XPath("//div[@class='MuiDialogContent-root']//button/span[text()='Save']"));
         private IWebElement RemoveInDialog => WebDriver.FindElement(By.CssSelector("div[role='dialog'] div.actions-table-body svg"));
+        private IWebElement CompetitionChooser => WebDriver.FindElement(By.XPath("(//div[@class='MuiDialogContent-root']//*[@id='search-input'])[1]"));
+        private IWebElement ProductChooser => WebDriver.FindElement(By.XPath("(//div[@class='MuiDialogContent-root']//*[@id='search-input'])[2]"));
+        private IWebElement CompetitionPrizeTypeLi => WebDriver.FindElement(By.CssSelector("li[data-value='Fixed Odds']"));
+        string Product;
+        private IWebElement ProductLi => WebDriver.FindElement(By.CssSelector("li[data-value='"+Product+"']"));
+
 
         public void ClickUserManagementHref() => UserManagementHref.Click();
 
@@ -47,6 +55,25 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         internal void InputLastName(string lastName) => LastNameInput.SendKeys(lastName);
 
         internal void InputEmail(string email) => EmailInput.SendKeys(email);
+
+        internal void ChooseCompetitionFixedOdds()
+        {
+            CompetitionChooser.Click();
+            CompetitionPrizeTypeLi.Click();
+        }
+
+        internal void ChooseProduct(string title)
+        {
+            ProductChooser.Click();
+            Product = title;
+            ProductLi.Click();
+        }
+
+        internal void SetTicketsAmountTwo()
+        {
+            Clearer.ClearInput(TicketNumberInput);
+            TicketNumberInput.SendKeys("2");
+        }
 
         internal void InputPhone(string phone) => PhoneInput.SendKeys(phone);
 

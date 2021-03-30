@@ -11,11 +11,11 @@ namespace SpecFlowDreanLotteryHome.pages.user
         public DialogGeneralPrizeUserPage(IWebDriver webDriver) : base(webDriver) { }
 
         private IWebElement Title => WebDriver.FindElement(By.CssSelector("div[role='dialog'] div.ModalInfoTitle h3"));
-        private IWebElement NonDiscountPrice => WebDriver.FindElement(By.CssSelector("p.none-discount"));
-        private IWebElement DiscountPrice => WebDriver.FindElement(By.CssSelector("p.discount-new-price"));
-        private IWebElement DiscountOldPrice => WebDriver.FindElement(By.CssSelector("p.discount-old-price"));
+        private IWebElement NonDiscountPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.none-discount"));
+        private IWebElement DiscountPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.discount-new-price"));
+        private IWebElement DiscountOldPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.discount-old-price"));
 
-        private IWebElement DiscountPercent => WebDriver.FindElement(By.CssSelector("p.discount-percent"));
+        private IWebElement DiscountPercent => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.discount-percent"));
         private IList<IWebElement> Discounts => WebDriver.FindElements(By.CssSelector("div.ticketsCardDesk div.ticketCard div.ticketСardItem span"));
         private int TicketNumber;
         private IWebElement TicketQuantityElement => WebDriver.FindElement(By.XPath("//div[@class='checkQuanityBlock']/p[text()='" + TicketNumber + "']"));
@@ -23,6 +23,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement QuantityTicSecond => WebDriver.FindElement(By.CssSelector("div.priceGreyContainer div:last-child p.quantitiValue"));
         private IList<IWebElement> PricesP => WebDriver.FindElements(By.CssSelector(".infoModalMainTitle .productPrices p"));
         private IWebElement Picture => WebDriver.FindElement(By.CssSelector(".slider .slick-active img"));
+        private IWebElement CloseX => WebDriver.FindElement(By.CssSelector("button.close-modal-icon"));
 
         public string GetQuantityTicSecond() => QuantityTicSecond.Text;
 
@@ -63,6 +64,8 @@ namespace SpecFlowDreanLotteryHome.pages.user
         internal string GetDiscountPrice() => DiscountPrice.Text;
 
         internal string GetDiscountOldPrice() => DiscountOldPrice.Text;
+
+        internal void CloseDialog() => CloseX.Click();
 
         internal string GetDiscountPercent() => DiscountPercent.Text;
 

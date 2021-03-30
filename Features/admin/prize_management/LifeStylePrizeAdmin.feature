@@ -1,6 +1,6 @@
-﻿Feature: LifeStylePrizeAdmin
-	
-@mytag
+﻿@admin
+Feature: LifeStylePrizeAdmin
+
 Scenario: Create Life Style Prize
 	Given admin logged in
     And click Life Style prize

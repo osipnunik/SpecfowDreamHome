@@ -32,6 +32,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IList<IWebElement> SecondRowDatatd => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(2)"));
         private IList<IWebElement> ThirdRowDatatd => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(3)"));
         private IList<IWebElement> FourthRowDatatd => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(4)"));
+        private IList<IWebElement> FifthRowDatatd => WebDriver.FindElements(By.CssSelector("tbody tr td:nth-child(5)"));
 
         private IList<IWebElement> FirstRowDatath => WebDriver.FindElements(By.CssSelector("tbody tr th:nth-child(1)"));
         private IList<IWebElement> SecondRowDatath => WebDriver.FindElements(By.CssSelector("tbody tr th:nth-child(2)"));
@@ -121,6 +122,16 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             for (int i = 0; i < FourthRowDatatd.Count; i++)
             {
                 data.Add(FourthRowDatatd[i].Text);
+            }
+            return data;
+        }
+        public List<string> GetFifthRowDatatd()
+        {
+            List<string> data = new List<string>();
+            Waiter.Until(ExpectedConditions.ElementIsVisible(RefreshBy));
+            for (int i = 0; i < FifthRowDatatd.Count; i++)
+            {
+                data.Add(FifthRowDatatd[i].Text);
             }
             return data;
         }
