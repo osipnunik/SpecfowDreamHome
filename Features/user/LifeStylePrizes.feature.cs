@@ -73,9 +73,11 @@ namespace SpecFlowDreanLotteryHome.Features.User
         [TechTalk.SpecRun.ScenarioAttribute("as user i want to see all info on LyfeSycle prize site as on admin LifeSycle priz" +
             "e page", new string[] {
                 "user"}, SourceLine=4)]
+        [TechTalk.SpecRun.IgnoreAttribute()]
         public virtual void AsUserIWantToSeeAllInfoOnLyfeSyclePrizeSiteAsOnAdminLifeSyclePrizePage()
         {
             string[] tagsOfScenario = new string[] {
+                    "ignore",
                     "user"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("as user i want to see all info on LyfeSycle prize site as on admin LifeSycle priz" +

@@ -38,12 +38,14 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"notice all categories")]
         public void WhenNoticeAllCategories()
         {
-            _scenarioContext.Add("categories", filterPage.GetFirstRowDatatd());
+            //filterPage.ScrollToUserManagementHref();
+            Thread.Sleep(1500);
+            _scenarioContext.Add("categories", filterPage.GetFirstRowDatatdWithoutWaitForDown());
         }
         [When(@"notice all subCategories")]
         public void WhenNoticeAllSubCategories()
         {
-            _scenarioContext.Add("subCategories", filterPage.GetFirstRowDatatd());
+            _scenarioContext.Add("subCategories", filterPage.GetFirstRowDatatdWithoutWaitForDown());
         }
         [When(@"click on title dropdown")]
         public void WhenClickOnTitleDropdown()

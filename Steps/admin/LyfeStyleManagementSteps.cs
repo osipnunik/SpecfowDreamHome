@@ -100,7 +100,8 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [Then(@"Sub-category with title ""(.*)"" exist")]
         public void ThenSub_CategoryWithTitleExist(string p0)
         {
-            Assert.IsTrue(catSubc.GetFirstRowDatatd().Contains(p0));
+            var subCategs = catSubc.GetFirstRowDatatd();
+            Assert.IsTrue(subCategs.Contains(p0));
         }
 
 

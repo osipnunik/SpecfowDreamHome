@@ -90,7 +90,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement SizeInp => WebDriver.FindElement(By.Id("property.area"));
         private IWebElement EnergyInp => WebDriver.FindElement(By.Id("property.energy"));
 
-        private IWebElement TicketPriceInput => WebDriver.FindElement(By.Id("ticketPrice"));
+        private IWebElement TicketPriceInput => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.Id("ticketPrice")));
         private IWebElement DefaultTicketNumberInput => WebDriver.FindElement(By.Id("defaultTickets"));
         private IWebElement TicketNumberInput => WebDriver.FindElement(By.Id("maxTickets"));
 

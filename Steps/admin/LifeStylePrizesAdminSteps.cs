@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SpecFlowDreanLotteryHome.entities.user;
 using SpecFlowDreanLotteryHome.pages.admin;
+using SpecFlowDreanLotteryHome.pages.admin.fragments;
 using SpecFlowDreanLotteryHome.services;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         private LifeStylePrizesPage LfStylePPage = new LifeStylePrizesPage(WebDriver);
         private FixedOddsPage FixedOddsP = new FixedOddsPage(WebDriver);
         private AutogeneratorService generator = new AutogeneratorService();
+        private MenuExistingElsFragment menuF = new MenuExistingElsFragment(WebDriver);
 
         public LifeStylePrizesAdminSteps(ScenarioContext scenarioContext)
         {
@@ -25,8 +27,8 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"click opened Life Style prize")]
         public void WhenClickOpenedLifeStylePrize()
         {
+            menuF.ClickLifeStylePrizeHrefReliable();
             //LfStylePPage.ClickLifeStylePrizesOpened();
-            LfStylePPage.ClickLifeStylePrizesOpened();
         }
 
         [Given(@"click Life Style prize")]
@@ -37,6 +39,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [Given(@"click Fixed odds")]
         public void GivenClickFixedOdds()
         {
+            //menuF.ClickTitledFixedOddsLink();
             FixedOddsP.ClickFixedOddsUniversal();
         }
         

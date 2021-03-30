@@ -5,6 +5,7 @@ using SpecFlowDreanLotteryHome.utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace SpecFlowDreanLotteryHome.pages.admin
 {
@@ -69,7 +70,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         internal void ClickSubcategories()
         {
             SubCategoriesBtn.Click();
-            Waiter.Until(ExpectedConditions.ElementExists(By.CssSelector(".button-group button.active-button:last-child")));
+            Waiter.Until(ExpectedConditions.TextToBePresentInElement(AddNewCatSub, "Add Sub-category"));
+            Thread.Sleep(500);
         }
 
         internal void ChooseSubCategory(string p0)

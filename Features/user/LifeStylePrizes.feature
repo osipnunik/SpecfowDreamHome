@@ -1,7 +1,7 @@
 ﻿Feature: LifeStylePrizesUser
 
-#@ignore
-@user
+@ignore
+@user 
 Scenario: as user i want to see all info on LyfeSycle prize site as on admin LifeSycle prize page
 	Given admin logged in
     And click Life Style prize

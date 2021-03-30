@@ -70,12 +70,12 @@ namespace SpecFlowDreanLotteryHome.Features.User
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("MultipleUsersLoginBuyLifeStilePrizes", new string[] {
-                "mytag"}, SourceLine=4)]
+        [TechTalk.SpecRun.ScenarioAttribute("MultipleUsersLoginBuyLifeStilePrizes", SourceLine=4)]
+        [TechTalk.SpecRun.IgnoreAttribute()]
         public virtual void MultipleUsersLoginBuyLifeStilePrizes()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "ignore"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MultipleUsersLoginBuyLifeStilePrizes", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5

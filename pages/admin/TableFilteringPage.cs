@@ -55,9 +55,23 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         public void ClickFourthHeader() => FourthHeader.Click();
         public void ClickFifthHeader() => FifthHeader.Click();
 
+        /*public void ScrollToUserManagementHref()
+        {
+            ScrollToElement(UserManagementHref);
+        }*/
+        public List<string> GetFirstRowDatatdWithoutWaitForDown()
+        {
+            List<string> data = new List<string>();
+            for (int i = 0; i < FirstRowDatatd.Count; i++)
+            {
+                data.Add(FirstRowDatatd[i].Text);
+            }
+            return data;
+        }
         public List<string> GetFirstRowDatatd()
         {
             List<string> data = new List<string>();
+            
             Waiter.Until(ExpectedConditions.ElementIsVisible(RefreshBy));
             for (int i = 0; i < FirstRowDatatd.Count; i++)
             {

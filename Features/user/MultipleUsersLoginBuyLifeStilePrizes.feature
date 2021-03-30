@@ -1,6 +1,6 @@
 ﻿Feature: MultipleUsersLoginBuyLifeStilePrizes
 	Simple calculator for adding two numbers
 
-@mytag
+@ignore
 Scenario: MultipleUsersLoginBuyLifeStilePrizes
 	When DoCicle

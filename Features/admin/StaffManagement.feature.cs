@@ -122,9 +122,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 13
  testRunner.Then("message with text \"User saved\" should appeared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 14
- testRunner.When("scroll to staff Management href", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 15
  testRunner.When("admin go to staff Management page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden

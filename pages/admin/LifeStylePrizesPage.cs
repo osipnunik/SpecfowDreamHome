@@ -6,6 +6,7 @@ using SpecFlowDreanLotteryHome.utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace SpecFlowDreanLotteryHome.pages.admin
 {
@@ -21,7 +22,12 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         string MainNonHomePicPath = PathGiver.GetPicturePath() + "Car.jpg";
 
         private IWebElement PrizeManagementHref => WebDriver.FindElement(By.XPath("//span[text()='Prize Management']"));
+        private IWebElement PrizeManagementLiFirstChild => WebDriver.FindElement(By.CssSelector("div.menu-wrap li:first-child"));
         private IWebElement LifeStylePrizesLink => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[title='Lifestyle Prizes']")));
+        private IWebElement LifeStyleHrefReliable => WebDriver.FindElement(By.CssSelector("a[href='#/prizes']"));
+
+
+        private IWebElement LifeStylePrizesLinkNotClickable => Waiter.Until(ExpectedConditions.ElementExists(By.CssSelector("a[title='Lifestyle Prizes']")));
         private IList<IWebElement> PrizeManagementList => WebDriver.FindElements(By.CssSelector(".MuiCollapse-container a"));
         private IWebElement DiscountTicketsTab => WebDriver.FindElement(By.XPath("//span[text()='Discount & tickets']"));
         private IWebElement CategoryChooser => WebDriver.FindElement(By.Id("prizeCategory"));//"search-input"));
@@ -51,28 +57,39 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         }
         public void ClickLifeStylePrizesUniversal()
         {
-            /*while (PrizeManagementList.Count == 0)
-            {*/
-            try
+            if (PrizeManagementList.Count == 0)
             {
-                if (PrizeManagementList.Count == 0)
-                {
-                    PrizeManagementHref.Click();
-                }
-            
-                LifeStylePrizesLink.Click();
+                PrizeManagementLiFirstChild.Click();
             }
-            catch (NoSuchElementException e)
-            {
-                PrizeManagementHref.Click(); 
-                LifeStylePrizesLink.Click();
-            }
+            LifeStyleHrefReliable.Click();
         }
-      
-       
-        public void ClickLifeStylePrizesOpened()
+            /* public void ClickLifeStylePrizesUniversal()
+             {
+                 *//*while (PrizeManagementList.Count == 0)
+                 {*//*
+                 try
+                 {
+                     if (PrizeManagementList.Count == 0)
+                     {
+                         PrizeManagementHref.Click();
+                     }            
+                     LifeStylePrizesLink.Click();
+                 }
+                 catch (NoSuchElementException e)
+                 {
+                     PrizeManagementHref.Click(); 
+                     LifeStylePrizesLink.Click();
+                 }
+             }*/
+
+
+            public void ClickLifeStylePrizesOpened()
         {
-            LifeStylePrizesLink.Click();
+            ScrollToTop();
+            ScrollToElement(PrizeManagementHref);
+            Thread.Sleep(5000);
+            JSClick(LifeStylePrizesLinkNotClickable);
+            //LifeStylePrizesLink.Click();
         }
 
         internal void ClickActiveLifeStilePrizes()

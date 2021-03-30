@@ -11,7 +11,7 @@ Scenario: Create Stuff
 	And input skype
 	When click save staff 
 	Then message with text "User saved" should appeared
-	When scroll to staff Management href
+	#When scroll to staff Management href
 	When admin go to staff Management page
 	Then staff user should be created
 	

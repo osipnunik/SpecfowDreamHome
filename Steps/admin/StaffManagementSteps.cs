@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SpecFlowDreanLotteryHome.entities;
 using SpecFlowDreanLotteryHome.pages.admin;
+using SpecFlowDreanLotteryHome.pages.admin.fragments;
 using SpecFlowDreanLotteryHome.services;
 using System;
 using TechTalk.SpecFlow;
@@ -14,7 +15,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         private AutogeneratorService bogger = new AutogeneratorService();
         private StaffManagementPage staffPage = new StaffManagementPage(WebDriver);
         private TableFilteringPage tableFiltP = new TableFilteringPage(WebDriver);
-
+        private MenuExistingElsFragment menuF = new MenuExistingElsFragment(WebDriver);
         public StaffManagementSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
@@ -22,7 +23,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"admin go to staff Management page")]
         public void WhenAdminGoToStaffManagementPage()
         {
-            staffPage.ClickStraffMenegementHref();
+            menuF.ClickStaffManagementHrefReliable();//or click link-active !!
         }
         [When(@"scroll to staff Management href")]
         public void WhenScrollToStaffManagementHref()

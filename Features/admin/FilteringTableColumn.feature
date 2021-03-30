@@ -24,6 +24,7 @@ Scenario: Filtering of categories should contain all existing categories
 	When check pagination to 100
 	When notice all categories
 	When click on subcategories
+	When check pagination to 100
 	When notice all subCategories
 	When click opened Life Style prize
 	When click on Category dropdown
@@ -43,6 +44,6 @@ Scenario: Filtering table column on Fixed Odds by title
 	When close second filter popup
 	Then all titles in table should be as noticed earlier
 	
-
+ 
 
 
