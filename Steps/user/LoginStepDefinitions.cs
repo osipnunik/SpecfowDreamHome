@@ -96,9 +96,11 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             _scenarioContext.Add("user", user);
             regsPg.InputFirstNameInput(user.FirstName);
             regsPg.InputLastNameInput(user.LastName);
-            regsPg.InputPhoneNumberInput(user.Phone);
             regsPg.InputEmailInput(user.Email);
+            regsPg.InputPhoneNumberInput(user.Phone);      
             regsPg.InputPasswordInput("babushka66");
+            regsPg.ClickOnCountryChooser();
+            regsPg.ClickOnRandomCuntry(); 
             regsPg.Ckeckbox18First();
         }
 

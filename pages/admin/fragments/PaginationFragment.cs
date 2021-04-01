@@ -18,7 +18,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin.fragments
         private IWebElement NextPage => WebDriver.FindElement(By.CssSelector("button[title='Next page']"));
         private IWebElement PreviousPage => WebDriver.FindElement(By.CssSelector("button[title='Previous page']"));
         private IWebElement LastPage => Waiter.Until(ExpectedConditions.ElementExists(By.CssSelector("div[title = 'Last Page']")));
-        private IWebElement FirstPage => WebDriver.FindElement(By.CssSelector("div[title = 'First Page']"));
+        private IWebElement FirstPage => WebDriver.FindElement(By.CssSelector("div[title='First Page']"));
         
         public void ClickNextPage() => NextPage.Click();
         public void ClickPreviousPage() => PreviousPage.Click();

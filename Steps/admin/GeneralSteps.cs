@@ -26,6 +26,9 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         }
         [When(@"click on credit")]
         public void WhenClickOnCredit() => generalP.ClickCreditTab();
+
+        [When(@"click on discount")]
+        public void WhenClickOnDiscount() => generalP.ClickDiscountTab();
         
         [Then(@"notice credits and check it with credits per Funt")]
         public void ThenNoticeCreditsAndCheckItWithCreditsPerFunt()
@@ -40,6 +43,13 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             }
             _scenarioContext.Add("eurosPercentsCredits", eurosPercents);
         }
+        [When(@"notice discounts")]
+        public void WhenNoticeDiscounts()
+        {
+            Dictionary<int, int> amountPercents = generalP.GetDiscounts();          
+            _scenarioContext.Add("eurosPercentsCredits", amountPercents);
+        }
+
         [When(@"make discount percents at Fixed Odds bigger on (.*) than on general admin page")]
         public void WhenMakeDiscountPercentsAtFixedOddsBiggerOnThanOnGeneralAdminPage(int p0)
         {

@@ -35,19 +35,23 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private By PopupTitle => By.TagName("h4");
 
         private IWebElement TicketsTab => WebDriver.FindElement(By.XPath("//span[text()='Tickets']"));
+        private IWebElement CreditTab => WebDriver.FindElement(By.XPath("//span[text()='Credit']"));
+
         private IWebElement AddTicketBtn => WebDriver.FindElement(By.XPath("//button/span[text()='Add Ticket']"));
-        private IWebElement TicketTitle => WebDriver.FindElement(By.XPath("//h6[text()='Add tickets']"));
+        private IWebElement AddCreditsBtn => WebDriver.FindElement(By.XPath("//button/span[text()='Add Credits']"));
+        private IWebElement CreditInput => WebDriver.FindElement(By.CssSelector("div.MuiDialogContent-root input"));
+        private IWebElement TicketCreditDialogTitle => WebDriver.FindElement(By.CssSelector("div.MuiDialog-container h6"));
         private IWebElement TicketCompetitionInput => WebDriver.FindElement(By.CssSelector("input[name='competition']"));
         private IWebElement TicketProductInput => WebDriver.FindElement(By.CssSelector("input[name='product']"));
         private IWebElement TicketNumberInput => WebDriver.FindElement(By.CssSelector("div.add-tickets-field input[type='number']"));
         private IWebElement SaveBtn => WebDriver.FindElement(By.XPath("//div[@class='MuiDialogContent-root']//button/span[text()='Save']"));
         private IWebElement RemoveInDialog => WebDriver.FindElement(By.CssSelector("div[role='dialog'] div.actions-table-body svg"));
         private IWebElement CompetitionChooser => WebDriver.FindElement(By.XPath("(//div[@class='MuiDialogContent-root']//*[@id='search-input'])[1]"));
+      
         private IWebElement ProductChooser => WebDriver.FindElement(By.XPath("(//div[@class='MuiDialogContent-root']//*[@id='search-input'])[2]"));
         private IWebElement CompetitionPrizeTypeLi => WebDriver.FindElement(By.CssSelector("li[data-value='Fixed Odds']"));
         string Product;
-        private IWebElement ProductLi => WebDriver.FindElement(By.CssSelector("li[data-value='"+Product+"']"));
-
+        private IWebElement ProductLi => WebDriver.FindElement(By.CssSelector("li[data-value='"+Product+"']"));// //li/div[text()='new Post']
 
         public void ClickUserManagementHref() => UserManagementHref.Click();
 
@@ -65,7 +69,9 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         internal void ChooseProduct(string title)
         {
-            ProductChooser.Click();
+            try { ProductChooser.Click(); }
+            catch(ElementClickInterceptedException e) 
+            { JSClick(ProductChooser);Console.WriteLine("ElementClickInterceptProductChooser title: "+title); }
             Product = title;
             ScrollToElement(ProductLi);
             ProductLi.Click();
@@ -111,10 +117,11 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             DeleteOfLastUser.Click();
             ApproveRemove.Click();
             Waiter.Until(ExpectedConditions.InvisibilityOfElementWithText(PopupTitle, "Are you sure you want to remove user account?"));
-        }
-        
+        }      
 
         internal void ClickTicketsTab() => TicketsTab.Click();
+
+        internal void ClickCreditTab() => CreditTab.Click();
 
         internal void ClickEditLastTicket() => EditLastTicketUserIcon.Click();
 
@@ -142,14 +149,26 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             try { AddTicketBtn.Click(); }
             catch(StaleElementReferenceException e)
             {
-                Thread.Sleep(400);
+                Console.WriteLine("StaleElAddTicketBtn");
+                Thread.Sleep(200);
                 AddTicketBtn.Click();
             }
         }
+        internal void ClickAddCredits()
+        {
+             AddCreditsBtn.Click(); 
+            /*catch (StaleElementReferenceException e)
+            {
+                Console.WriteLine("StaleElAddCreditsBtn");
+                Thread.Sleep(200);
+                AddCreditsBtn.Click();
+            }*/
+        }
+        public void InputCredit(string input) => CreditInput.SendKeys(input);
 
         internal string GetTicketTitleText()
         {
-            string text = TicketTitle.Text;
+            string text = TicketCreditDialogTitle.Text;
             if(text.Length != 0)
             {
                 return text;

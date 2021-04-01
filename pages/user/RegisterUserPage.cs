@@ -23,6 +23,9 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement PhoneNumberInput => WebDriver.FindElement(By.CssSelector("input[name='phone']"));
         private IWebElement EmailInput => WebDriver.FindElement(By.CssSelector("input[name='email']"));
         private IWebElement CountryInput => WebDriver.FindElement(By.CssSelector("input[name='country']"));
+        private IWebElement CountryChooser => WebDriver.FindElement(By.Id("demo-simple-select-outlined"));
+        int CuntryNumber;        
+        private IWebElement RandomCantry => WebDriver.FindElement(By.CssSelector("div.MuiPopover-paper>ul>li:nth-child(" + CuntryNumber+ ")"));        
         private IWebElement PasswordInput => WebDriver.FindElement(By.CssSelector("input[name='password']"));
         private IWebElement SignUpBtn => WebDriver.FindElement(By.XPath("//button[text()='Sign up']"));
         private IWebElement AgeCheckbox => WebDriver.FindElement(By.Id("ageCheck"));
@@ -48,6 +51,9 @@ namespace SpecFlowDreanLotteryHome.pages.user
         {
             Waiter.Until(ExpectedConditions.ElementIsVisible(LoggedNameBy));
         }
+
+        internal void ClickOnCountryChooser() => CountryChooser.Click(); //CountryChooser.Click();
+
         internal void ClickAccountButton() => AccountBtn.Click();
 
         internal void ClickLogoutBtn() => LogoutBtn.Click();
@@ -63,6 +69,13 @@ namespace SpecFlowDreanLotteryHome.pages.user
             }*/
             
         }
+
+        internal void ClickOnRandomCuntry()
+        {
+            CuntryNumber = new Random().Next(151);
+            JSClick(RandomCantry);
+        }
+
         public void ClickSignupFromHeader() => SignupFromHeader.Click();
         public void ClickSignInHereHref() => SignInHereHref.Click();
         public void ClickSignUpBtn() => SignUpBtn.Click();
@@ -73,14 +86,18 @@ namespace SpecFlowDreanLotteryHome.pages.user
             IAgreeSignUp.Click();
         }
 
-        internal void Ckeckbox18First() => EighteenCheckbox.Click();
+        internal void Ckeckbox18First()
+        {
+            try{ EighteenCheckbox.Click(); }
+            catch (ElementClickInterceptedException) { JSClick(EighteenCheckbox); };
+        }
         internal void ClickSecondAgeCheckbox() => JSClick(SecondAgeCheckbox);//SecondAgeCheckbox.Click();
 
         public void InputFirstNameInput(string inp) => FirstNameInput.SendKeys(inp);
         public void InputLastNameInput(string inp) => LastNameInput.SendKeys(inp);
         public void InputPhoneNumberInput(string inp) => PhoneNumberInput.SendKeys(inp);
         public void InputEmailInput(string inp) => EmailInput.SendKeys(inp);
-        public void InputCountryInput(string inp) => CountryInput.SendKeys(inp);
+        public void InputCountryInput(string inp) => CountryInput.SendKeys(inp);//needed precise country list
         public void InputPasswordInput(string inp) => PasswordInput.SendKeys(inp);
 
         internal void WaitWhileSignUpHeaderAppeare()

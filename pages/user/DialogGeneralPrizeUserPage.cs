@@ -58,7 +58,18 @@ namespace SpecFlowDreanLotteryHome.pages.user
             }
             return 0;
         }
-
+        internal Dictionary<int, int> GetDiscountsFromPrizeDialog()
+        {
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            for (int i = Discounts.Count - 2; i >= 0; i = i - 2)
+            {
+                string percVal = (Discounts[i + 1].Text).Replace("%", "");
+                int intPercVal = int.Parse(percVal);
+                dict.Add(int.Parse(Discounts[i].Text),
+                    intPercVal);
+            }
+            return dict;
+        }
         internal string GetTitle() => Title.Text;
 
         internal string GetTotalPrice() => TotalPrice.Text;

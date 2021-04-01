@@ -51,6 +51,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             sortPage.ClickFirstColumnDownSort();
         }
+       
 
         [Then(@"all Fixed odds IDes should be downsorted")]
         public void ThenAllFixedOddsIDesShouldBeDownsorted()
@@ -97,7 +98,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             {
                 Assert.AreEqual(fixedOdds[i].Title, titles[i]);
                 Assert.AreEqual(fixedOdds[i].NumberOfTickets.ToString(), numberOfTickets[i]);
-                Assert.AreEqual(fixedOdds[i].TicketsLeft!=1? fixedOdds[i].TicketsLeft-2: fixedOdds[i].TicketsLeft - 1, int.Parse(ticketsLeft[i]), fixedOdds[i].Title);
+                Assert.AreEqual(fixedOdds[i].TicketsLeft-2, int.Parse(ticketsLeft[i]), fixedOdds[i].Title);
             }
          }
         [Then(@"all Titles should be downsorted")]

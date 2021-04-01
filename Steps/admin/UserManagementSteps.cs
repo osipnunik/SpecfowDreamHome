@@ -82,11 +82,34 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         public void WhenGoToTicketTab()
         {
             usersP.ClickTicketsTab();
+        }                
+
+        [When(@"click Add ticket")]
+        public void WhenClickAddTicket()
+        {
+            usersP.ClickAddTicket();
         }
+        [When(@"go to credit tab")]
+        public void WhenGoToCreditTab()
+        {
+            usersP.ClickCreditTab();
+        }
+
+        [When(@"click Add credit")]
+        public void WhenClickAddCredit()
+        {
+            usersP.ClickAddCredits();
+        }
+        [When(@"input credit")]
+        public void WhenInputCredit()
+        {
+            usersP.InputCredit("112");
+        }
+
         [When(@"add first 10 fixed odds tickets")]
         public void WhenAddFirstFixedOddsTickets()
         {
-            
+
             FixedOdd[] fixedOdds = (FixedOdd[])_scenarioContext["fixedOdds"];
             //Assert.AreEqual("Add tickets" , usersP.GetTicketTitleText());   after addTicket
             for (int i = 0; i < fixedOdds.Length; i++)
@@ -97,30 +120,23 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
                 if (fixedOdds[i].TicketsLeft < 0)
                 {
                     throw new Exception("your " + fixedOdds[i].Title + " has negative TicketsLeft " + fixedOdds[i].TicketsLeft);
-                }else
+                }
+                else
                 if (fixedOdds[i].TicketsLeft > 1)
                 {
-                               
-                    try { usersP.SetTicketsAmountTwo(); }
-                    catch (ElementNotInteractableException e) {
-                        Console.WriteLine("NotInteract. " + fixedOdds[i].Title);
-                        usersP.ChooseProduct(fixedOdds[i].Title); 
-                    }
-                } else if(fixedOdds[i].TicketsLeft == 1)
-                {
 
+                    try { usersP.SetTicketsAmountTwo(); }
+                    catch (ElementNotInteractableException e)
+                    {
+                        Console.WriteLine("NotInteract. " + fixedOdds[i].Title);
+                        usersP.ChooseProduct(fixedOdds[i].Title);
+                    }
                 }
+                else if (fixedOdds[i].TicketsLeft == 1)
+                { }
                 usersP.ClickSaveBtn();
             }
         }
-        
-
-        [When(@"click Add ticket")]
-        public void WhenClickAddTicket()
-        {
-            usersP.ClickAddTicket();
-        }
-
         [Then(@"form with title ""(.*)"" should appeared")]
         public void ThenFormWithTitleShouldAppeared(string p0)
         {

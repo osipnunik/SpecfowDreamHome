@@ -19,7 +19,7 @@ namespace SpecFlowDreanLotteryHome.Features.Admin.Settings
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("General", Description="\tall tests in general page", SourceFile="Features\\admin\\settings\\General.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("General", Description="\tone scenario located at fixed odds", SourceFile="Features\\admin\\settings\\General.feature", SourceLine=0)]
     public partial class GeneralFeature
     {
         
@@ -34,7 +34,7 @@ namespace SpecFlowDreanLotteryHome.Features.Admin.Settings
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin/settings", "General", "\tall tests in general page", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin/settings", "General", "\tone scenario located at fixed odds", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         

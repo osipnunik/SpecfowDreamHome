@@ -62,8 +62,8 @@ namespace SpecFlowDreanLotteryHome.pages
         public BasePage(IWebDriver webDriver)
         {
             this.WebDriver = webDriver;
-            WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(6);
-            Waiter = new WebDriverWait(WebDriver, TimeSpan.FromMilliseconds(6_000));
+            WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(8);
+            Waiter = new WebDriverWait(WebDriver, TimeSpan.FromMilliseconds(8_000));
 
             //FrequentWebDriverWait = new WebDriverWait(, WebDriver, TimeSpan.FromMilliseconds(6_000), TimeSpan.FromMilliseconds(500))
         }

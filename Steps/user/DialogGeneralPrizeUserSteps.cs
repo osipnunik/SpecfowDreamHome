@@ -19,6 +19,15 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         {
             _scenarioContext = scenarioContext;
         }
+        [Then(@"check default number of tickets (.*), total Number of tickets as (.*) and ticket old price value as (.*)")]
+        public void ThenCheckDefaultNumberOfTicketsTotalNumberOfTicketsAsAndTicketOldPriceValueAs(string defaultNumber, string ticketsNumberAll, string price)
+        {
+            var quantities = dialogP.GetTicketrQuantitiesBookedAll();
+            quantities[0].Equals("0");//created 2 seconds before
+            quantities[0].Equals(ticketsNumberAll);
+            price.Equals(dialogP.IsPriceNonDiscount() ? dialogP.GetNonDiscountPrice() : dialogP.GetDiscountOldPrice());
+            defaultNumber.Equals(dialogP.GetQuantityTicSecond());
+        }
 
         [When(@"user choose number randomly")]
         public void WhenUserChooseNumberOfTicketAs()
@@ -69,7 +78,17 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             _scenarioContext.Add("totalPrice", totalPrice);
             //_scenarioContext.Add("title", title);
         }
-
+        [Then(@"discount table are as noticed earlier")]
+        public void ThenDiscountTableAreAsNoticedEarlier()
+        {
+            Dictionary<int, int> expectedDiscount = (Dictionary<int, int>)_scenarioContext["eurosPercentsCredits"];
+            Dictionary<int, int> dialogDiscount = dialogP.GetDiscountsFromPrizeDialog();
+            foreach (KeyValuePair<int, int> keyValue in expectedDiscount)
+            {
+                dialogDiscount.ContainsKey(keyValue.Key);
+                dialogDiscount.ContainsValue(keyValue.Value);
+            }
+        }
         [When(@"user close dialog of first element")]
         public void WhenUserCloseDialogOfFirstElement()
         {

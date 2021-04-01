@@ -39,7 +39,6 @@ Scenario: (create dream home)As an administrator, I want to add new prizes for o
     Then in new dream home table should be title generated earlier
     #When make "testHome11" active    working 
 
-
 Scenario: (update dream home)As an administrator, I want to update new prizes for other users to view.
     Given user logged in as admin with "testqaanuitex@mail.com" email and "000000" password
     When click Last page at Dream home

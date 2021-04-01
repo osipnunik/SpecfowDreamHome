@@ -109,6 +109,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             {
                 ActiveLifeStilePrizes.Click();
                 JSClick(ActiveLifeStilePrizes);
+                Waiter.Until(ExpectedConditions.ElementIsVisible(RefreshBy));
             }
             while ((classes = ActiveLifeStilePrizes.GetAttribute("class")).Contains("inactive-button"));          
             //ActiveLifeStilePrizes.Click();            

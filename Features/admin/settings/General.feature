@@ -1,5 +1,5 @@
 ﻿Feature: General
-	all tests in general page
+	one scenario located at fixed odds
 
 
 

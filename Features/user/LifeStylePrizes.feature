@@ -14,7 +14,6 @@ Scenario: as user i want to see all info on LyfeSycle prize site as on admin Lif
 	When notice list of categories
 	Then admin category, subcategory, title should be same as on user site
 
-
 Scenario: as a user i want to buy on basket from account
 	When user(client) login on web with login "proton001@lenta.ru" and pass "sobaka1"
 	Then on header should be displayed "Vania"
