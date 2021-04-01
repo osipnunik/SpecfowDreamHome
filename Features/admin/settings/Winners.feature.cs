@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlowDreanLotteryHome.Features.Admin
+namespace SpecFlowDreanLotteryHome.Features.Admin.Settings
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace SpecFlowDreanLotteryHome.Features.Admin
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Winners", Description="\tSimple Winners scenarios", SourceFile="Features\\admin\\Winners.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("Winners", Description="\tSimple Winners scenarios", SourceFile="Features\\admin\\settings\\Winners.feature", SourceLine=0)]
     public partial class WinnersFeature
     {
         
@@ -34,7 +34,7 @@ namespace SpecFlowDreanLotteryHome.Features.Admin
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin", "Winners", "\tSimple Winners scenarios", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin/settings", "Winners", "\tSimple Winners scenarios", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         

@@ -48,7 +48,9 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         string Category;
         private IWebElement CategoryItem => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//ul/li/span[text()='" + Category + "']")));
-        
+
+        private IWebElement FixedOddsLyfeCycleSave => WebDriver.FindElement(By.CssSelector("div[role='toolbar'] button.save-button"));
+
         public void InputGeneralPictureInput() => GeneralPicInput.SendKeys(MainNonHomePicPath);
 
         public void ClickLifeStylePrizesClosed() {
@@ -63,27 +65,30 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             }
             LifeStyleHrefReliable.Click();
         }
-            /* public void ClickLifeStylePrizesUniversal()
-             {
-                 *//*while (PrizeManagementList.Count == 0)
-                 {*//*
-                 try
-                 {
-                     if (PrizeManagementList.Count == 0)
-                     {
-                         PrizeManagementHref.Click();
-                     }            
-                     LifeStylePrizesLink.Click();
-                 }
-                 catch (NoSuchElementException e)
-                 {
-                     PrizeManagementHref.Click(); 
-                     LifeStylePrizesLink.Click();
-                 }
-             }*/
+
+        internal void ClickFixedOddsSave() => FixedOddsLyfeCycleSave.Click();
+
+        /* public void ClickLifeStylePrizesUniversal()
+{
+    *//*while (PrizeManagementList.Count == 0)
+    {*//*
+    try
+    {
+        if (PrizeManagementList.Count == 0)
+        {
+            PrizeManagementHref.Click();
+        }            
+        LifeStylePrizesLink.Click();
+    }
+    catch (NoSuchElementException e)
+    {
+        PrizeManagementHref.Click(); 
+        LifeStylePrizesLink.Click();
+    }
+}*/
 
 
-            public void ClickLifeStylePrizesOpened()
+        public void ClickLifeStylePrizesOpened()
         {
             ScrollToTop();
             ScrollToElement(PrizeManagementHref);
@@ -95,6 +100,17 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         internal void ClickActiveLifeStilePrizes()
         {
             JSClick(ActiveLifeStilePrizes);
+            //ActiveLifeStilePrizes.Click();            
+        }
+        internal void ClickActiveLifeStilePrizesInCycle()
+        {
+            string classes;
+            do
+            {
+                ActiveLifeStilePrizes.Click();
+                JSClick(ActiveLifeStilePrizes);
+            }
+            while ((classes = ActiveLifeStilePrizes.GetAttribute("class")).Contains("inactive-button"));          
             //ActiveLifeStilePrizes.Click();            
         }
 
@@ -172,6 +188,6 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             Waiter.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector(".button-group button:nth-child(3).active-button")));
             //Waiter.Until(ExpectedConditions.StalenessOf(WebDriver.FindElement(By.CssSelector("table.MuiTable-root"))));
         }
-                
+        
     }
 }

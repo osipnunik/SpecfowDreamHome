@@ -58,7 +58,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement firstDateCell => WebDriver.FindElement(By.CssSelector("button abbr"));
 
         private IWebElement fifthDateCellFinishCalendar => WebDriver.FindElement(By.CssSelector("(//abbr[@aria-label='5 мая 2021 г.'])[1]"));
-
+        private IWebElement ActiveCheckbox => WebDriver.FindElement(By.Id("active"));
         private IWebElement isTrandingToggle => WebDriver.FindElement(By.Id("isTrending"));
         private IWebElement GeneralPicInput => WebDriver.FindElement(By.CssSelector("input.dropzone-input"));
         private IWebElement SaveBtn => WebDriver.FindElement(By.CssSelector("div[role='toolbar'] button:nth-child(1)"));
@@ -97,12 +97,20 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         private IWebElement DiscountFromTicket => WebDriver.FindElement(By.Id("isActiveDiscount"));
         private IWebElement PriceIs => WebDriver.FindElement(By.XPath("(//h6[text()='Tickets']/..//input)[5]"));
-        private IWebElement ErrorMessage => WebDriver.FindElement(By.XPath("div.date-error"));
+        private IWebElement ErrorMessage => WebDriver.FindElement(By.XPath("div.date-error"));      
+
         private IWebElement DiscountIs => WebDriver.FindElement(By.XPath("(//h6[text()='Tickets']/..//input)[4]"));
         private IWebElement MoneyCurrency => WebDriver.FindElement(By.XPath("(//span[@class='discount-is']/..)[2]"));
         private IWebElement DiscountNewPrice => WebDriver.FindElement(By.XPath("(//h6[text()='Discount']/..//input)[5]"));
         private IWebElement CurrencyCheckbox => WebDriver.FindElement(By.Id("discountCategory_cash"));
         private IWebElement DiscountStatus => WebDriver.FindElement(By.Id("isDiscountRates"));
+        private IWebElement CreditStatus => WebDriver.FindElement(By.CssSelector("input[name='checkedB']"));//"//h6[text()='Credits']/..//input[@name='checkedB']"));
+        private IWebElement CreditEuroInput => WebDriver.FindElement(By.CssSelector("input[name='count']"));
+        private IWebElement CreditPercentInput => WebDriver.FindElement(By.CssSelector("input[name='percent']"));
+        private IWebElement CreditLastEuroInput => WebDriver.FindElement(By.XPath("(//input[@name='count'])[last()]"));
+        private IWebElement CreditLastPercentInput => WebDriver.FindElement(By.XPath("(//input[@name='percent'])[last()]"));
+        private IWebElement AddCreditBtn => WebDriver.FindElement(By.CssSelector("svg.add-discount"));
+
         private IWebElement LastHomeUpdate => WebDriver.FindElement(By.XPath("(//table//a[@aria-label='Edit'])[last()]"));
         private IWebElement LastHomeCreate => WebDriver.FindElement(By.XPath("(//table//a[@aria-label='Clone'])[last()]"));
 
@@ -151,10 +159,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         internal void ClickLastCreate() => LastHomeCreate.Click();
 
-        internal void ClickDiscountInTicket()
-        {
-            DiscountFromTicket.Click();
-        }
+        internal void ClickDiscountInTicket() => DiscountFromTicket.Click();
 
         internal void InputDiscountIs(string p0)
         {
@@ -185,6 +190,29 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             PriceIs.SendKeys(p0);
         }
 
+        internal void ClickCreditStatus() => CreditStatus.Click();
+
+        public void InputCreditEuro(string input) {
+            Clearer.ClearInput(CreditEuroInput);
+            CreditEuroInput.SendKeys(input);
+        }
+
+        public void InputCreditPercent(string input) {
+            Clearer.ClearInput(CreditPercentInput);
+            CreditPercentInput.SendKeys(input);
+        }
+        public void InputCreditLastEuro(string input)
+        {
+            Clearer.ClearInput(CreditLastEuroInput);
+            CreditLastEuroInput.SendKeys(input);
+        }
+
+        public void InputCreditLastPercent(string input)
+        {
+            Clearer.ClearInput(CreditLastPercentInput);
+            CreditLastPercentInput.SendKeys(input);
+        }
+        public void ClickAddCredit() => AddCreditBtn.Click();
         internal void InputPriceDiscountTab(string p0)
         {
             DiscountNewPrice.SendKeys(Keys.Backspace); DiscountNewPrice.SendKeys(Keys.Backspace);
@@ -330,13 +358,19 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         
         public void clickIsTrandingToggle() => isTrandingToggle.Click();
 
-        public void goToDescription() => DescriptionTab.Click();
+        public void goToDescription()
+        {
+            try { DescriptionTab.Click(); }
+            catch(ElementClickInterceptedException e){ Thread.Sleep(2000); JSClick(DescriptionTab); }
+        }
 
         public void inputBadroomDescription(string desc, bool update = false)
         {
             if (update) { Clearer.ClearInput(BadroomDescriptonInput); }
             BadroomDescriptonInput.SendKeys(desc);
         }
+
+        internal void ClickActiveCheckboxFixOdd() => ActiveCheckbox.Click();
 
         public void clickDreamHome() => dreamHome.Click();
 

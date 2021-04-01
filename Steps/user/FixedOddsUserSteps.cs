@@ -1,4 +1,5 @@
-﻿using SpecFlowDreanLotteryHome.entities.user;
+﻿using NUnit.Framework;
+using SpecFlowDreanLotteryHome.entities.user;
 using SpecFlowDreanLotteryHome.pages.user;
 using System;
 using TechTalk.SpecFlow;
@@ -76,6 +77,26 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void WhenClickOnChoosenEarlierFixedOddsPrize()
         {
             FixedOddsP.ClickOnNthFixedOdds((int)_scenarioContext["randNum"]);
+        }
+        [When(@"notice initial credit amount")]
+        public void WhenNoticeInitialCreditAmount()
+        {
+            _scenarioContext.Add("headerCredits", FixedOddsP.GetCreditFromHeaderBtnCart());
+        }
+        [Then(@"credit amount should be the sum of initial credit amount and rememberd")]
+        public void ThenCreditAmountShouldBeTheSumOfInitialCreditAmountAndRememberd()
+        {
+            string credEarn = (string)_scenarioContext["creditEarned"];
+            double dialogCredit = double.Parse(credEarn.Substring(2));
+            double initialCredit = double.Parse((string)_scenarioContext["headerCredits"]);
+            string actualCredit = double.Parse(FixedOddsP.GetCreditFromHeaderBtnCart()).ToString("N2");
+            Assert.AreEqual((dialogCredit + initialCredit).ToString("N2"), actualCredit, "earned not increase header cart appropriate");
+        }
+        [When(@"click on earlier random generated title")]
+        public void WhenClickOnEarlierRandomGeneratedTitle()
+        {
+            string title = (string)_scenarioContext["title"];
+            FixedOddsP.ClickOnProductWithTitle(title);
         }
 
     }

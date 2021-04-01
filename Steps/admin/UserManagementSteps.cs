@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using SpecFlowDreanLotteryHome.entities;
 using SpecFlowDreanLotteryHome.pages.admin;
 using SpecFlowDreanLotteryHome.services;
@@ -99,7 +100,12 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
                 }else
                 if (fixedOdds[i].TicketsLeft > 1)
                 {
-                    usersP.SetTicketsAmountTwo();
+                               
+                    try { usersP.SetTicketsAmountTwo(); }
+                    catch (ElementNotInteractableException e) {
+                        Console.WriteLine("NotInteract. " + fixedOdds[i].Title);
+                        usersP.ChooseProduct(fixedOdds[i].Title); 
+                    }
                 } else if(fixedOdds[i].TicketsLeft == 1)
                 {
 

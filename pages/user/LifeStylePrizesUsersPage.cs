@@ -63,9 +63,16 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement CreditEarned => WebDriver.FindElement(By.CssSelector("div.priceGreyContainer div:last-child p.creditValue"));
         private IWebElement LastDiscount => WebDriver.FindElement(By.CssSelector("div.ticketCard:last-child .ticketСardItem:last-child span"));
         private IWebElement EnterNowBtn => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(/*"button.enterBtn")));*/"button.winFlatBtn")));
-                
-        
-        public string GetTitle() => Title.Text;
+
+
+        public string GetTitle()
+        {
+            string s = Title.Text;
+            if (s.Length != 0) return s;
+            else {
+                Console.WriteLine("!!s Title.Text.Length == 0");
+                return Title.Text; }
+        }
         public string GetNonDiscountPrice() => NonDiscountPrice.Text;
         public string GetDiscountOldPrice() => DiscountOldPrice.Text;
 

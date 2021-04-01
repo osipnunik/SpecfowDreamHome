@@ -13,6 +13,7 @@ Scenario: Create Life Style Prize
 	When go to Discount & ticket tab at Life prize
     When input ticket price value 6
     When input default number of tickets 15
+	When go to Discount & ticket tab at Life prize
     When click save button
 	Then popup with message "Prize saved" appears
 	And Life Style prize title generated earlier is present with category "Luxury"

@@ -43,8 +43,8 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             int amount = (int)_scenarioContext["ticketQuantity"];
             string title = dialogP.GetTitle();
             prod.Title = title;
-            string picSrc = dialogP.GetPicSrc();
-            prod.ImgHref = picSrc;
+            //string picSrc = dialogP.GetPicSrc();
+            //prod.ImgHref = picSrc;    reproducing bug with empty picture
             if (dialogP.IsPriceNonDiscount())
             {
                 price = dialogP.GetNonDiscountPrice();
@@ -65,9 +65,9 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             double expectedTotalPrice = (1-discount) * priceFromDialog * amount;
             Assert.IsTrue(totalPrice.StartsWith(Currency + " " + expectedTotalPrice.ToString("N2").Replace(",", "")));
             _scenarioContext.Add("product", prod);
-            _scenarioContext.Add("price", price);
+            //_scenarioContext.Add("price", price);
             _scenarioContext.Add("totalPrice", totalPrice);
-            _scenarioContext.Add("title", title);
+            //_scenarioContext.Add("title", title);
         }
 
         [When(@"user close dialog of first element")]

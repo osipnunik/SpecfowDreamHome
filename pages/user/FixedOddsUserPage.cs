@@ -23,6 +23,9 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         private IList<IWebElement> FixedOdds => WebDriver.FindElements(By.CssSelector(".lifestyleProduct-mob .productTitle"));//.productTitle
         private IWebElement LastFixedOddsTitle => WebDriver.FindElement(By.CssSelector(".lifestyleProduct-mob:last-child .productTitle p"));
+        string ProductTitleText;
+        private IWebElement ProductTitle => WebDriver.FindElement(By.XPath("//div[@class='productTitle']/p[text()='" + ProductTitleText + "']"));
+        private IWebElement CartSummFromHeader => WebDriver.FindElement(By.CssSelector("button.headerBtnCart>span"));
 
         public void ClickFixedOddsHref() => FixedOddsHref.Click();
 
@@ -67,6 +70,17 @@ namespace SpecFlowDreanLotteryHome.pages.user
         internal string GetNonDiscountPrice() => NonDiscountPrice.Text;
 
         internal void ClickOnNthFixedOdds(int v) => JSClick(FixedOdds[v]);//FixedOdds[v].Click();
-        
+
+        internal void ClickOnProductWithTitle(string title)
+        {
+            ProductTitleText = title;
+            try { ProductTitle.Click(); }
+            catch(ElementClickInterceptedException e) { JSClick(ProductTitle); }
+        }
+
+        internal string GetCreditFromHeaderBtnCart()
+        {
+            return CartSummFromHeader.Text.Substring(2);
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private By LoggedNameBy => By.CssSelector("button[aria-controls='simple-menu'] div.header-drop-name span");
         private IWebElement LogedName => WebDriver.FindElement(LoggedNameBy);
         private IWebElement EighteenCheckbox => WebDriver.FindElement(By.XPath("//p[text()='I am 18 years or older']/../..//input"));
-        private IWebElement LastElement => WebDriver.FindElement(By.CssSelector("div.mainModalWrap p:last-of-type"));
+        private IWebElement LastElement => WebDriver.FindElement(By.CssSelector("div.mainModalWrap>p:last-of-type"));
         public string GetLoggedName()
         {
             //Console.WriteLine(WebDriver.FindElement(By.CssSelector("div.header-drop-name")).Text);
@@ -53,8 +53,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         internal void ClickLogoutBtn() => LogoutBtn.Click();
 
         public string GetLoggedName(string nameSurname)
-        {
-           
+        {           
             Waiter.Until(ExpectedConditions.TextToBePresentInElement(LogedName, nameSurname));
             string text = LogedName.Text;
              return text; 

@@ -18,6 +18,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement FirstProductTotalPrice => WebDriver.FindElement(By.CssSelector("tbody td:nth-child(4) "));
         private IList<IWebElement> TotalPrices => WebDriver.FindElements(By.CssSelector("div.basketTableDesktop tbody td:nth-child(4)"));
         private IList<IWebElement> YourPrices => WebDriver.FindElements(By.CssSelector("div.basketTableDesktop tbody td:nth-child(5)"));
+        
         private IWebElement FirstProductCloseBtn => WebDriver.FindElement(By.CssSelector("tbody td:nth-child(5) button"));
 
         private IWebElement LastProductTitle => WebDriver.FindElement(By.CssSelector("div.basketTableDesktop tbody tr:last-child th"));
@@ -46,7 +47,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement CVCActivator => WebDriver.FindElement(By.Id("cvv"));
         private IWebElement PayButton => WebDriver.FindElement(By.Id("pay-button"));
         private IWebElement OrderCompletedHeader => WebDriver.FindElement(By.CssSelector("h1.orderCompleted"));
-        private IList<IWebElement> ErrorMessage => WebDriver.FindElements(By.CssSelector("span.error-message"));
+        private IList<IWebElement> ErrorMessage => WebDriver.FindElements(By.CssSelector("span.error-message"));       
 
         internal double GetYourPricesSumCheckCurrency()
         {

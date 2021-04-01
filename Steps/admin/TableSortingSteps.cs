@@ -87,7 +87,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             _scenarioContext.Add("fixedOdds", fixedOdds);
         }
         [Then(@"tickets left should decrease on 2, Numbers of tickets should be the same as a Titles")]
-        public void ThenTicketsLeftShouldDecreaseOnNumbersOfTicketsShouldBeTheSameAsATitles(int p0)
+        public void ThenTicketsLeftShouldDecreaseOnNumbersOfTicketsShouldBeTheSameAsATitles()
         {
             FixedOdd[] fixedOdds = (FixedOdd[])_scenarioContext["fixedOdds"];
             List<string> titles = sortPage.GetSecondRowDatatd();
@@ -95,11 +95,11 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             List<string> ticketsLeft = sortPage.GetFifthRowDatatd();
             for (int i = 0; i < titles.Count; i++)
             {
-                fixedOdds[i].Title.Equals(titles[0]);
-                fixedOdds[i].NumberOfTickets.Equals(numberOfTickets[i]);
-                fixedOdds[i]
+                Assert.AreEqual(fixedOdds[i].Title, titles[i]);
+                Assert.AreEqual(fixedOdds[i].NumberOfTickets.ToString(), numberOfTickets[i]);
+                Assert.AreEqual(fixedOdds[i].TicketsLeft!=1? fixedOdds[i].TicketsLeft-2: fixedOdds[i].TicketsLeft - 1, int.Parse(ticketsLeft[i]), fixedOdds[i].Title);
             }
-            }
+         }
         [Then(@"all Titles should be downsorted")]
         public void ThenAllTitlesShouldBeDownsorted()
         {

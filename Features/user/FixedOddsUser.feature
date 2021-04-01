@@ -1,9 +1,10 @@
 ﻿Feature: FixedOddsUser
 	Simple calculator for adding two numbers
 
-Scenario: as a user i want to buy first Fixed odds
+Scenario: as a user i want to buy random Fixed odds
 	When user(client) login on web with login "proton001@lenta.ru" and pass "sobaka1"
-	Then on header should be displayed "Vania Jast"
+	Then on header should be displayed "Vania"
+	#Jast"
 	When user go to Fexed Odds
 	When user scroll untill additional prizes appeared	
 	#When notice all info about first product from fixedOddsList

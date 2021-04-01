@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlowDreanLotteryHome.Features.Admin
+namespace SpecFlowDreanLotteryHome.Features.Admin.Settings
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,7 +20,7 @@ namespace SpecFlowDreanLotteryHome.Features.Admin
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [TechTalk.SpecRun.FeatureAttribute("Referrals", new string[] {
-            "admin"}, Description="\tAll tests for referrals", SourceFile="Features\\admin\\Referrals.feature", SourceLine=1)]
+            "admin"}, Description="\tAll tests for referrals", SourceFile="Features\\admin\\settings\\Referrals.feature", SourceLine=1)]
     public partial class ReferralsFeature
     {
         
@@ -36,7 +36,7 @@ namespace SpecFlowDreanLotteryHome.Features.Admin
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin", "Referrals", "\tAll tests for referrals", ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin/settings", "Referrals", "\tAll tests for referrals", ProgrammingLanguage.CSharp, new string[] {
                         "admin"});
             testRunner.OnFeatureStart(featureInfo);
         }

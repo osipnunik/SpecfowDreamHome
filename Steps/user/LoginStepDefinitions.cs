@@ -124,14 +124,13 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void ThenNameDisplayedAtRightUpperFooter()
         {
             var expected = (User)_scenarioContext["user"];
-            Assert.AreEqual(expected.FirstName + " " + expected.LastName, regsPg.GetLoggedName());
+            Assert.AreEqual(expected.FirstName /*+ " " + expected.LastName*/, regsPg.GetLoggedName());
         }
         [Then(@"on header should be displayed ""(.*)""")]
         public void ThenOnHeaderShouldBeDisplayed(string nameSurname)
         {
             Assert.AreEqual(nameSurname, regsPg.GetLoggedName(nameSurname));
         }
-
 
     }
 }

@@ -69,7 +69,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         internal void ClickLyfeStyleManagement() => LyfeStyleManagement.Click();
         internal void ClickSubcategories()
         {
-            SubCategoriesBtn.Click();
+            try { SubCategoriesBtn.Click(); }
+            catch (ElementClickInterceptedException) { JSClick(SubCategoriesBtn);Console.WriteLine("ElementClickInterc"); }
             Waiter.Until(ExpectedConditions.TextToBePresentInElement(AddNewCatSub, "Add Sub-category"));
             Thread.Sleep(500);
         }

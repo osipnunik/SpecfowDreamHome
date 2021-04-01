@@ -6,6 +6,7 @@ using SpecFlowDreanLotteryHome.utils.helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace SpecFlowDreanLotteryHome.pages.admin
 {
@@ -66,6 +67,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         {
             ProductChooser.Click();
             Product = title;
+            ScrollToElement(ProductLi);
             ProductLi.Click();
         }
 
@@ -135,7 +137,15 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             Waiter.Until(ExpectedConditions.InvisibilityOfElementWithText(PopupTitle, "Are you sure you want to remove ticket?"));
         }
 
-        internal void ClickAddTicket() => AddTicketBtn.Click();
+        internal void ClickAddTicket()
+        {
+            try { AddTicketBtn.Click(); }
+            catch(StaleElementReferenceException e)
+            {
+                Thread.Sleep(400);
+                AddTicketBtn.Click();
+            }
+        }
 
         internal string GetTicketTitleText()
         {

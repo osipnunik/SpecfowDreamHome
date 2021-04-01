@@ -29,5 +29,9 @@ namespace SpecFlowDreanLotteryHome.services
         {
             return Faker.Vehicle.Model();
         }
+        internal string GenerateAlmostUniqueVehiclePrizeTitle()
+        {
+            return Faker.Vehicle.Model()+ Faker.Vehicle.Type()+ Faker.Vehicle.Manufacturer()+Faker.Vehicle.Fuel();
+        }
     }
 }

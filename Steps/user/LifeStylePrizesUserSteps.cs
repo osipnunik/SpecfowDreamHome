@@ -81,7 +81,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             else
             {
                 Assert.AreEqual(expectedProd.NewPrice, lifeStylePage.GetDiscountNewPrice());
-                Assert.AreEqual(expectedProd.OldPrice, lifeStylePage.GetDiscountOldPrice());
+                //Assert.AreEqual(expectedProd.OldPrice, lifeStylePage.GetDiscountOldPrice());
                // Assert.AreEqual(expectedProd.DiscountOff, lifeStylePage.GetDiscountPercent());
             }
             
@@ -126,6 +126,23 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         {           
             _scenarioContext.Add("creditEarned", lifeStylePage.GetCreditEarned());
         }
+        [Then(@"credit calculated as at Admin General expected")]
+        public void ThenCreditCalculatedAsAtAdminGeneralExpected()
+        {
+            string actualDialogCredit = (string)_scenarioContext["creditEarned"];
+            Dictionary<int, int> credits = (Dictionary<int, int>)_scenarioContext["eurosPercentsCredits"];
+            double totalPrice = double.Parse(((string)_scenarioContext["totalPrice"]).Substring(2));
+            int creditPerEur = 0;
+            int maxCoant = 0;
+            foreach (KeyValuePair<int, int> keyValue in credits)
+            {
+                if(maxCoant < keyValue.Key && keyValue.Key < totalPrice) 
+                { maxCoant = keyValue.Key;creditPerEur = keyValue.Value; }                
+            }
+            double credit = creditPerEur * totalPrice / 100;
+            Assert.AreEqual("£ " + credit.ToString("N2"), actualDialogCredit);
+        }
+
 
         [When(@"user click on buy now")]
         public void WhenUserClickOnBuyNow() => lifeStylePage.ClickBuyNowBtn();

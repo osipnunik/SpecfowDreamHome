@@ -4,7 +4,8 @@
 @mytag
 Scenario: as a user i want to buy on basket from account dream home
 	When user(client) login on web with login "proton001@lenta.ru" and pass "sobaka1"
-	Then on header should be displayed "Vania Jast"
+	Then on header should be displayed "Vania"
+	#Jast"
 	When user go to Dream Home page
 	When click Enter Now button
 	Then product popup appeares

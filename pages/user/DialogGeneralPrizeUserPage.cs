@@ -17,6 +17,8 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         private IWebElement DiscountPercent => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.discount-percent"));
         private IList<IWebElement> Discounts => WebDriver.FindElements(By.CssSelector("div.ticketsCardDesk div.ticketCard div.ticketСardItem span"));
+        private IList<IWebElement> TicketsQuantBookedAll2 => WebDriver.FindElements(By.CssSelector("div.ticketsOutInfo p"));
+
         private int TicketNumber;
         private IWebElement TicketQuantityElement => WebDriver.FindElement(By.XPath("//div[@class='checkQuanityBlock']/p[text()='" + TicketNumber + "']"));
         private IWebElement TotalPrice => WebDriver.FindElement(By.CssSelector("div:nth-child(2) > p.order-data.totalValue"));
@@ -75,7 +77,14 @@ namespace SpecFlowDreanLotteryHome.pages.user
         {
             int c = PricesP.Count;
             return c == 1;
+        }
 
+        public string[] GetTicketrQuantitiesBookedAll()
+        {
+            string[] arr = new string[2];
+            arr[0] = TicketsQuantBookedAll2[0].Text;
+            arr[1] = TicketsQuantBookedAll2[1].Text;
+            return arr;
         }
     }
 }

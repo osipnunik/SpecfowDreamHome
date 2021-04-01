@@ -5,6 +5,7 @@ using RestSharp.Authenticators;
 using SpecFlowDreanLotteryHome.pages.admin;
 using SpecFlowDreanLotteryHome.services;
 using System;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowDreanLotteryHome.Steps.admin
@@ -210,6 +211,8 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             dreamHomePg.InputTicketPrice(p0);
         }
+        [When(@"click active checkbox")]
+        public void WhenClickActiveCheckbox() => dreamHomePg.ClickActiveCheckboxFixOdd();
 
         [When(@"input default number of tickets (.*)")]
         public void WhenInputDefaultNumberOfTickets(string p0)
@@ -221,6 +224,8 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             dreamHomePg.InputNumbersOfTickets(p0);
         }
+        
+
         [When(@"click save button at dreamHome")]
         public void WhenClickSaveButtonAtDreamHome()
         {
@@ -324,7 +329,11 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             dreamHomePg.ClickDiscountStatus();
         }
-
+        [When(@"click on status in credits tab")]
+        public void WhenClickOnStatusInCreditsTab()
+        {
+            dreamHomePg.ClickCreditStatus();
+        }
         [When(@"input new price is in discount tab (.*)")]
         public void WhenInputNewPriceIsInDiscountTab(string p0)
         {
@@ -470,6 +479,18 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             dreamHomePg.InputDefaultNumbersOfTickets(p0, true);
         }
-
+        [When(@"set discount euroes and percents as defined earlier")]
+        public void WhenSetDiscountEuroesAndPercentsAsDefinedEarlier()
+        {
+            Dictionary<int, int> eurosPercents = (Dictionary<int, int>)_scenarioContext["eurosPercentsCredits"];
+            int i = 0;
+            foreach (KeyValuePair<int, int> keyValue in eurosPercents)
+            {               
+                dreamHomePg.InputCreditLastEuro(keyValue.Key.ToString());
+                dreamHomePg.InputCreditLastPercent(keyValue.Value.ToString());
+                i++;
+                if(i <= eurosPercents.Count - 1) { dreamHomePg.ClickAddCredit(); }
+            }
+        }
     }
 }

@@ -55,9 +55,8 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         [Then(@"user see Total Saving and Credit earned as expected if they exist")]
         public void ThenUserSeeTotalSavingAndCreditEarnedAsExpectedIfTheyExist()
         {
-            string expectedTotalSavings = (string)_scenarioContext["totalSaving"];
+            //string expectedTotalSavings = (string)_scenarioContext["totalSaving"];  not used but used in previous
             string expectedCreditEarned = (string)_scenarioContext["creditEarned"];
-            Assert.IsTrue(double.Parse(basketP.GetTotalSaving().Replace("£", ""))/double.Parse(expectedTotalSavings.Replace("£", "")) % 1 == 0);
             Assert.AreEqual(expectedCreditEarned, basketP.GetCreditEarnedValue());
         }
 
@@ -90,7 +89,8 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void WhenClickPayButton()
         {
             basketP.ClickCardPayBtn();
-            if (basketP.ErrorMessageExist()) { WhenUserInputCardData(); }
+            if (basketP.ErrorMessageExist()) { WhenUserInputCardData(); WhenClickPayButton(); }
+            if (WebDriver.Url.Contains("basket/card/0/")) { WhenUserInputCardData(); WhenClickPayButton(); }
         }
 
         [Then(@"user see order completed header")]

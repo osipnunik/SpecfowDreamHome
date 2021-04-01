@@ -62,7 +62,6 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             LfStylePPage.ChooseSubCategory(p0);
         }
 
-
         [When(@"input Life Style prize \(car\) title randomly generated")]
         public void WhenInputLifeStylePrizeTitleAs()
         {
@@ -70,6 +69,14 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             _scenarioContext.Add("title", title);
             LfStylePPage.InputTitle(title);
         }
+        [When(@"input Life Style prize \(car\) title unique randomly generated")]
+        public void WhenInputLifeStylePrizeTitleUniqueAs()
+        {
+            string title = generator.GenerateAlmostUniqueVehiclePrizeTitle();
+            _scenarioContext.Add("title", title);
+            LfStylePPage.InputTitle(title);
+        }
+        
         [When(@"go to Discount & ticket tab at Life prize")]
         public void WhenGoToDiscountTicketTabAtLifePrize()
         {
@@ -85,7 +92,16 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             LfStylePPage.ClickActiveLifeStilePrizes();
         }
-
+        [When(@"click on Active prizes in cycle")]
+        public void WhenClickOnActivePrizesInCycle()
+        {
+            LfStylePPage.ClickActiveLifeStilePrizesInCycle();
+        }
+        [When(@"click fixed odds save button")]
+        public void WhenClickFixedOddsSaveButton()
+        {
+            LfStylePPage.ClickFixedOddsSave();
+        }
         [When(@"change paginarion prizes per page as (.*)")]
         public void WhenChangePaginarionPrizesPerPageAs(int prizesPerPage)
         {
@@ -164,7 +180,6 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"notice all prizes titles quantity")]
         public void WhenNoticeAllPrizesTitlesQuantity()
         {
-
             string paginTableSize = LfStylePPage.GetPagination().GetSizeOfTable();
             _scenarioContext.Add("allPrizesQuantity", paginTableSize);
         }
@@ -193,8 +208,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
 
         [When(@"notice unactive prizes titles quantity")]
         public void WhenNoticeUnactivePrizesTitlesQuantity()
-        {
-            
+        {        
             string paginTableSize = LfStylePPage.GetPagination().GetSizeOfTable();
             _scenarioContext.Add("unactivePrizesQuantity", paginTableSize);
         }
@@ -206,7 +220,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             int active = int.Parse((string)_scenarioContext["activePrizesQuantity"]);
             int nonAct = int.Parse((string)_scenarioContext["unactivePrizesQuantity"]);
             Assert.AreEqual(all ,(active + nonAct) , "active: "+ active);
-        }
-        
+        }       
+
     }
 }

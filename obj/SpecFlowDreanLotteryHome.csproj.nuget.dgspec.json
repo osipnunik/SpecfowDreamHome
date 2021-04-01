@@ -68,6 +68,10 @@
               "target": "Package",
               "version": "[106.11.7, )"
             },
+            "Selenium.Firefox.WebDriver": {
+              "target": "Package",
+              "version": "[0.27.0, )"
+            },
             "Selenium.Support": {
               "target": "Package",
               "version": "[3.141.0, )"

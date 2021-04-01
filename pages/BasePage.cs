@@ -17,7 +17,7 @@ namespace SpecFlowDreanLotteryHome.pages
         public string GetPopupText() => SuccessPopup.Text;*/
         protected By PopupBy => By.CssSelector("div.MuiSnackbarContent-message");
         protected By RefreshBy = By.CssSelector("button[title='Refresh']");
-        protected IWebElement Popup => WebDriver.FindElement(PopupBy);
+        protected IWebElement Popup => Waiter.Until(ExpectedConditions.ElementExists(PopupBy));
         public string GetPopupText()
         {
            if(Popup.Text.Length == 0)
