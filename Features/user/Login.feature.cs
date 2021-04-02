@@ -109,7 +109,7 @@ namespace SpecFlowDreanLotteryHome.Features.User
     testRunner.And("click submit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
-    testRunner.Then("user redirected to profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("user redirected to user-info page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -201,14 +201,8 @@ this.ScenarioInitialize(scenarioInfo);
 #line 22
     testRunner.When("user press sign up button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 23
-    testRunner.When("user check i\'m 18 checkbox and scroll down", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 24
-    testRunner.And("click i agree", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 25
-    testRunner.Then("user redirected to profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("user redirected to user-info page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 26
     testRunner.Then("name displayed at right upper footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

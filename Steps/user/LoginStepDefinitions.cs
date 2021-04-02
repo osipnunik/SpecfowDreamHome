@@ -53,13 +53,13 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             loginPg.ClickSignIn();
         }
 
-        [Then(@"user redirected to profile page")]
+        [Then(@"user redirected to user-info page")]
         public void ThenUserRedirectedToProfilePage()
         {
             //WebDriverWait wait = new WebDriverWait(WebDriver, 10000); // seconds
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[text()='My Details']")));
 
-            Assert.IsTrue(WebDriver.Url.EndsWith("profile"));
+            Assert.IsTrue(WebDriver.Url.EndsWith("profile/user-info"));
             Assert.AreEqual("Raffle House", WebDriver.Title);
         }
 

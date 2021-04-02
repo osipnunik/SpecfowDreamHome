@@ -49,7 +49,7 @@ Scenario: while edditing and remooving user add 1 credit
 	When input credit
 	When click save
 	Then message with text "Credits added" should appeared
-	Then last ticket should be with product and competition type as expected
-	When click edit on last ticket order
-	And click remove icon in new form
-	Then last ticket should not be with product and competition type as expected
+	#Then last ticket should be with product and competition type as expected
+	#When click edit on last ticket order
+	#And click remove icon in new form
+	#Then last ticket should not be with product and competition type as expected

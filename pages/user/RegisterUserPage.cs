@@ -33,7 +33,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement IAgreeSignUp => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("div.mainModalBtnGroup button")));
         private By LoggedNameBy => By.CssSelector("button[aria-controls='simple-menu'] div.header-drop-name span");
         private IWebElement LogedName => WebDriver.FindElement(LoggedNameBy);
-        private IWebElement EighteenCheckbox => WebDriver.FindElement(By.XPath("//p[text()='I am 18 years or older']/../..//input"));
+        private IWebElement EighteenCheckbox => WebDriver.FindElement(By.CssSelector("div.agreeBlock>label:first-child input[name='checkedB']"));//"//p[text()='I am 18 years or older']/../..//input"));
         private IWebElement LastElement => WebDriver.FindElement(By.CssSelector("div.mainModalWrap>p:last-of-type"));
         public string GetLoggedName()
         {

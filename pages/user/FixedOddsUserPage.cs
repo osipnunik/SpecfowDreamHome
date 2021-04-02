@@ -22,7 +22,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement DiscountPercent => WebDriver.FindElement(By.CssSelector("p.discount-percent"));
 
         private IList<IWebElement> FixedOdds => WebDriver.FindElements(By.CssSelector(".lifestyleProduct-mob .productTitle"));//.productTitle
-        private IWebElement LastFixedOddsTitle => WebDriver.FindElement(By.CssSelector(".lifestyleProduct-mob:last-child .productTitle p"));
+        private By LastFixedOddsTitle => By.CssSelector(".lifestyleProduct-mob:last-child .productTitle p");
         string ProductTitleText;
         private IWebElement ProductTitle => WebDriver.FindElement(By.XPath("//div[@class='productTitle']/p[text()='" + ProductTitleText + "']"));
         private IWebElement CartSummFromHeader => WebDriver.FindElement(By.CssSelector("button.headerBtnCart>span"));
@@ -34,12 +34,14 @@ namespace SpecFlowDreanLotteryHome.pages.user
         internal void ScrollAllPrizes()
         {
             string previousLastTitle;
+            IWebElement el;
             do
             {
-                previousLastTitle = LastFixedOddsTitle.Text;
-                ScrollToElement(LastFixedOddsTitle);
-                Thread.Sleep(1000);
-            } while (!LastFixedOddsTitle.Text.Equals(previousLastTitle));
+                el = WebDriver.FindElement(LastFixedOddsTitle);
+                previousLastTitle = el.Text;
+                ScrollToElement(el);
+                Thread.Sleep(1200);
+            } while (!WebDriver.FindElement(LastFixedOddsTitle).Text.Equals(previousLastTitle));
         }
         
         internal bool IsProductDiscount()

@@ -209,7 +209,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         public void InputCreditLastPercent(string input)
         {
-            Clearer.ClearInput(CreditLastPercentInput);
+            try { Clearer.ClearInput(CreditLastPercentInput); }
+            catch(ElementNotInteractableException e) { Thread.Sleep(1000); Clearer.ClearInput(CreditLastPercentInput); }
             CreditLastPercentInput.SendKeys(input);
         }
         public void ClickAddCredit() => AddCreditBtn.Click();

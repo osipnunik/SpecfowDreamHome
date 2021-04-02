@@ -285,18 +285,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 51
  testRunner.Then("message with text \"Credits added\" should appeared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 52
- testRunner.Then("last ticket should be with product and competition type as expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 53
- testRunner.When("click edit on last ticket order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 54
- testRunner.And("click remove icon in new form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 55
- testRunner.Then("last ticket should not be with product and competition type as expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
             }
             this.ScenarioCleanup();
         }

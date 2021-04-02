@@ -17,7 +17,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         }
         private By RefreshBy = By.CssSelector("button[title='Refresh']");
         private IWebElement UserManagementHref => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[title='User management']")));
-        private IWebElement StaffManagementHref => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[title='Staff management']")));
+        private IWebElement StaffManagementHref => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[href='#/staffUsers']")));//"a[title='Staff management']")));
         private IWebElement FirstColumnDownSort => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("th:nth-child(1) div.arrow-wrapper svg:last-child")));
         private IWebElement FirstColumnUpSort => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("th:nth-child(1) div.arrow-wrapper svg:first-child")));
         private IWebElement SecondColumnDownSort => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("th:nth-child(2) div.arrow-wrapper svg:last-child")));
