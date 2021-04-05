@@ -27,6 +27,13 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"click on credit")]
         public void WhenClickOnCredit() => generalP.ClickCreditTab();
 
+        [When(@"notice discounts")]
+        public void WhenNoticeDiscounts()
+        {
+            Dictionary<int, int> amountPercents = generalP.GetDiscounts();          
+            _scenarioContext.Add("amountPercents", amountPercents);
+        }
+
         [When(@"click on discount")]
         public void WhenClickOnDiscount() => generalP.ClickDiscountTab();
         
@@ -43,15 +50,15 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             }
             _scenarioContext.Add("eurosPercentsCredits", eurosPercents);
         }
-        [When(@"notice discounts")]
-        public void WhenNoticeDiscounts()
+        [When(@"notice credits")]
+        public void WhenNoticeCredits()
         {
-            Dictionary<int, int> amountPercents = generalP.GetDiscounts();          
+            Dictionary<int, int> amountPercents = generalP.GetCredits();//Discounts();          
             _scenarioContext.Add("eurosPercentsCredits", amountPercents);
         }
 
-        [When(@"make discount percents at Fixed Odds bigger on (.*) than on general admin page")]
-        public void WhenMakeDiscountPercentsAtFixedOddsBiggerOnThanOnGeneralAdminPage(int p0)
+        [When(@"make credit percents at Fixed Odds bigger on (.*) than on general admin page")]
+        public void WhenMakeCreditPercentsAtFixedOddsBiggerOnThanOnGeneralAdminPage(int p0)
         {
             Dictionary<int, int> eurosPercents = (Dictionary<int, int>)_scenarioContext["eurosPercentsCredits"];
             Dictionary<int, int> newEurosPercents = new Dictionary<int, int>(eurosPercents.Count);
@@ -61,7 +68,29 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             }            
             ScenarioContext.Current["eurosPercentsCredits"] = newEurosPercents;
         }
-        
+        [When(@"make discount percents at Fixed Odds bigger on (.*) than on general admin page")]
+        public void WhenMakeDiscountPercentsAtFixedOddsBiggerOnThanOnGeneralAdminPage(int p0)
+        {
+            Dictionary<int, int> amountPercents = (Dictionary<int, int>)_scenarioContext["amountPercents"];
+            Dictionary<int, int> newEurosPercents = new Dictionary<int, int>(amountPercents.Count);
+            foreach (KeyValuePair<int, int> keyValue in amountPercents)
+            {
+                newEurosPercents.Add(keyValue.Key, keyValue.Value + 1);
+            }
+            ScenarioContext.Current["amountPercents"] = newEurosPercents;
+        }
+
+        /* [When(@"make discount percents at Fixed Odds bigger on (.*) than on general admin page")]
+         public void WhenMakeDiscountPercentsAtFixedOddsBiggerOnThanOnGeneralAdminPage(int p0)
+         {
+             Dictionary<int, int> eurosPercents = (Dictionary<int, int>)_scenarioContext["eurosPercentsCredits"];
+             Dictionary<int, int> newEurosPercents = new Dictionary<int, int>(eurosPercents.Count);
+             foreach (KeyValuePair<int, int> keyValue in eurosPercents)
+             {
+                 newEurosPercents.Add(keyValue.Key, keyValue.Value + 1);
+             }
+             ScenarioContext.Current["eurosPercentsCredits"] = newEurosPercents;
+         }*/
 
     }
 }

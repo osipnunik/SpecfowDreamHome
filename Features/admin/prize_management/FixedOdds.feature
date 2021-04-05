@@ -18,6 +18,58 @@ Scenario: Create fixed odds Prize
 	And created title exist in list
 
 @admin
+Scenario: checking prize discounts of fresh-created Fixed odds with fixed odds discounts
+	Given admin logged in
+	Given go to general	
+
+	When notice discounts 
+	Given admin logged in
+	And click Fixed odds
+	When click add new prize
+    When input Life Style prize (car) title unique randomly generated
+	When upload non house main picture
+	When input in about "Car about text." text
+	When click active checkbox
+	When go to Discount & ticket tab at Life prize
+    When input ticket price value 6
+    When input default number of tickets 10	
+	When input Number of tickets value 100
+	When go to Discount & ticket tab at Life prize
+
+	When make discount percents at Fixed Odds bigger on 1 than on general admin page
+	#When click on status in credits tab	
+	When click on status in discounts tab	
+	#When set credits euroes and percents as defined earlier
+	When set discounts amount and percents as defined earlier
+
+	When click fixed odds save button	
+	When user(client) login on web with login "proton001@lenta.ru" and pass "sobaka1"
+	Then on header should be displayed "Vania"
+	#Jast"
+	When user go to Fexed Odds
+	When user scroll untill additional prizes appeared
+	When click on earlier random generated title
+	
+	Then product popup appeares
+	Then check default number of tickets 11, total Number of tickets as 102 and ticket old price value as 7
+	When user choose number randomly
+	Then he will see that number in TICKETS QUANITY
+	Then user check total price, total saving, them currency %Off
+	Then discount table are as noticed earlier
+	When notice Credit earned if they exist
+	#Then credit calculated as at Admin General expected
+	When user click on buy now 
+	Then user on basket page
+	Then user see title, price per ticket, total amount of ticket and total price as expected
+	Then user calculate data from multiple products
+	#Then user see Total Saving and Credit earned as expected if they exist
+	When user click Pay
+	Then user redirected to cards payment page
+	When user input card data
+	And click pay button
+	Then user see order completed header
+	
+@admin
 Scenario: checking discounts of fresh-created Fixed odds without fixed odds discounts
 	Given admin logged in
 	And click Fixed odds
@@ -34,7 +86,7 @@ Scenario: checking discounts of fresh-created Fixed odds without fixed odds disc
 
 	When click fixed odds save button
 	Given go to general	
-	When notice discounts 
+	When notice discounts
 	When user(client) login on web with login "proton001@lenta.ru" and pass "sobaka1"
 	Then on header should be displayed "Vania"
 	#Jast"
@@ -123,9 +175,9 @@ Scenario: checking credits of fresh-created Fixed odds with fixed odds credit(no
     When input default number of tickets 10	
 	When input Number of tickets value 100
 	#When go to Discount & ticket tab at Life prize
-	When make discount percents at Fixed Odds bigger on 1 than on general admin page
+	When make credit percents at Fixed Odds bigger on 1 than on general admin page
 	When click on status in credits tab	
-	When set discount euroes and percents as defined earlier
+	When set credits euroes and percents as defined earlier
 	When click fixed odds save button
 	
 	When user(client) login on web with login "proton001@lenta.ru" and pass "sobaka1"

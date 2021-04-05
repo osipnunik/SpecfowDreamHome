@@ -110,6 +110,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IWebElement CreditLastEuroInput => WebDriver.FindElement(By.XPath("(//input[@name='count'])[last()]"));
         private IWebElement CreditLastPercentInput => WebDriver.FindElement(By.XPath("(//input[@name='percent'])[last()]"));
         private IWebElement AddCreditBtn => WebDriver.FindElement(By.CssSelector("svg.add-discount"));
+        private IWebElement DiscountTicketAmountInput => WebDriver.FindElement(By.XPath("(//label[text()='threshold']/..//input)[last()]"));
+        private IWebElement DiscountPercentInput => WebDriver.FindElement(By.XPath("(//label[text()='%']/..//input)[last()]"));
 
         private IWebElement LastHomeUpdate => WebDriver.FindElement(By.XPath("(//table//a[@aria-label='Edit'])[last()]"));
         private IWebElement LastHomeCreate => WebDriver.FindElement(By.XPath("(//table//a[@aria-label='Clone'])[last()]"));
@@ -214,6 +216,19 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             CreditLastPercentInput.SendKeys(input);
         }
         public void ClickAddCredit() => AddCreditBtn.Click();
+
+        public void InputDiscountLastAmount(string input)
+        {
+            try { Clearer.ClearInput(DiscountTicketAmountInput); }
+            catch (ElementNotInteractableException) { Thread.Sleep(1000); Clearer.ClearInput(DiscountTicketAmountInput); }
+            DiscountTicketAmountInput.SendKeys(input);
+        }
+        public void InputDiscountLastPercent(string input)
+        {
+            try { Clearer.ClearInput(DiscountPercentInput); }
+            catch (ElementNotInteractableException) { Thread.Sleep(1000); Clearer.ClearInput(DiscountPercentInput); }
+            DiscountPercentInput.SendKeys(input);
+        }
         internal void InputPriceDiscountTab(string p0)
         {
             DiscountNewPrice.SendKeys(Keys.Backspace); DiscountNewPrice.SendKeys(Keys.Backspace);

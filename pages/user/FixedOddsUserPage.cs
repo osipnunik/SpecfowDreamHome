@@ -31,6 +31,11 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         internal void ClickOnFirstProduct() => JSClick(FirstTitle);//FirstTitle.Click();
 
+        public void ScrollAllPrizesWithJs()
+        {
+            base.ScrollAllElementOnFixedOdds(WebDriver.FindElement(LastFixedOddsTitle));
+        }
+
         internal void ScrollAllPrizes()
         {
             string previousLastTitle;
@@ -40,7 +45,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
                 el = WebDriver.FindElement(LastFixedOddsTitle);
                 previousLastTitle = el.Text;
                 ScrollToElement(el);
-                Thread.Sleep(1200);
+                Thread.Sleep(1500);
             } while (!WebDriver.FindElement(LastFixedOddsTitle).Text.Equals(previousLastTitle));
         }
         
@@ -53,10 +58,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
             {
                 return false;
             }
-            else
-            {
-                throw new Exception("1 or 3 p in prices");
-            }
+            else {throw new Exception("1 or 3 p in prices");}
         }
 
         internal int GetSizeOfFixedOddsList() => FixedOdds.Count;

@@ -4,6 +4,7 @@ using SpecFlowDreanLotteryHome.utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace SpecFlowDreanLotteryHome.pages
 {
@@ -44,6 +45,17 @@ namespace SpecFlowDreanLotteryHome.pages
         {
             IJavaScriptExecutor jse = (IJavaScriptExecutor)WebDriver;
             jse.ExecuteScript("window.scrollTo(0,0);");
+        }
+        public void ScrollAllElementOnFixedOdds(IWebElement el)
+        {
+            string s = "let i = 0;while(true){let lastTitleCss='.lifestyleProduct-mob:last-child .productTitle p'; let firstT = document.querySelector(lastTitleCss).innerText; document.querySelector(lastTitleCss).scrollIntoView();await new Promise(resolve => setTimeout(resolve, 1000));if (document.querySelector(lastTitleCss).innerHTML == (firstT)){ i++;if(i >= 3){break;}}else{i = 0;}}";
+
+            //string s = "let i = 0;while(true){let firstT = arguments[0].innerText; arguments[0].scrollIntoView();await new Promise(resolve => setTimeout(resolve, 800));if (arguments[0].innerHTML == (firstT)){ i++;if (i >= 4) { break; }}}";
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)WebDriver;
+
+            try { jse.ExecuteAsyncScript(s); }
+            catch(WebDriverTimeoutException) { }
+            Thread.Sleep(1000);
         }
         public void ScrollToElement(IWebElement el)
         {

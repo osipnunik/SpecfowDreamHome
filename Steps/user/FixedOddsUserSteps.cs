@@ -23,7 +23,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         [When(@"user scroll untill additional prizes appeared")]
         public void WhenUserScrollUntillAdditionalPrizesAppeared()
         {
-            FixedOddsP.ScrollAllPrizes();
+            FixedOddsP.ScrollAllPrizesWithJs();
         }
 
         [When(@"notice all info about first product from fixedOddsList")]

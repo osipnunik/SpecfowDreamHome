@@ -81,7 +81,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         [Then(@"discount table are as noticed earlier")]
         public void ThenDiscountTableAreAsNoticedEarlier()
         {
-            Dictionary<int, int> expectedDiscount = (Dictionary<int, int>)_scenarioContext["eurosPercentsCredits"];
+            Dictionary<int, int> expectedDiscount = (Dictionary<int, int>)_scenarioContext["amountPercents"];
             Dictionary<int, int> dialogDiscount = dialogP.GetDiscountsFromPrizeDialog();
             foreach (KeyValuePair<int, int> keyValue in expectedDiscount)
             {

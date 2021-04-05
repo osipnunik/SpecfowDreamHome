@@ -334,6 +334,13 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             dreamHomePg.ClickCreditStatus();
         }
+        [When(@"click on status in discounts tab")]
+        public void WhenClickOnStatusInDiscountsTab()
+        {
+            dreamHomePg.ClickDiscountStatus();
+        }
+        
+
         [When(@"input new price is in discount tab (.*)")]
         public void WhenInputNewPriceIsInDiscountTab(string p0)
         {
@@ -479,8 +486,8 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             dreamHomePg.InputDefaultNumbersOfTickets(p0, true);
         }
-        [When(@"set discount euroes and percents as defined earlier")]
-        public void WhenSetDiscountEuroesAndPercentsAsDefinedEarlier()
+        [When(@"set credits euroes and percents as defined earlier")]
+        public void WhenSetCreditsEuroesAndPercentsAsDefinedEarlier()
         {
             Dictionary<int, int> eurosPercents = (Dictionary<int, int>)_scenarioContext["eurosPercentsCredits"];
             int i = 0;
@@ -490,6 +497,19 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
                 dreamHomePg.InputCreditLastPercent(keyValue.Value.ToString());
                 i++;
                 if(i <= eurosPercents.Count - 1) { dreamHomePg.ClickAddCredit(); }
+            }
+        }
+        [When(@"set discounts amount and percents as defined earlier")]
+        public void WhenSetDiscountsAmountAndPercentsAsDefinedEarlier()
+        {
+            Dictionary<int, int> amountPercents = (Dictionary<int, int>)_scenarioContext["amountPercents"];
+            int i = 0;
+            foreach (KeyValuePair<int, int> keyValue in amountPercents)
+            {
+                dreamHomePg.InputDiscountLastAmount(keyValue.Key.ToString());
+                dreamHomePg.InputDiscountLastPercent(keyValue.Value.ToString());
+                i++;
+                if (i <= amountPercents.Count - 1) { dreamHomePg.ClickAddCredit(); }
             }
         }
     }

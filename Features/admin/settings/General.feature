@@ -1,7 +1,7 @@
 ﻿Feature: General
 	one scenario located at fixed odds
 
-#Scenario: 
+Scenario: create lifeCycle with discount 
 
 
 

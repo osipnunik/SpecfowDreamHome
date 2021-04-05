@@ -41,7 +41,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         internal Dictionary<int, int> GetDiscounts()
         {
             Dictionary<int, int> amountPercentdiscount = new Dictionary<int, int>();
-            for (int i = 0; i < CurrencyInputs.Count; i++)
+            for (int i = 0; i < DiscountTicketAmountInput.Count; i++)
             {
                 amountPercentdiscount.Add(int.Parse(DiscountTicketAmountInput[i].GetAttribute("value")), int.Parse(PercentInputs[i].GetAttribute("value")));
             }
