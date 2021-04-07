@@ -468,19 +468,16 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             dreamHomePg.InputSizeInp(p0, true);
         }
-
         [When(@"update Energy as ""(.*)""")]
         public void WhenUpdateEnergyAs(string p0)
         {
             dreamHomePg.InputEnergyInp(p0, true);
         }
-
         [When(@"update ticket price value (.*)")]
         public void WhenUpdateTicketPriceValue(string p0)
         {
             dreamHomePg.InputTicketPrice(p0, true);
         }
-
         [When(@"update default number of tickets (.*)")]
         public void WhenUpdateDefaultNumberOfTickets(string p0)
         {
@@ -497,6 +494,12 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
                 dreamHomePg.InputCreditLastPercent(keyValue.Value.ToString());
                 i++;
                 if(i <= eurosPercents.Count - 1) { dreamHomePg.ClickAddCredit(); }
+            }
+            if(eurosPercents.Count == 0)
+            {
+                eurosPercents.Add(20, 30); //default value seted by default
+                _scenarioContext.Remove("eurosPercentsCredits");
+                _scenarioContext.Add("eurosPercentsCredits", eurosPercents);
             }
         }
         [When(@"set discounts amount and percents as defined earlier")]

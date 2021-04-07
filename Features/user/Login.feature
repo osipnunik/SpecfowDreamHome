@@ -24,7 +24,7 @@ Scenario: as a user i want register the user
    # And click i agree
     Then user redirected to user-info page
     Then name displayed at right upper footer
-    
+    Then user on user-info page should be as expected
 
 
 

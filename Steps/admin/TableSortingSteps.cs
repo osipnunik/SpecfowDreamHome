@@ -60,7 +60,9 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             for (int i = 0; i < idies.Count - 1; i++)
             {
                 int nextMore = idies[i].CompareTo(idies[i + 1]);
-                Assert.IsTrue(nextMore >= 0);
+                if(nextMore < 0) 
+                { i--; idies = sortPage.GetFirstTableDatatd(); }
+                Assert.IsTrue(nextMore >= 0, idies[i]);
             }
         }
 
@@ -233,7 +235,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             for (int i = 0; i < firstNames.Count - 1; i++)
             {
                 int nextMore = firstNames[i].Trim().CompareTo(firstNames[i + 1].Trim());
-                Assert.IsTrue(nextMore >= 0, firstNames[i]+"~"+ firstNames[i + 1]);
+                if(!firstNames[i].Equals("") && !firstNames[i+1].Equals("")) Assert.IsTrue(nextMore >= 0, firstNames[i]+"~"+ firstNames[i + 1]);
             }
         }
 

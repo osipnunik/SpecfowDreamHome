@@ -20,6 +20,12 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         private IList<IWebElement> CategoryNames => WebDriver.FindElements(By.CssSelector("div.cardsItems:first-child div.itemName"));
         private IList<IWebElement> CategoryItems => WebDriver.FindElements(By.CssSelector("div.cardsItems:first-child .buttonItem"));
+        string CategoryNameString;
+        private IWebElement CategoryOfLSP => WebDriver.FindElement(By.XPath("//div[@class='itemName' and text()='"+CategoryNameString+"']"));
+        string SubCategoryNameString;
+        private IWebElement SubCategoryOfLSP => WebDriver.FindElement(By.XPath("//div[@class='cardsItems secondItem']//div[@class='itemName' and text()='" + SubCategoryNameString + "']"));
+        string TitleString;
+        private IWebElement PrizeTitle => WebDriver.FindElement(By.XPath("//div[@class='productTitle']/p[text()='"+TitleString+"']"));
         private IList<IWebElement> SubCategoryNames => WebDriver.FindElements(By.CssSelector("div.secondItem div.itemName"));
         private IList<IWebElement> Products => WebDriver.FindElements(By.CssSelector("div.lifestyleProduct-mob"));
         private IWebElement FirstProductTitle => WebDriver.FindElement(By.CssSelector("div.productTitle p"));
@@ -215,8 +221,28 @@ namespace SpecFlowDreanLotteryHome.pages.user
         {
             return ProductList;
         }
-        public void ClickBuyNowBtn() => BuyNowBtn.Click();
-
+        public void ClickBuyNowBtn()
+        {
+            try { BuyNowBtn.Click(); }
+            catch (ElementClickInterceptedException) { JSClick(BuyNowBtn); }
+        }
         internal void ClickEnterNow() => EnterNowBtn.Click();
+
+        internal void ClickCategoryOfLSP(string categName)
+        {
+            CategoryNameString = categName;
+            CategoryOfLSP.Click();
+        }
+        internal void ClickSubCategoryOfLSP(string subCategName)
+        {
+            SubCategoryNameString = subCategName;
+            SubCategoryOfLSP.Click();
+        }
+        internal void ClickPrizeTitleLSP(string titleName)
+        {
+            TitleString = titleName;
+            try { PrizeTitle.Click(); }
+            catch (ElementClickInterceptedException) { JSClick(PrizeTitle); }
+        }
     }
 }

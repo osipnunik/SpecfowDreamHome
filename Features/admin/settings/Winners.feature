@@ -37,9 +37,10 @@ Scenario: Create Winner and delete him
 	#And go to description 
 	When input random title
 	When input picture
+	When input winner draw date and time
 	And click Save
-	When click Winners
 	Then message with text "Winner saved" should appeared
+	When click Winners	
 	When Change pagination to 25
 	When click Last page
 	Then winner with generated title should present in winner list

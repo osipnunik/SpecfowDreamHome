@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlowDreanLotteryHome.Features.User
+namespace SpecFlowDreanLotteryHome.Features.Admin.Prize_Management
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,22 +19,26 @@ namespace SpecFlowDreanLotteryHome.Features.User
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("LifeStylePrizesUser", SourceFile="Features\\user\\LifeStylePrizes.feature", SourceLine=0)]
-    public partial class LifeStylePrizesUserFeature
+    [TechTalk.SpecRun.FeatureAttribute("LyfeStylePrizeAdmin-User", Description="\tCalendar part of credit should be tested. Lyfestyle prize is a fastest prize for" +
+        " navigation after dream home.\r\n\tSo while creating we can switch credits/discount" +
+        "", SourceFile="Features\\admin\\prize_management\\LyfeStylePrizeAdmin-User.feature", SourceLine=0)]
+    public partial class LyfeStylePrizeAdmin_UserFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "LifeStylePrizes.feature"
+#line 1 "LyfeStylePrizeAdmin-User.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/user", "LifeStylePrizesUser", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/admin/prize_management", "LyfeStylePrizeAdmin-User", "\tCalendar part of credit should be tested. Lyfestyle prize is a fastest prize for" +
+                    " navigation after dream home.\r\n\tSo while creating we can switch credits/discount" +
+                    "", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -70,19 +74,15 @@ namespace SpecFlowDreanLotteryHome.Features.User
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("as user i want to see all info on LyfeSycle prize site as on admin LifeSycle priz" +
-            "e page", new string[] {
-                "user"}, SourceLine=3)]
-        [TechTalk.SpecRun.IgnoreAttribute()]
-        public virtual void AsUserIWantToSeeAllInfoOnLyfeSyclePrizeSiteAsOnAdminLifeSyclePrizePage()
+        [TechTalk.SpecRun.ScenarioAttribute("LyfeStylePrizeAdmin creation and checking price, discount and all info", new string[] {
+                "mytag"}, SourceLine=5)]
+        public virtual void LyfeStylePrizeAdminCreationAndCheckingPriceDiscountAndAllInfo()
         {
             string[] tagsOfScenario = new string[] {
-                    "user",
-                    "ignore"};
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("as user i want to see all info on LyfeSycle prize site as on admin LifeSycle priz" +
-                    "e page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 4
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("LyfeStylePrizeAdmin creation and checking price, discount and all info", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -102,120 +102,123 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 5
+#line 7
  testRunner.Given("admin logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 6
+#line 8
     testRunner.And("click Life Style prize", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 7
- testRunner.When("change paginarion prizes per page as 100", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 8
- testRunner.When("go to active life style prizes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 9
- testRunner.When("logged admin get all lifeStylePrizes and notice them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 10
+ testRunner.When("click add new prize", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
- testRunner.When("user(client) login on web with login \"proton001@lenta.ru\" and pass \"sobaka1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("input Life Style prize (car) title randomly generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
- testRunner.When("user go to lifestyleprizes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("upload non house main picture", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
- testRunner.When("notice list of categories", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("input in about \"this car is very expansive and perfect\" text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 14
- testRunner.Then("admin category, subcategory, title should be same as on user site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("click active checkbox", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("as a user i want to buy on basket from account", SourceLine=15)]
-        public virtual void AsAUserIWantToBuyOnBasketFromAccount()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("as a user i want to buy on basket from account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 15
+ testRunner.When("choose category \"Luxury\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 16
-this.ScenarioInitialize(scenarioInfo);
+ testRunner.When("choose subcategoty \"Ferrary\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
 #line 17
- testRunner.When("user(client) login on web with login \"proton001@lenta.ru\" and pass \"sobaka1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("go to Discount & ticket tab at Life prize", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 18
- testRunner.Then("on header should be displayed \"Vania\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.When("input ticket price value 6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 19
+    testRunner.When("input default number of tickets 15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 20
- testRunner.When("user go to lifestyleprizes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("click on status in Discount tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 21
- testRunner.When("click on first product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("notice the product with non-discount price 6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 22
+#line 25
+ testRunner.When("go to Discount & ticket tab at Life prize", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 26
+    testRunner.When("click save button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 27
+ testRunner.Then("popup with message \"Prize saved\" appears", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 29
+ testRunner.Given("go to general", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 30
+ testRunner.When("notice discounts", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 31
+ testRunner.When("user(client) login on web with login \"proton001@lenta.ru\" and pass \"sobaka1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 32
+ testRunner.Then("on header should be displayed \"Vania\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 33
+ testRunner.When("user go to lifestyleprizes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 34
+ testRunner.When("user click on category \"Luxury\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 35
+ testRunner.When("user click on subCategory \"Ferrary\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 36
+ testRunner.When("user click on autogenerateg earlier LifeStile Prize title", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 38
  testRunner.When("notice all info about product(title, nonDisc price or old price, new price, perce" +
                         "nt)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 23
+#line 39
  testRunner.Then("product popup appeares", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 24
- testRunner.Then("price should be as was on product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 25
+#line 41
  testRunner.Then("product name should be as noticed earlier", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 26
+#line 42
  testRunner.When("user choose number randomly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 27
+#line 43
  testRunner.Then("he will see that number in TICKETS QUANITY", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 28
+#line 44
  testRunner.When("check total price on product dialog popup and totalSaving", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 29
+#line 45
  testRunner.When("notice Credit earned if they exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 30
+#line 46
  testRunner.When("user click on buy now", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 31
+#line 47
  testRunner.Then("user on basket page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 32
+#line 48
  testRunner.Then("user see title, price per ticket, total amount of ticket and total price as expec" +
                         "ted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 33
+#line 49
  testRunner.Then("user calculate data from multiple products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 37
+#line 51
  testRunner.When("user input card data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 38
+#line 52
  testRunner.And("click pay button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 39
+#line 53
  testRunner.Then("user see order completed header", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

@@ -16,7 +16,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             Paginats = new PaginationFragment(webDriver);
         }
         private By RefreshBy = By.CssSelector("button[title='Refresh']");
-        private IWebElement UserManagementHref => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[title='User management']")));
+        private IWebElement UserManagementHref => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[href='#/users']")));
         private IWebElement StaffManagementHref => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[href='#/staffUsers']")));//"a[title='Staff management']")));
         private IWebElement FirstColumnDownSort => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("th:nth-child(1) div.arrow-wrapper svg:last-child")));
         private IWebElement FirstColumnUpSort => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("th:nth-child(1) div.arrow-wrapper svg:first-child")));
@@ -40,7 +40,10 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         private IList<IWebElement> FourthRowDatath => WebDriver.FindElements(By.CssSelector("tbody tr th:nth-child(4)"));
 
         public void ClickFirstColumnDownSort() => FirstColumnDownSort.Click();
-        public void ClickFirstColumnUpSort() => FirstColumnUpSort.Click();
+        public void ClickFirstColumnUpSort() {
+            try { FirstColumnUpSort.Click(); }
+            catch (ElementClickInterceptedException) { JSClick(FirstColumnUpSort); }
+        }
         public void ClickSecondColumnDownSort()
         {
             ScrollToElement(WebDriver.FindElement(RefreshBy));

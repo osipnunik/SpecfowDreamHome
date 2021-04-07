@@ -30,7 +30,7 @@ namespace SpecFlowDreanLotteryHome.pages
         private IWebElement AddPrize => WebDriver.FindElement(By.CssSelector("a.add-button"));
         public void ClickAddPrize() => AddPrize.Click();
 
-        private IWebElement Addnew => WebDriver.FindElement(By.CssSelector("a[aria-label = 'Add new ']"));
+        private IWebElement Addnew => WebDriver.FindElement(By.CssSelector("a[aria-label='Add new ']"));
         public void ClickAddNew() => Addnew.Click();
 
         private IWebElement SaveBtn => WebDriver.FindElement(By.CssSelector("div[role='toolbar'] button:nth-child(1)"));

@@ -55,9 +55,9 @@ namespace SpecFlowDreanLotteryHome.pages.user
             double sum = 0;
             foreach (string yourPrice in YourPrices)
             {
-                string[] arr = yourPrice.Split(" ");
-                Assert.AreEqual("£", arr[0]);
-                sum += double.Parse(arr[1]);
+               // string pr = //yourPrice.Split(" ");
+                Assert.AreEqual("£", yourPrice.Substring(0, 1));
+                sum += double.Parse(yourPrice.Substring(1));
             }
             return sum;
         }
@@ -67,9 +67,8 @@ namespace SpecFlowDreanLotteryHome.pages.user
             double sum = 0;
             foreach (string totalPrice in TotalPrices)
             {
-                string[] arr = totalPrice.Split(" ");
-                Assert.AreEqual("£", arr[0]);
-                sum += double.Parse(arr[1]);
+                Assert.AreEqual("£", totalPrice.Substring(0, 1));
+                sum += double.Parse(totalPrice.Substring(1));
             }
             return sum;
         }

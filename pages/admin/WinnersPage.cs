@@ -55,6 +55,8 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         private IWebElement PictureToUploadAria => WebDriver.FindElement(By.CssSelector("div[data-testid='dropzone']"));//(By.Id("photoUrl"));
         private IWebElement InputPicture => WebDriver.FindElement(By.Id("photoUrl"));//(By.Id("photoUrl"));
+        private IWebElement DrawDateInput => WebDriver.FindElement(By.Id("drawDate"));
+        //private IWebElement DrawDateInput => WebDriver.FindElement(By.Id("drawDate"));
         private IWebElement SaveBtn => WebDriver.FindElement(By.XPath("//button/span[text()='Save']"));
 
         internal void ClickWinners() => WinnersHref.Click();
@@ -138,11 +140,14 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         }
         public void instertPic()
         {            
-            InputPicture.SendKeys(MainHomePicPath); 
-        /*    IJavaScriptExecutor js = (IJavaScriptExecutor)WebDriver;
-            js.ExecuteScript("arguments[0].setAttribute('style', arguments[1])", WebDriver.FindElement(By.XPath("//input[@type='file']")), "0");
-            js.ExecuteScript("arguments[0].setAttribute('class', arguments[1])", WebDriver.FindElement(By.XPath("//input[@type='file']/../../div[2]")), "a");
-            WebDriver.FindElement(By.XPath("//input[@type='file']")).SendKeys("Your Path to the file your system")*/;
+            InputPicture.SendKeys(MainHomePicPath);        
+        }
+
+        internal void InputDateTime()
+        {
+            DrawDateInput.SendKeys("06052121"+ Keys.ArrowRight+ "1051");
+            //DrawDateInput.SendKeys(Keys.ArrowRight+ Keys.ArrowLeft+ Keys.ArrowLeft);
+           // DrawDateInput.SendKeys("1051");
         }
 
         internal void ClickDescription()

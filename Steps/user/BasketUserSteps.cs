@@ -37,9 +37,9 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             int expectAmount = (int)_scenarioContext["ticketQuantity"];
             double expectedTotalPrice = expectedPrice * expectAmount;
             Assert.AreEqual(expectedProd.Title, basketP.GetLastProductTitle());
-            Assert.AreEqual("£ " + expectedPrice.ToString("N2").Replace(",", ""), basketP.GetLastProductPrice());
+            Assert.AreEqual("£" + expectedPrice.ToString("N2").Replace(",", ""), basketP.GetLastProductPrice());
             Assert.AreEqual(expectAmount.ToString(), basketP.GetLastProductAmount());
-            string expectedTotalPriceRounded = "£ " + expectedTotalPrice.ToString("N2").Replace(",", "");
+            string expectedTotalPriceRounded = "£" + expectedTotalPrice.ToString("N2").Replace(",", "");
             Assert.IsTrue(expectedTotalPriceRounded.StartsWith(basketP.GetLastProductTotalPrice()));
             //Assert.IsTrue(double.Parse(basketP.GetTotalPriceValue().Replace("£", ""))/Math.Round(expectedTotalPrice, 2) % 1 == 0);
         }
@@ -47,9 +47,9 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void ThenUserCalculateDataFromMultipleProducts()
         {
             double yourPricesSum = basketP.GetYourPricesSumCheckCurrency();
-            Assert.AreEqual("£ " + yourPricesSum.ToString("N2").Replace(",", ""), basketP.GetTotalPriceValue());
+            Assert.AreEqual("£" + yourPricesSum.ToString("N2").Replace(",", ""), basketP.GetTotalPriceValue());
             string diff = (basketP.GetTotalPricesSumCheckCurrency() - yourPricesSum).ToString("N2").Replace(",", "");
-            Assert.AreEqual("£ " + diff, basketP.GetTotalSaving());
+            Assert.AreEqual("£" + diff, basketP.GetTotalSaving());
         }
 
         [Then(@"user see Total Saving and Credit earned as expected if they exist")]

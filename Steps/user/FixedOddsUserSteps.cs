@@ -2,6 +2,7 @@
 using SpecFlowDreanLotteryHome.entities.user;
 using SpecFlowDreanLotteryHome.pages.user;
 using System;
+using System.Threading;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowDreanLotteryHome.Steps.user
@@ -90,7 +91,14 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             double dialogCredit = double.Parse(credEarn.Substring(2));
             double initialCredit = double.Parse((string)_scenarioContext["headerCredits"]);
             string actualCredit = double.Parse(FixedOddsP.GetCreditFromHeaderBtnCart()).ToString("N2");
-            Assert.AreEqual((dialogCredit + initialCredit).ToString("N2"), actualCredit, "earned not increase header cart appropriate");
+            bool equal = (dialogCredit + initialCredit).ToString("N2").Equals(actualCredit);
+            if (equal) { Assert.IsTrue(equal); }
+            else {
+                Thread.Sleep(1500);
+                actualCredit = double.Parse(FixedOddsP.GetCreditFromHeaderBtnCart()).ToString("N2");
+                Assert.AreEqual((dialogCredit + initialCredit).ToString("N2"), actualCredit, "earned not increase header cart appropriate"+ (dialogCredit + initialCredit)+
+                    " "+ dialogCredit+" "+ initialCredit); 
+            }
         }
         [When(@"click on earlier random generated title")]
         public void WhenClickOnEarlierRandomGeneratedTitle()

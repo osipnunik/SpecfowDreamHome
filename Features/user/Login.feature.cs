@@ -207,6 +207,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 26
     testRunner.Then("name displayed at right upper footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+#line 27
+    testRunner.Then("user on user-info page should be as expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

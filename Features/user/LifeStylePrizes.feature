@@ -1,7 +1,6 @@
 ﻿Feature: LifeStylePrizesUser
 
-@ignore
-@user 
+@user @ignore
 Scenario: as user i want to see all info on LyfeSycle prize site as on admin LifeSycle prize page
 	Given admin logged in
     And click Life Style prize
@@ -33,8 +32,8 @@ Scenario: as a user i want to buy on basket from account
 	Then user see title, price per ticket, total amount of ticket and total price as expected
 	Then user calculate data from multiple products
 	#Then user see Total Saving and Credit earned as expected if they exist
-	When user click Pay
-	Then user redirected to cards payment page
+	#When user click Pay
+	#Then user redirected to cards payment page
 	When user input card data
 	And click pay button
 	Then user see order completed header

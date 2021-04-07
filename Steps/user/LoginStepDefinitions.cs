@@ -19,7 +19,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         private static string LoginUserURL = MainUserPageURL + "/sign-in";
         private RegisterUserPage regsPg = new RegisterUserPage(WebDriver);
         private AutogeneratorService boggus = new AutogeneratorService();
-
+        private UserInfoPage UserInfoP = new UserInfoPage(WebDriver);
         public LoginStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
@@ -102,6 +102,15 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             regsPg.ClickOnCountryChooser();
             regsPg.ClickOnRandomCuntry(); 
             regsPg.Ckeckbox18First();
+        }
+        [Then(@"user on user-info page should be as expected")]
+        public void ThenUserOnUser_InfoPageShouldBeAsExpected()
+        {
+            User user = (User)_scenarioContext["user"];
+            Assert.AreEqual(UserInfoP.GetFirstName(), user.FirstName);
+            Assert.AreEqual(UserInfoP.GetLastName(), user.LastName);
+            Assert.AreEqual(UserInfoP.GetEmail(), user.Email);
+            Assert.AreEqual(UserInfoP.GetPhone(), user.Phone);
         }
 
         [When(@"user press sign up button")]

@@ -280,12 +280,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 64
  testRunner.Then("user calculate data from multiple products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 66
- testRunner.When("user click Pay", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 67
- testRunner.Then("user redirected to cards payment page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
 #line 68
  testRunner.When("user input card data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -422,12 +416,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 108
  testRunner.Then("user calculate data from multiple products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 110
- testRunner.When("user click Pay", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 111
- testRunner.Then("user redirected to cards payment page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
 #line 112
  testRunner.When("user input card data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -509,79 +497,76 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("click fixed odds save button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 132
- testRunner.Given("go to general", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Then("popup with message \"Fixed Odds saved\" appears", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 133
- testRunner.When("click on credit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("go to general", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 134
- testRunner.Then("notice credits and check it with credits per Funt", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("click on credit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 135
- testRunner.When("user(client) login on web with login \"proton001@lenta.ru\" and pass \"sobaka1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Then("notice credits and check it with credits per Funt", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 136
+ testRunner.When("user(client) login on web with login \"proton001@lenta.ru\" and pass \"sobaka1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 137
  testRunner.Then("on header should be displayed \"Vania\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 138
+#line 139
  testRunner.When("user go to Fexed Odds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 139
+#line 140
  testRunner.When("notice initial credit amount", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 140
+#line 141
  testRunner.When("user scroll untill additional prizes appeared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 141
+#line 142
  testRunner.When("click on earlier random generated title", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 143
+#line 144
  testRunner.Then("product popup appeares", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 144
+#line 145
  testRunner.When("user choose number randomly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 145
+#line 146
  testRunner.Then("he will see that number in TICKETS QUANITY", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 146
+#line 147
  testRunner.Then("user check total price, total saving, them currency %Off", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 147
+#line 148
  testRunner.When("notice Credit earned if they exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 148
+#line 149
  testRunner.Then("credit calculated as at Admin General expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 149
+#line 150
  testRunner.When("user click on buy now", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 150
+#line 151
  testRunner.Then("user on basket page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 151
+#line 152
  testRunner.Then("user see title, price per ticket, total amount of ticket and total price as expec" +
                         "ted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 152
+#line 153
  testRunner.Then("user calculate data from multiple products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 154
- testRunner.When("user click Pay", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 155
- testRunner.Then("user redirected to cards payment page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 156
+#line 157
  testRunner.When("user input card data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 157
+#line 158
  testRunner.And("click pay button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 158
+#line 159
  testRunner.Then("user see order completed header", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 159
+#line 160
  testRunner.Then("credit amount should be the sum of initial credit amount and rememberd", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -590,7 +575,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [TechTalk.SpecRun.ScenarioAttribute("checking credits of fresh-created Fixed odds with fixed odds credit(not on genera" +
             "l)", new string[] {
-                "admin"}, SourceLine=161)]
+                "admin"}, SourceLine=162)]
         public virtual void CheckingCreditsOfFresh_CreatedFixedOddsWithFixedOddsCreditNotOnGeneral()
         {
             string[] tagsOfScenario = new string[] {
@@ -598,7 +583,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("checking credits of fresh-created Fixed odds with fixed odds credit(not on genera" +
                     "l)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 162
+#line 163
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -618,138 +603,132 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 163
+#line 164
  testRunner.Given("admin logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 164
+#line 165
  testRunner.Given("go to general", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 165
+#line 166
  testRunner.When("click on credit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 166
+#line 167
  testRunner.Then("notice credits and check it with credits per Funt", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 167
+#line 168
  testRunner.Given("click Fixed odds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 168
+#line 169
  testRunner.When("click add new prize", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 169
+#line 170
     testRunner.When("input Life Style prize (car) title unique randomly generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 170
+#line 171
  testRunner.When("upload non house main picture", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 171
+#line 172
  testRunner.When("input in about \"Car about text.\" text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 172
+#line 173
  testRunner.When("click active checkbox", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 173
+#line 174
  testRunner.When("go to Discount & ticket tab at Life prize", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 174
+#line 175
     testRunner.When("input ticket price value 6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 175
+#line 176
     testRunner.When("input default number of tickets 10", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 176
+#line 177
  testRunner.When("input Number of tickets value 100", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 178
+#line 179
  testRunner.When("make credit percents at Fixed Odds bigger on 1 than on general admin page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 179
+#line 180
  testRunner.When("click on status in credits tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 180
+#line 181
  testRunner.When("set credits euroes and percents as defined earlier", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 181
+#line 182
  testRunner.When("click fixed odds save button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 183
+#line 184
  testRunner.When("user(client) login on web with login \"proton001@lenta.ru\" and pass \"sobaka1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 184
+#line 185
  testRunner.Then("on header should be displayed \"Vania\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 186
+#line 187
  testRunner.When("user go to Fexed Odds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 187
+#line 188
  testRunner.When("notice initial credit amount", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 188
+#line 189
  testRunner.When("user scroll untill additional prizes appeared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 189
+#line 190
  testRunner.When("click on earlier random generated title", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 191
+#line 192
  testRunner.Then("product popup appeares", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 192
+#line 193
  testRunner.When("user choose number randomly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 193
+#line 194
  testRunner.Then("he will see that number in TICKETS QUANITY", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 194
+#line 195
  testRunner.Then("user check total price, total saving, them currency %Off", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 195
+#line 196
  testRunner.When("notice Credit earned if they exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 196
+#line 197
  testRunner.Then("credit calculated as at Admin General expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 197
+#line 198
  testRunner.When("user click on buy now", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 198
+#line 199
  testRunner.Then("user on basket page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 199
+#line 200
  testRunner.Then("user see title, price per ticket, total amount of ticket and total price as expec" +
                         "ted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 200
+#line 201
  testRunner.Then("user calculate data from multiple products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 202
- testRunner.When("user click Pay", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 203
- testRunner.Then("user redirected to cards payment page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 204
+#line 205
  testRunner.When("user input card data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 205
+#line 206
  testRunner.And("click pay button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 206
+#line 207
  testRunner.Then("user see order completed header", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 207
+#line 208
  testRunner.Then("credit amount should be the sum of initial credit amount and rememberd", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("check arithmetically active, unactive and all Fixed Odds", SourceLine=209)]
+        [TechTalk.SpecRun.ScenarioAttribute("check arithmetically active, unactive and all Fixed Odds", SourceLine=210)]
         public virtual void CheckArithmeticallyActiveUnactiveAndAllFixedOdds()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("check arithmetically active, unactive and all Fixed Odds", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 210
+#line 211
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -769,44 +748,44 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 211
+#line 212
  testRunner.Given("admin logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 212
+#line 213
     testRunner.And("click Fixed odds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 213
+#line 214
  testRunner.When("Change pagination to 100 with wait", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 214
+#line 215
  testRunner.When("notice all prizes titles quantity", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 215
+#line 216
  testRunner.When("click on Active prizes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 216
+#line 217
  testRunner.When("notice active prizes titles quantity", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 217
+#line 218
  testRunner.When("click on Unactive prizes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 218
+#line 219
  testRunner.When("notice unactive prizes titles quantity", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 219
+#line 220
  testRunner.Then("all prizes should be equal the sum of active and unactive", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("check tickets creation of fixed odds prizes and quantity  decreasing", SourceLine=220)]
+        [TechTalk.SpecRun.ScenarioAttribute("check tickets creation of fixed odds prizes and quantity  decreasing", SourceLine=221)]
         public virtual void CheckTicketsCreationOfFixedOddsPrizesAndQuantityDecreasing()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("check tickets creation of fixed odds prizes and quantity  decreasing", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 221
+#line 222
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -826,67 +805,67 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 222
+#line 223
  testRunner.Given("admin logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 223
+#line 224
     testRunner.And("click Fixed odds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 224
- testRunner.When("click on Active prizes in cycle", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 225
- testRunner.When("click upsort IDes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("click on Active prizes in cycle", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 226
- testRunner.When("click lastPage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 227
- testRunner.When("notice titles, Number of tickets and Tickets left", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 228
- testRunner.When("admin go to UserManagement page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 230
- testRunner.When("admin click on add new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 231
- testRunner.And("input autogenerated user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 232
- testRunner.And("click save user button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 233
- testRunner.Then("message with text \"User saved\" should appeared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 234
- testRunner.When("admin go to UserManagement page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 235
- testRunner.Then("last user should be as generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 237
- testRunner.When("click edit last user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 238
- testRunner.When("go to ticket tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 239
- testRunner.When("add first 10 fixed odds tickets", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 240
- testRunner.Given("click Fixed odds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 241
- testRunner.When("click on Active prizes in cycle", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 242
  testRunner.When("click upsort IDes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 243
+#line 227
  testRunner.When("click lastPage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 228
+ testRunner.When("notice titles, Number of tickets and Tickets left", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 229
+ testRunner.When("admin go to UserManagement page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 231
+ testRunner.When("admin click on add new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 232
+ testRunner.And("input autogenerated user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 233
+ testRunner.And("click save user button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 234
+ testRunner.Then("message with text \"User saved\" should appeared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 235
+ testRunner.When("admin go to UserManagement page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 236
+ testRunner.Then("last user should be as generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 238
+ testRunner.When("click edit last user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 239
+ testRunner.When("go to ticket tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 240
+ testRunner.When("add first 10 fixed odds tickets", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 241
+ testRunner.Given("click Fixed odds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 242
+ testRunner.When("click on Active prizes in cycle", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 243
+ testRunner.When("click upsort IDes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 244
+ testRunner.When("click lastPage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 245
  testRunner.Then("tickets left should decrease on 2, Numbers of tickets should be the same as a Tit" +
                         "les", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

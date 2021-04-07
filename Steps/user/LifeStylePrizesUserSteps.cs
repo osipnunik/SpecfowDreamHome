@@ -39,7 +39,24 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         {
             lifeStylePage.ClickLifeStylePrizes();
         }
-        
+        [When(@"user click on category ""(.*)""")]
+        public void WhenUserClickOnCategory(string categName)
+        {
+            lifeStylePage.ClickCategoryOfLSP(categName);
+        }
+        [When(@"user click on subCategory ""(.*)""")]
+        public void WhenUserClickOnSubCategory(string subCategory)
+        {
+            lifeStylePage.ClickSubCategoryOfLSP(subCategory);
+        }
+
+        [When(@"user click on autogenerateg earlier LifeStile Prize title")]
+        public void WhenUserClickOnAutogenerategEarlierLifeStilePrizeTitle()
+        {
+            string title = (string)_scenarioContext["title"];
+            lifeStylePage.ClickPrizeTitleLSP(title);
+        }
+
         [When(@"notice list of categories")]
         public void WhenNoticeListOfCategories()
         {
@@ -81,16 +98,15 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             else
             {
                 Assert.AreEqual(expectedProd.NewPrice, lifeStylePage.GetDiscountNewPrice());
-                //Assert.AreEqual(expectedProd.OldPrice, lifeStylePage.GetDiscountOldPrice());
-               // Assert.AreEqual(expectedProd.DiscountOff, lifeStylePage.GetDiscountPercent());
-            }
-            
+                Assert.AreEqual(expectedProd.OldPrice, lifeStylePage.GetDiscountOldPrice());
+                Assert.AreEqual(expectedProd.DiscountOff.Substring(1), lifeStylePage.GetDiscountPercent());
+            }           
         }
 
         [Then(@"product name should be as noticed earlier")]
         public void ThenProductNameShouldBeAsNoticedEarlier()
         {
-            var expectedProd = ((Product)_scenarioContext["product"]);
+            var expectedProd = (Product)_scenarioContext["product"];
             Assert.AreEqual(expectedProd.Title, lifeStylePage.GetTitle());
         }                         
 
@@ -140,7 +156,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
                 { maxCoant = keyValue.Key;creditPerEur = keyValue.Value; }                
             }
             double credit = creditPerEur * totalPrice / 100;
-            Assert.AreEqual("£ " + credit.ToString("N2"), actualDialogCredit);
+            Assert.AreEqual("£ " + Math.Round(credit, 2), actualDialogCredit);
         }
 
 

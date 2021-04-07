@@ -208,6 +208,12 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             WinnP.instertPic();
         }
+        [When(@"input winner draw date and time")]
+        public void WhenInputWinnerDrawDateAndTime()
+        {
+            WinnP.InputDateTime();
+        }
+
         [When(@"click Save")]
         public void WhenClickSave()
         {

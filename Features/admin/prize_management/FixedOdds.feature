@@ -63,8 +63,8 @@ Scenario: checking prize discounts of fresh-created Fixed odds with fixed odds d
 	Then user see title, price per ticket, total amount of ticket and total price as expected
 	Then user calculate data from multiple products
 	#Then user see Total Saving and Credit earned as expected if they exist
-	When user click Pay
-	Then user redirected to cards payment page
+	#When user click Pay
+	#Then user redirected to cards payment page
 	When user input card data
 	And click pay button
 	Then user see order completed header
@@ -107,8 +107,8 @@ Scenario: checking discounts of fresh-created Fixed odds without fixed odds disc
 	Then user see title, price per ticket, total amount of ticket and total price as expected
 	Then user calculate data from multiple products
 	#Then user see Total Saving and Credit earned as expected if they exist
-	When user click Pay
-	Then user redirected to cards payment page
+	#When user click Pay
+	#Then user redirected to cards payment page
 	When user input card data
 	And click pay button
 	Then user see order completed header
@@ -129,6 +129,7 @@ Scenario: checking credits of fresh-created Fixed odds without fixed odds credit
 	When go to Discount & ticket tab at Life prize
 
 	When click fixed odds save button
+	Then popup with message "Fixed Odds saved" appears
 	Given go to general	
 	When click on credit
 	Then notice credits and check it with credits per Funt
@@ -151,8 +152,8 @@ Scenario: checking credits of fresh-created Fixed odds without fixed odds credit
 	Then user see title, price per ticket, total amount of ticket and total price as expected
 	Then user calculate data from multiple products
 	#Then user see Total Saving and Credit earned as expected if they exist
-	When user click Pay
-	Then user redirected to cards payment page
+	#When user click Pay
+	#Then user redirected to cards payment page
 	When user input card data
 	And click pay button
 	Then user see order completed header
@@ -199,8 +200,8 @@ Scenario: checking credits of fresh-created Fixed odds with fixed odds credit(no
 	Then user see title, price per ticket, total amount of ticket and total price as expected
 	Then user calculate data from multiple products
 	#Then user see Total Saving and Credit earned as expected if they exist
-	When user click Pay
-	Then user redirected to cards payment page
+	#When user click Pay
+	#Then user redirected to cards payment page
 	When user input card data
 	And click pay button
 	Then user see order completed header
