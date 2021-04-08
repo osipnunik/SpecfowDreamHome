@@ -72,7 +72,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             double discount = dialogP.GetAppropriateDiscount(amount) / 100;
             double priceFromDialog = double.Parse(price.Substring(1));
             double expectedTotalPrice = (1-discount) * priceFromDialog * amount;
-            Assert.IsTrue(totalPrice.StartsWith(Currency + " " + expectedTotalPrice.ToString("N2").Replace(",", "")));
+            Assert.IsTrue(totalPrice.StartsWith(Currency + " " + Math.Round(expectedTotalPrice, 2)));//expectedTotalPrice.ToString("N2").Replace(",", "")));
             _scenarioContext.Add("product", prod);
             //_scenarioContext.Add("price", price);
             _scenarioContext.Add("totalPrice", totalPrice);

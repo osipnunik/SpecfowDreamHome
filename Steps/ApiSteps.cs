@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -14,7 +15,11 @@ namespace SpecFlowDreanLotteryHome.Steps
     [Binding]
     class ApiSteps : BaseStepDefinition
     {
-
+        private readonly ScenarioContext _scenarioContext;
+        public ApiSteps(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
         [When(@"api testing")]
         public void WhenApiTesting()
         {
@@ -59,6 +64,29 @@ namespace SpecFlowDreanLotteryHome.Steps
             int numericStatusCode = (int)statusCode;
             Assert.AreEqual(200, numericStatusCode, response.Content);
         }
+
+        [When(@"get credits from general page using API")]
+        public void WhenGetCreditsFromGeneralPageUsingAPI()
+        {
+            var client = new RestClient("https://staging-api.rafflehouse.com");
+            client.Authenticator = new HttpBasicAuthenticator("testqaanuitex@mail.com", "000000");
+            var request = new RestRequest("/api/general", Method.GET);
+            var restResponse = client.Execute(request);
+
+            // Parsing JSON content into element-node JObject
+            var jObject = JObject.Parse(restResponse.Content);
+
+            //Extracting Node element using Getvalue method
+            string creditsJsonStr = jObject.GetValue("creditsRates").ToString();
+            var creditsList = JsonConvert.DeserializeObject<List<Credit>>(creditsJsonStr);
+
+            string discountsJsonStr = jObject.GetValue("discountRates").ToString();
+            var discountsList = JsonConvert.DeserializeObject<List<Discount>>(discountsJsonStr);
+
+            _scenarioContext.Add("creditsList", creditsList);
+            _scenarioContext.Add("discountsList", discountsList);
+        }
+
 
         /*[Then(@"get all fixed odds")]
         public void ThenGetAllFixedOdds()

@@ -70,13 +70,13 @@ namespace SpecFlowDreanLotteryHome.Features.Admin.Settings
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("create lifeCycle with discount", SourceLine=3)]
-        public virtual void CreateLifeCycleWithDiscount()
+        [TechTalk.SpecRun.ScenarioAttribute("remember discount dictionary and credits dicrionary using api", SourceLine=4)]
+        public virtual void RememberDiscountDictionaryAndCreditsDicrionaryUsingApi()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("create lifeCycle with discount", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 4
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("remember discount dictionary and credits dicrionary using api", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -96,6 +96,9 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 6
+ testRunner.When("get credits from general page using API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

@@ -83,7 +83,7 @@ Scenario: checking discounts of fresh-created Fixed odds without fixed odds disc
     When input default number of tickets 10	
 	When input Number of tickets value 100
 	When go to Discount & ticket tab at Life prize
-
+	When click on status in credits tab
 	When click fixed odds save button
 	Given go to general	
 	When notice discounts
@@ -127,8 +127,10 @@ Scenario: checking credits of fresh-created Fixed odds without fixed odds credit
     When input default number of tickets 10	
 	When input Number of tickets value 100
 	When go to Discount & ticket tab at Life prize
-
+	When click on status in Discount tab
 	When click fixed odds save button
+
+	Then admin redirected to foxed odds list
 	Then popup with message "Fixed Odds saved" appears
 	Given go to general	
 	When click on credit
@@ -155,9 +157,10 @@ Scenario: checking credits of fresh-created Fixed odds without fixed odds credit
 	#When user click Pay
 	#Then user redirected to cards payment page
 	When user input card data
-	And click pay button
+	#Then credit amount should be the sum of initial credit amount and rememberd 
+	When click pay button
 	Then user see order completed header
-	Then credit amount should be the sum of initial credit amount and rememberd 
+	#Then credit on header should be zero
 
 @admin
 Scenario: checking credits of fresh-created Fixed odds with fixed odds credit(not on general)
@@ -203,9 +206,10 @@ Scenario: checking credits of fresh-created Fixed odds with fixed odds credit(no
 	#When user click Pay
 	#Then user redirected to cards payment page
 	When user input card data
-	And click pay button
+	#Then credit amount should be the sum of initial credit amount and rememberd
+	When click pay button
 	Then user see order completed header
-	Then credit amount should be the sum of initial credit amount and rememberd 
+	#Then credit on header should be zero
 
 	
 Scenario: check arithmetically active, unactive and all Fixed Odds

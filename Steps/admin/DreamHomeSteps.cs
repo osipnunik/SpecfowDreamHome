@@ -223,8 +223,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         public void WhenInputNumberOfTicketsValue(string p0)
         {
             dreamHomePg.InputNumbersOfTickets(p0);
-        }
-        
+        }        
 
         [When(@"click save button at dreamHome")]
         public void WhenClickSaveButtonAtDreamHome()
@@ -497,7 +496,9 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             }
             if(eurosPercents.Count == 0)
             {
-                eurosPercents.Add(20, 30); //default value seted by default
+                dreamHomePg.InputCreditLastEuro("20");
+                dreamHomePg.InputCreditLastPercent("31");
+                eurosPercents.Add(20, 31); //default value seted by default
                 _scenarioContext.Remove("eurosPercentsCredits");
                 _scenarioContext.Add("eurosPercentsCredits", eurosPercents);
             }

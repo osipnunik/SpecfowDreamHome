@@ -157,12 +157,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 26
  testRunner.Then("user calculate data from multiple products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 28
- testRunner.When("user click Pay", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 29
- testRunner.Then("user redirected to cards payment page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
 #line 30
  testRunner.When("user input card data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden

@@ -94,12 +94,18 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             bool equal = (dialogCredit + initialCredit).ToString("N2").Equals(actualCredit);
             if (equal) { Assert.IsTrue(equal); }
             else {
-                Thread.Sleep(1500);
+                Thread.Sleep(2000);
                 actualCredit = double.Parse(FixedOddsP.GetCreditFromHeaderBtnCart()).ToString("N2");
                 Assert.AreEqual((dialogCredit + initialCredit).ToString("N2"), actualCredit, "earned not increase header cart appropriate"+ (dialogCredit + initialCredit)+
                     " "+ dialogCredit+" "+ initialCredit); 
             }
         }
+        [Then(@"credit on header should be zero")]
+        public void ThenCreditOnHeaderShouldBeZero()
+        {
+            Assert.AreEqual("0.00", FixedOddsP.GetCreditFromHeaderBtnCart());
+        }
+       
         [When(@"click on earlier random generated title")]
         public void WhenClickOnEarlierRandomGeneratedTitle()
         {

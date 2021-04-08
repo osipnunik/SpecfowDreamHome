@@ -25,13 +25,11 @@ Scenario: as a user i want to buy random Fixed odds
 	Then user see title, price per ticket, total amount of ticket and total price as expected
 	Then user calculate data from multiple products
 	#Then user see Total Saving and Credit earned as expected if they exist
-	When user click Pay
-	Then user redirected to cards payment page
+	#When user click Pay
+	#Then user redirected to cards payment page
 	When user input card data
 	And click pay button
 	Then user see order completed header
-
-
 
 #Scenario: as a user i want to buy first Fixed odds
 #	When user(client) login on web with login "proton001@lenta.ru" and pass "sobaka1"

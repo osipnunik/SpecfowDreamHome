@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SpecFlowDreanLotteryHome.entities;
 using SpecFlowDreanLotteryHome.entities.user;
 using SpecFlowDreanLotteryHome.pages.admin;
@@ -102,6 +104,13 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         {
             LfStylePPage.ClickFixedOddsSave();
         }
+        [Then(@"admin redirected to foxed odds list")]
+        public void ThenAdminRedirectedToFoxedOddsList()
+        {
+            Waiter.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[starts-with(text(),'Fixed Odds')]")));
+            Assert.IsTrue(WebDriver.Url.EndsWith("#/fixedOdds"));
+        }
+
         [When(@"change paginarion prizes per page as (.*)")]
         public void WhenChangePaginarionPrizesPerPageAs(int prizesPerPage)
         {

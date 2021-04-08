@@ -31,7 +31,7 @@ namespace SpecFlowDreanLotteryHome.services
         }
         internal string GenerateAlmostUniqueVehiclePrizeTitle()
         {
-            return Faker.Vehicle.Model()+ Faker.Vehicle.Type()+ Faker.Vehicle.Manufacturer()+Faker.Vehicle.Fuel();
+            return Faker.Vehicle.Model()+ Faker.Vehicle.Type()+ Faker.Vehicle.Manufacturer()+Faker.Vehicle.Fuel()+ Faker.Random.Number(100);
         }
     }
 }
