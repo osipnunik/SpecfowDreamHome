@@ -165,6 +165,15 @@ namespace SpecFlowDreanLotteryHome.pages.user
                 }
             }
         }
+
+        internal void ClickOnRandomCategory()
+        {
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)WebDriver;
+            jse.ExecuteScript("let categs = document.querySelectorAll('.buttonItem');var size = categs.length;let randNum = Math.random(size);categs.item(randNum).click();");
+            Thread.Sleep(1000);
+            //WaitUntilPreviosProductShouldHaveDifferentTitle();
+        }
+
         private void WaitUntilPreviosProductShouldHaveDifferentTitle()
         {
             if (ProductList.Count != 0) //wait until previos product(if exist) should have different title

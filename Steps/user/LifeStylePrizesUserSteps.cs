@@ -159,7 +159,6 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             Assert.AreEqual("£ " + Math.Round(credit, 2), actualDialogCredit);
         }
 
-
         [When(@"user click on buy now")]
         public void WhenUserClickOnBuyNow() => lifeStylePage.ClickBuyNowBtn();
 
@@ -169,9 +168,13 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void WhenUserGoToDreamHomePage()
         {
             lifeStylePage.ClickDreamHome();
-
             WebDriver.Manage().Cookies.DeleteAllCookies();
             //WebDriver.Navigate().Refresh();
+        }
+        [When(@"click on random category")]
+        public void WhenClickOnRandomCategory()
+        {
+            lifeStylePage.ClickOnRandomCategory();
         }
 
 

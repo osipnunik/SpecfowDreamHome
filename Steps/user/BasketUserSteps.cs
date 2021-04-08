@@ -47,8 +47,8 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void ThenUserCalculateDataFromMultipleProducts()
         {
             double yourPricesSum = basketP.GetYourPricesSumCheckCurrency();
-            Assert.AreEqual("£" + Math.Round(yourPricesSum, 2)/*.ToString("N2").Replace(",", "")*/, basketP.GetTotalPriceValue());
-            string diff = Math.Round((basketP.GetTotalPricesSumCheckCurrency() - yourPricesSum), 2).ToString();//.ToString("N2").Replace(",", "");
+            Assert.AreEqual("£" + /*Math.Round(yourPricesSum, 2)*/yourPricesSum.ToString("N2").Replace(",", ""), basketP.GetTotalPriceValue());
+            string diff = /*Math.Round*/(basketP.GetTotalPricesSumCheckCurrency() - yourPricesSum).ToString("N2").Replace(",", "");//.ToString("N2").Replace(",", "");
             Assert.AreEqual("£" + diff, basketP.GetTotalSaving());
         }
 
@@ -82,8 +82,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             Thread.Sleep(1000);
             basketP.InputExpDate("1122");
             basketP.InputCVC("257");
-            Thread.Sleep(1000);
-            
+            Thread.Sleep(1000);           
         }
         [When(@"click pay button")]
         public void WhenClickPayButton()
@@ -99,6 +98,23 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             string newUrl = WebDriver.Url.Replace("http://localhost:8000/", "https://staging.rafflehouse.com/");
             WebDriver.Navigate().GoToUrl(newUrl);
             Assert.IsTrue(basketP.OrderCompletedVisible());
+        }
+        [When(@"user go basket")]
+        public void WhenUserGoBasket()
+        {
+            basketP.ClickHeaderBtnCart();
+        }
+        [Then(@"user see credit amount at basket and header as noticed earlier")]
+        public void ThenUserSeeCreditAmountAtBasketAndHeaderAsNoticedEarlier()
+        {
+            double expectedCredit = (double)_scenarioContext["CreditsSum"];
+            string basketSumOfCredit = basketP.GetCreditEarnedValue();
+            Assert.AreEqual("£" + expectedCredit.ToString("N2"), basketSumOfCredit, basketP.GetLastProductTitle());
+        }
+        [When(@"close all items in basket")]
+        public void WhenCloseAllItemsInBasket()
+        {
+            basketP.CloseAllItemsInBasket();
         }
 
     }

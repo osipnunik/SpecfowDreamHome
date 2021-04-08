@@ -12,6 +12,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
     {
         public BasketPage(IWebDriver webDriver) : base(webDriver) { }
 
+        private IWebElement ButtonHeaderCart => WebDriver.FindElement(By.CssSelector("button.headerBtnCart"));
         private IWebElement FirstProductTitle => WebDriver.FindElement(By.CssSelector("tbody th"));
         private IWebElement FirstProductPrice => WebDriver.FindElement(By.CssSelector("tbody td:nth-child(2)"));
         private IWebElement FirstProductAmount => WebDriver.FindElement(By.CssSelector("tbody td:nth-child(3) span"));
@@ -28,11 +29,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement LastProductTotalPriceWithDiscount => WebDriver.FindElement(By.CssSelector("div.basketTableDesktop tbody tr:last-child td:nth-child(4)"));
 
         private IWebElement LastProductCloseBtn => WebDriver.FindElement(By.CssSelector("div.basketTableDesktop tbody tr:last-child td:nth-child(6) button"));
-
-        internal void WaitWhileBeOnBasketPage()
-        {
-            Waiter.Until(ExpectedConditions.ElementExists(By.XPath("//thead//th[text()='ITEMS']")));
-        }
+        private IList<IWebElement> CloseList => WebDriver.FindElements(By.CssSelector("div.basketTableDesktop td:nth-child(6) button"));
 
         private By ByTotalPriceAll => By.CssSelector("div.itemPrice:first-child span");
         private IWebElement TotalPriceValue => WebDriver.FindElement(ByTotalPriceAll);       
@@ -47,8 +44,12 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement CVCActivator => WebDriver.FindElement(By.Id("cvv"));
         private IWebElement PayButton => WebDriver.FindElement(By.Id("pay-button"));
         private IWebElement OrderCompletedHeader => WebDriver.FindElement(By.CssSelector("h1.orderCompleted"));
-        private IList<IWebElement> ErrorMessage => WebDriver.FindElements(By.CssSelector("span.error-message"));       
+        private IList<IWebElement> ErrorMessage => WebDriver.FindElements(By.CssSelector("span.error-message"));
 
+        internal void WaitWhileBeOnBasketPage()
+        {
+            Waiter.Until(ExpectedConditions.ElementExists(By.XPath("//thead//th[text()='ITEMS']")));
+        }
         internal double GetYourPricesSumCheckCurrency()
         {
             List<string> YourPrices = this.GetYourPrices();
@@ -90,6 +91,21 @@ namespace SpecFlowDreanLotteryHome.pages.user
             }
             return totalPricesStrings;
         }
+
+        internal void ClickHeaderBtnCart()
+        {
+            try { ButtonHeaderCart.Click(); }
+            catch (ElementClickInterceptedException) { JSClick(ButtonHeaderCart); }
+        }
+
+        internal void CloseAllItemsInBasket()
+        {
+            foreach(var el in CloseList)
+            {
+                el.Click();
+            }            
+        }
+
         public string GetFirstProductTitle() => FirstProductTitle.Text;
         public string GetFirstProductPrice() => FirstProductPrice.Text;
         public string GetFirstProductAmount() => FirstProductAmount.Text;
@@ -147,5 +163,6 @@ namespace SpecFlowDreanLotteryHome.pages.user
             
         }
         public bool OrderCompletedVisible() => OrderCompletedHeader.Displayed;
+       
     }
 }

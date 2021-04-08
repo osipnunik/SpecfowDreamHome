@@ -6,7 +6,7 @@ namespace SpecFlowDreanLotteryHome.entities
 {
     class Discount
     {
-        public int AmountTicket { get; set; }
+        public int AmountTickets { get; set; }
         public int Percent { get; set; }
     }
 }

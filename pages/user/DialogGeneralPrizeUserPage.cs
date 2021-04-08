@@ -26,7 +26,9 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IList<IWebElement> PricesP => WebDriver.FindElements(By.CssSelector(".infoModalMainTitle .productPrices p"));
         private IWebElement Picture => WebDriver.FindElement(By.CssSelector(".slider .slick-active img"));
         private IWebElement CloseX => WebDriver.FindElement(By.CssSelector("button.close-modal-icon"));
-
+        private IList<IWebElement> PrizeTitles => WebDriver.FindElements(By.CssSelector("div.productTitle"));
+        private IWebElement EarnedCredit => WebDriver.FindElement(By.CssSelector("div.priceGreyContainer>div:last-child p.creditValue"));
+        private IWebElement AddToBasketBtn => WebDriver.FindElement(By.CssSelector("div.priceHeadBtnGroup>button:last-child"));
         public string GetQuantityTicSecond() => QuantityTicSecond.Text;
 
         internal string GetPicSrc() => Picture.GetAttribute("src");
@@ -89,13 +91,25 @@ namespace SpecFlowDreanLotteryHome.pages.user
             int c = PricesP.Count;
             return c == 1;
         }
-
         public string[] GetTicketrQuantitiesBookedAll()
         {
             string[] arr = new string[2];
             arr[0] = TicketsQuantBookedAll2[0].Text;
             arr[1] = TicketsQuantBookedAll2[1].Text;
             return arr;
+        }
+        internal double AddAllPrizesOnThePageNoticedCreditSum()
+        {
+            double sum = 0.0;
+            for (int i = 0; i < PrizeTitles.Count; i++)
+            {
+                try { PrizeTitles[i].Click(); }
+                catch (ElementClickInterceptedException) { JSClick(PrizeTitles[i]); }
+                sum += double.Parse(EarnedCredit.Text.Substring(2));
+                AddToBasketBtn.Click();
+                CloseX.Click();
+            }
+            return sum;
         }
     }
 }

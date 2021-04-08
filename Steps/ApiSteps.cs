@@ -16,6 +16,7 @@ namespace SpecFlowDreanLotteryHome.Steps
     class ApiSteps : BaseStepDefinition
     {
         private readonly ScenarioContext _scenarioContext;
+        private string RaffleUri = "https://staging-api.rafflehouse.com";
         public ApiSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
@@ -54,7 +55,7 @@ namespace SpecFlowDreanLotteryHome.Steps
         [Then(@"delete product")]
         public void ThenDeleteProduct()
         {          
-            var client = new RestClient("https://staging-api.rafflehouse.com");
+            var client = new RestClient(RaffleUri);
             client.Authenticator = new HttpBasicAuthenticator("proton001@lenta.ru", "sobaka1");
             var request = new RestRequest("/api/orders/", Method.DELETE); ///{id}
             //request.AddParameter("order", "6059b30c43924400342eb1c8");
@@ -68,14 +69,12 @@ namespace SpecFlowDreanLotteryHome.Steps
         [When(@"get credits from general page using API")]
         public void WhenGetCreditsFromGeneralPageUsingAPI()
         {
-            var client = new RestClient("https://staging-api.rafflehouse.com");
+            var client = new RestClient(RaffleUri);
             client.Authenticator = new HttpBasicAuthenticator("testqaanuitex@mail.com", "000000");
             var request = new RestRequest("/api/general", Method.GET);
             var restResponse = client.Execute(request);
-
             // Parsing JSON content into element-node JObject
             var jObject = JObject.Parse(restResponse.Content);
-
             //Extracting Node element using Getvalue method
             string creditsJsonStr = jObject.GetValue("creditsRates").ToString();
             var creditsList = JsonConvert.DeserializeObject<List<Credit>>(creditsJsonStr);

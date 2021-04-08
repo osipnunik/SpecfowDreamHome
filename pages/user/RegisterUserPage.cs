@@ -63,11 +63,6 @@ namespace SpecFlowDreanLotteryHome.pages.user
             Waiter.Until(ExpectedConditions.TextToBePresentInElement(LogedName, nameSurname));
             string text = LogedName.Text;
              return text; 
-            /*else
-            {
-                return GetLoggedName();
-            }*/
-            
         }
 
         internal void ClickOnRandomCuntry()

@@ -72,7 +72,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             double discount = dialogP.GetAppropriateDiscount(amount) / 100;
             double priceFromDialog = double.Parse(price.Substring(1));
             double expectedTotalPrice = (1-discount) * priceFromDialog * amount;
-            Assert.IsTrue(totalPrice.StartsWith(Currency + " " + Math.Round(expectedTotalPrice, 2)));//expectedTotalPrice.ToString("N2").Replace(",", "")));
+            Assert.AreEqual(Currency + " " + expectedTotalPrice.ToString("N2").Replace(",", ""), totalPrice);/*expectedTotalPrice.ToString("N2").Replace(",", "")));*/
             _scenarioContext.Add("product", prod);
             //_scenarioContext.Add("price", price);
             _scenarioContext.Add("totalPrice", totalPrice);
@@ -93,6 +93,13 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void WhenUserCloseDialogOfFirstElement()
         {
             dialogP.CloseDialog();
+        }
+
+        [When(@"user click and close every prize on page noticing resulting credits and adding them to basket")]
+        public void WhenUserClickAndCloseEveryPrizeOnPageNoticingResultingCreditsAndAddingThemToBasket()
+        {
+            double sumOfCreds = dialogP.AddAllPrizesOnThePageNoticedCreditSum();
+            _scenarioContext.Add("CreditsSum", sumOfCreds);
         }
     }
 }
