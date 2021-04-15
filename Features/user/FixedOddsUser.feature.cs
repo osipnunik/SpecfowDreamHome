@@ -108,18 +108,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 9
  testRunner.When("user scroll untill additional prizes appeared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 11
- testRunner.When("click on first Fixed Odds prize", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 12
- testRunner.Then("product popup appeares", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 13
- testRunner.When("user close dialog of first element", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 14
- testRunner.Then("product popup disappeares", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
 #line 15
  testRunner.When("user choose randomly element", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden

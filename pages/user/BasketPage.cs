@@ -38,14 +38,17 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement PayBtn => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.Id("pay-button")));
         private IWebElement CardNameInput => WebDriver.FindElement(By.CssSelector("input[name='cardnumber']"));
         private IWebElement ExpDateInput => WebDriver.FindElement(By.CssSelector("input[name='exp-date']"));
-        private IWebElement CVC => WebDriver.FindElement(By.Id("checkout-frames-cvv"));
+        private IWebElement ExpDateActivator => WebDriver.FindElement(By.CssSelector("iframe[id='expiryDate']"));
+
+        private IWebElement CVC => WebDriver.FindElement(By.CssSelector("input[name='cvc']"));//("checkout-frames-cvv"));
+        private IWebElement CvcActivator => WebDriver.FindElement(By.CssSelector("#frames-element-cvv"));
         private IWebElement CardNumberActivator => WebDriver.FindElement(By.CssSelector("iframe[name='checkout-frames-cardNumber']"));
-        private IWebElement ExpDateActivator => WebDriver.FindElement(By.Id("expiryDate"));
-        private IWebElement CVCActivator => WebDriver.FindElement(By.Id("cvv"));
+        private IWebElement ExpDateFake => Waiter.Until(ExpectedConditions.ElementExists(By.Id("checkout-fake-input-expiryDate")));
+
         private IWebElement PayButton => WebDriver.FindElement(By.Id("pay-button"));
         private IWebElement OrderCompletedHeader => WebDriver.FindElement(By.CssSelector("h1.orderCompleted"));
         private IList<IWebElement> ErrorMessage => WebDriver.FindElements(By.CssSelector("span.error-message"));
-
+        
         internal void WaitWhileBeOnBasketPage()
         {
             Waiter.Until(ExpectedConditions.ElementExists(By.XPath("//thead//th[text()='ITEMS']")));
@@ -100,10 +103,12 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         internal void CloseAllItemsInBasket()
         {
-            foreach(var el in CloseList)
+            /*foreach(var el in CloseList)
             {
                 el.Click();
-            }            
+            } */
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)WebDriver;
+            jse.ExecuteScript("document.querySelectorAll('button.btnRemoveOrder').forEach(function(item){ item.click();});");
         }
 
         public string GetFirstProductTitle() => FirstProductTitle.Text;
@@ -138,29 +143,32 @@ namespace SpecFlowDreanLotteryHome.pages.user
         public bool CardNumberTextEmptyNull() => CardNumberActivator.GetAttribute("value") != "";
         internal void InputCardName(string v)
         {
-
             /*try { CardNameInput.SendKeys(v); }
             catch (NoSuchElementException e)
             {*/
                 CardNumberActivator.SendKeys(v);
-                //CardNumberActivator.SendKeys("1122");
-            
+                //CardNumberActivator.SendKeys("1122");           
         }
         internal void InputExpDate(string v) {
-            //try { ExpDateInput.SendKeys(v); }
-            //catch (NoSuchElementException e)
-            //{
-                ExpDateActivator.SendKeys(Keys.Enter);
-                ExpDateActivator.SendKeys(v);
-            //}
+            ExpDateActivator.SendKeys(v);
+            try { ExpDateInput.SendKeys(v); }
+            catch (NoSuchElementException e)
+            {
+            //IJavaScriptExecutor jse = (IJavaScriptExecutor)WebDriver;
+            //jse.ExecuteScript("arguments[0].value=" + v + ";", WebDriver.FindElement(By.Id("checkout-frames-expiry-date")));
+                //ExpDateActivator.SendKeys(Keys.Enter);
+                //ExpDateActivator.SendKeys(v);
+            }
         }
         internal void InputCVC(string v)
         {
-           /* try { CVC.SendKeys(v); }
+            CvcActivator.SendKeys(v);
+            try { CVC.Click(); CVC.SendKeys(v); }
             catch (NoSuchElementException e)
-            {*/
-                CVCActivator.SendKeys(v);
-            
+            {
+                //CVCActivator.SendKeys(v);
+                CVC.SendKeys(v);
+            }
         }
         public bool OrderCompletedVisible() => OrderCompletedHeader.Displayed;
        

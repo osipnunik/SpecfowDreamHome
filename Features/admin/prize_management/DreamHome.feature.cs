@@ -99,8 +99,8 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 5
-    testRunner.Given("user logged in as admin with \"testqaanuitex@mail.com\" email and \"000000\" password" +
-                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("user logged in as admin with \"testqaanuitex@gmail.com\" email and \"zzc0fr4q\" passw" +
+                        "ord", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
     testRunner.And("click add new dream home", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -234,8 +234,8 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 43
-    testRunner.Given("user logged in as admin with \"testqaanuitex@mail.com\" email and \"000000\" password" +
-                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("user logged in as admin with \"testqaanuitex@gmail.com\" email and \"zzc0fr4q\" passw" +
+                        "ord", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 44
     testRunner.When("click Last page at Dream home", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -372,8 +372,8 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 82
-    testRunner.Given("user logged in as admin with \"testqaanuitex@mail.com\" email and \"000000\" password" +
-                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("user logged in as admin with \"testqaanuitex@gmail.com\" email and \"zzc0fr4q\" passw" +
+                        "ord", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 83
     testRunner.When("click Last page at Dream home", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

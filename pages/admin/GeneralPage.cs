@@ -28,12 +28,12 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         public void ClickCreditTab() => CreditTab.Click();
         public void ClickDocumentations() => Documentations.Click();
         
-        public Dictionary<int, int> GetCredits()
+        public Dictionary<double, int> GetCredits()
         {
-            Dictionary<int, int> credits = new Dictionary<int, int>();
+            Dictionary<double, int> credits = new Dictionary<double, int>();
             for(int i = 0; i < CurrencyInputs.Count; i++)
             {
-                credits.Add(int.Parse(CurrencyInputs[i].GetAttribute("value")), int.Parse(PercentInputs[i].GetAttribute("value")));
+                credits.Add(double.Parse(CurrencyInputs[i].GetAttribute("value")), int.Parse(PercentInputs[i].GetAttribute("value")));
             }
             return credits;
         }

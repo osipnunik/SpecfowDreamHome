@@ -66,7 +66,7 @@ namespace SpecFlowDreanLotteryHome.Steps
             Assert.AreEqual(200, numericStatusCode, response.Content);
         }
 
-        [When(@"get credits from general page using API")]
+        [When(@"notice credits and discounts from general page using API")]
         public void WhenGetCreditsFromGeneralPageUsingAPI()
         {
             var client = new RestClient(RaffleUri);

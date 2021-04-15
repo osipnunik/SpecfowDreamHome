@@ -8,10 +8,10 @@ Scenario: as a user i want to buy random Fixed odds
 	When user go to Fexed Odds
 	When user scroll untill additional prizes appeared	
 	#When notice all info about first product from fixedOddsList
-	When click on first Fixed Odds prize
-	Then product popup appeares
-	When user close dialog of first element
-	Then product popup disappeares
+	#When click on first Fixed Odds prize
+	#Then product popup appeares
+	#When user close dialog of first element
+	#Then product popup disappeares
 	When user choose randomly element
 	And user notice all info about this element from fixedOddsList 
 	When click on choosen earlier Fixed Odds prize

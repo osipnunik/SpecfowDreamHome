@@ -2,7 +2,7 @@
 	Simple 
 
 Scenario: (create dream home)As an administrator, I want to add new prizes for other users to view.
-    Given user logged in as admin with "testqaanuitex@mail.com" email and "000000" password
+    Given user logged in as admin with "testqaanuitex@gmail.com" email and "zzc0fr4q" password
     And click add new dream home
     When admin input title randomly generated
     When admin input address from adress title
@@ -40,7 +40,7 @@ Scenario: (create dream home)As an administrator, I want to add new prizes for o
     #When make "testHome11" active    working 
 
 Scenario: (update dream home)As an administrator, I want to update new prizes for other users to view.
-    Given user logged in as admin with "testqaanuitex@mail.com" email and "000000" password
+    Given user logged in as admin with "testqaanuitex@gmail.com" email and "zzc0fr4q" password
     When click Last page at Dream home
     When click edit at last user
     When admin update title randomly generated
@@ -79,7 +79,7 @@ Scenario: (update dream home)As an administrator, I want to update new prizes fo
     When click edit at last user
 
 Scenario: (clone dream home)As an administrator, I want to create new prizes for other users to view.
-    Given user logged in as admin with "testqaanuitex@mail.com" email and "000000" password
+    Given user logged in as admin with "testqaanuitex@gmail.com" email and "zzc0fr4q" password
     When click Last page at Dream home
     When click clone at last user
     When admin update title randomly generated

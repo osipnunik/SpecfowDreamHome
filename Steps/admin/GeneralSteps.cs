@@ -40,10 +40,10 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [Then(@"notice credits and check it with credits per Funt")]
         public void ThenNoticeCreditsAndCheckItWithCreditsPerFunt()
         {
-            Dictionary<int, int> eurosPercents = generalP.GetCredits();
+            Dictionary<double, int> eurosPercents = generalP.GetCredits();
             List<double> euroPerCredits = generalP.GetEuroPerCredit();
             int i = 0;
-            foreach(KeyValuePair<int, int> keyValue in eurosPercents)
+            foreach(KeyValuePair<double, int> keyValue in eurosPercents)
             {
                 Assert.AreEqual(Math.Round(euroPerCredits[i], 2), ((double)keyValue.Value)/100);
                 i++;
@@ -53,16 +53,16 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"notice credits")]
         public void WhenNoticeCredits()
         {
-            Dictionary<int, int> amountPercents = generalP.GetCredits();//Discounts();          
+            Dictionary<double, int> amountPercents = generalP.GetCredits();//Discounts();          
             _scenarioContext.Add("eurosPercentsCredits", amountPercents);
         }
 
         [When(@"make credit percents at Fixed Odds bigger on (.*) than on general admin page")]
         public void WhenMakeCreditPercentsAtFixedOddsBiggerOnThanOnGeneralAdminPage(int p0)
         {
-            Dictionary<int, int> eurosPercents = (Dictionary<int, int>)_scenarioContext["eurosPercentsCredits"];
-            Dictionary<int, int> newEurosPercents = new Dictionary<int, int>(eurosPercents.Count);
-            foreach (KeyValuePair<int, int> keyValue in eurosPercents)
+            Dictionary<double, int> eurosPercents = (Dictionary<double, int>)_scenarioContext["eurosPercentsCredits"];
+            Dictionary<double, int> newEurosPercents = new Dictionary<double, int>(eurosPercents.Count);
+            foreach (KeyValuePair<double, int> keyValue in eurosPercents)
             {
                 newEurosPercents.Add(keyValue.Key, keyValue.Value + 1);
             }            

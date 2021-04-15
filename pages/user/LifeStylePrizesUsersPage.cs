@@ -29,7 +29,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IList<IWebElement> SubCategoryNames => WebDriver.FindElements(By.CssSelector("div.secondItem div.itemName"));
         private IList<IWebElement> Products => WebDriver.FindElements(By.CssSelector("div.lifestyleProduct-mob"));
         private IWebElement FirstProductTitle => WebDriver.FindElement(By.CssSelector("div.productTitle p"));
-        private IWebElement DreamHomeHref => WebDriver.FindElement(By.CssSelector("a[href = '/dreamhome']"));
+        private IWebElement DreamHomeHref => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[href = '/dreamhome']")));
         private IWebElement LifeStylePrizesHref => WebDriver.FindElement(By.CssSelector("a[href='/lifestyleprizes']"));
 
         private IWebElement ProductContainer => WebDriver.FindElement(By.CssSelector("div.lifestyleProductList"));
@@ -40,7 +40,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         private By ProductImages => By.CssSelector("div.productImage img");
         private By ProductTitles => By.CssSelector("div.productTitle p");
-        private By PricesNonDiscount => By.CssSelector("div.productPrices p.none-discount");
+        private By PricesNonDiscount => By.CssSelector("div.winner-popup span.dis-none");
         
         internal void ClickOnFirstProduct()
         {
@@ -84,9 +84,15 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         internal string GetLastDiscount() => LastDiscount.Text;
 
-        public string GetDiscountNewPrice() => DiscountNewPrice.Text;              
-                
-        internal void ClickDreamHome() => DreamHomeHref.Click(); 
+        public string GetDiscountNewPrice() => DiscountNewPrice.Text;
+
+        internal void ClickDreamHome()
+        {
+            try { DreamHomeHref.Click(); }
+            catch (ElementClickInterceptedException) { JSClick(DreamHomeHref); }
+        }
+
+        public void ScrollToDreamHome() => ScrollToElement(DreamHomeHref);
 
         public string GetDiscountPercent() => DiscountPercent.Text;
         
@@ -168,8 +174,9 @@ namespace SpecFlowDreanLotteryHome.pages.user
 
         internal void ClickOnRandomCategory()
         {
+            Thread.Sleep(1000);
             IJavaScriptExecutor jse = (IJavaScriptExecutor)WebDriver;
-            jse.ExecuteScript("let categs = document.querySelectorAll('.buttonItem');var size = categs.length;let randNum = Math.random(size);categs.item(randNum).click();");
+            jse.ExecuteScript("let categs = document.querySelectorAll('.buttonItem');var size = categs.length;let randNum = Math.random(8);categs.item(5).click();");//Math.floor(Math.random() * size)
             Thread.Sleep(1000);
             //WaitUntilPreviosProductShouldHaveDifferentTitle();
         }

@@ -21,7 +21,6 @@ Scenario: Create fixed odds Prize
 Scenario: checking prize discounts of fresh-created Fixed odds with fixed odds discounts
 	Given admin logged in
 	Given go to general	
-
 	When notice discounts 
 	Given admin logged in
 	And click Fixed odds
@@ -79,9 +78,9 @@ Scenario: checking discounts of fresh-created Fixed odds without fixed odds disc
 	When input in about "Car about text." text
 	When click active checkbox
 	When go to Discount & ticket tab at Life prize
-    When input ticket price value 6
-    When input default number of tickets 10	
-	When input Number of tickets value 100
+    When input ticket price value 0.99
+    When input default number of tickets 2	
+	When input Number of tickets value 169
 	When go to Discount & ticket tab at Life prize
 	When click on status in credits tab
 	When click fixed odds save button
@@ -95,7 +94,7 @@ Scenario: checking discounts of fresh-created Fixed odds without fixed odds disc
 	When click on earlier random generated title
 	
 	Then product popup appeares
-	Then check default number of tickets 10, total Number of tickets as 100 and ticket old price value as 6
+	Then check default number of tickets 2, total Number of tickets as 169 and ticket old price value as 0.99
 	When user choose number randomly
 	Then he will see that number in TICKETS QUANITY
 	Then user check total price, total saving, them currency %Off
@@ -123,9 +122,9 @@ Scenario: checking credits of fresh-created Fixed odds without fixed odds credit
 	When input in about "Car about text." text
 	When click active checkbox
 	When go to Discount & ticket tab at Life prize
-    When input ticket price value 6
-    When input default number of tickets 10	
-	When input Number of tickets value 100
+    When input ticket price value 6.19
+    When input default number of tickets 13	
+	When input Number of tickets value 189
 	When go to Discount & ticket tab at Life prize
 	When click on status in Discount tab
 	When click fixed odds save button
@@ -144,6 +143,7 @@ Scenario: checking credits of fresh-created Fixed odds without fixed odds credit
 	When click on earlier random generated title
 	
 	Then product popup appeares
+	Then check default number of tickets 13, total Number of tickets as 189 and ticket old price value as 6.19
 	When user choose number randomly
 	Then he will see that number in TICKETS QUANITY
 	Then user check total price, total saving, them currency %Off
@@ -175,10 +175,10 @@ Scenario: checking credits of fresh-created Fixed odds with fixed odds credit(no
 	When input in about "Car about text." text
 	When click active checkbox
 	When go to Discount & ticket tab at Life prize
-    When input ticket price value 6
-    When input default number of tickets 10	
+    When input ticket price value 3.11
+    When input default number of tickets 11	
 	When input Number of tickets value 100
-	#When go to Discount & ticket tab at Life prize
+	When go to Discount & ticket tab at Life prize
 	When make credit percents at Fixed Odds bigger on 1 than on general admin page
 	When click on status in credits tab	
 	When set credits euroes and percents as defined earlier
@@ -210,7 +210,6 @@ Scenario: checking credits of fresh-created Fixed odds with fixed odds credit(no
 	When click pay button
 	Then user see order completed header
 	#Then credit on header should be zero
-
 	
 Scenario: check arithmetically active, unactive and all Fixed Odds
 	Given admin logged in

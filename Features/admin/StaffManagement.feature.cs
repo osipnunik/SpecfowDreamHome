@@ -71,11 +71,11 @@ namespace SpecFlowDreanLotteryHome.Features.Admin
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Create Stuff", new string[] {
-                "mytag"}, SourceLine=4)]
+                "admin"}, SourceLine=4)]
         public virtual void CreateStuff()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "admin"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create Stuff", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5

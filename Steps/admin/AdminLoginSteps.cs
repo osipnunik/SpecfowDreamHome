@@ -17,8 +17,8 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
             WebDriver.Navigate().GoToUrl(DREAM_HOME_ADM_VAL);
             if (WebDriver.Url.Equals(LOGIN_ADMiN_VAL))
             {
-                loginPg.InputLogin("testqaanuitex@mail.com");
-                loginPg.InputPass("000000");
+                loginPg.InputLogin("testqaanuitex@gmail.com");
+                loginPg.InputPass("zzc0fr4q");
                 loginPg.ClickSignIn();
             }
         }

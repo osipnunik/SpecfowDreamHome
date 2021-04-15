@@ -12,7 +12,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
         
         private IWebElement Login => WebDriver.FindElement(By.Name("email"));
         private IWebElement Password => WebDriver.FindElement(By.Name("password"));
-        private IWebElement SignInBtn => WebDriver.FindElement(By.CssSelector("button.signUpBtnS"));
+        private IWebElement SignInBtn => WebDriver.FindElement(By.CssSelector(".loginGroupSignIn button.rafflebtn"));
 
         public void InputLogin(string login) => Login.SendKeys(login);
         public void InputPass(string pass) => Password.SendKeys(pass);

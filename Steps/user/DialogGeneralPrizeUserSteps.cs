@@ -4,6 +4,7 @@ using SpecFlowDreanLotteryHome.pages.user;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowDreanLotteryHome.Steps.user
@@ -71,8 +72,8 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             Assert.AreEqual(Currency, totalPrice.Split(" ")[0]);
             double discount = dialogP.GetAppropriateDiscount(amount) / 100;
             double priceFromDialog = double.Parse(price.Substring(1));
-            double expectedTotalPrice = (1-discount) * priceFromDialog * amount;
-            Assert.AreEqual(Currency + " " + expectedTotalPrice.ToString("N2").Replace(",", ""), totalPrice);/*expectedTotalPrice.ToString("N2").Replace(",", "")));*/
+            double expectedTotalPrice = Math.Round(((1-discount) * priceFromDialog), 2) * amount; //!
+            Assert.AreEqual(Currency + " " + expectedTotalPrice.ToString("N2").Replace(",", ""), totalPrice, "amount:"+ amount + prod);/*expectedTotalPrice.ToString("N2").Replace(",", "")));*/
             _scenarioContext.Add("product", prod);
             //_scenarioContext.Add("price", price);
             _scenarioContext.Add("totalPrice", totalPrice);
@@ -101,5 +102,16 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             double sumOfCreds = dialogP.AddAllPrizesOnThePageNoticedCreditSum();
             _scenarioContext.Add("CreditsSum", sumOfCreds);
         }
+        [When(@"user add prize dialog credit to noticed credit summ and notice it")]
+        public void WhenUserAddPrizeDialogCreditToNoticedCreditSummAndNoticeIt()
+        {
+            double sumOfCreds = dialogP.GetCreditValueInSingleDialog();
+            double noticed = (double)_scenarioContext["CreditsSum"];
+            _scenarioContext.Remove("CreditsSum");
+            _scenarioContext.Add("CreditsSum", sumOfCreds + noticed);
+            dialogP.CloseDialog();
+            Thread.Sleep(300);
+        }
+
     }
 }

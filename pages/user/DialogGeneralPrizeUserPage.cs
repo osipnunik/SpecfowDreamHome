@@ -11,11 +11,11 @@ namespace SpecFlowDreanLotteryHome.pages.user
         public DialogGeneralPrizeUserPage(IWebDriver webDriver) : base(webDriver) { }
 
         private IWebElement Title => WebDriver.FindElement(By.CssSelector("div[role='dialog'] div.ModalInfoTitle h3"));
-        private IWebElement NonDiscountPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.none-discount"));
-        private IWebElement DiscountPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.discount-new-price"));
-        private IWebElement DiscountOldPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.discount-old-price"));
+        private IWebElement NonDiscountPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] span.dis-none"));
+        private IWebElement DiscountPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] span.dis-new-price"));
+        private IWebElement DiscountOldPrice => WebDriver.FindElement(By.CssSelector("div[role='dialog'] span.dis-old-price"));
 
-        private IWebElement DiscountPercent => WebDriver.FindElement(By.CssSelector("div[role='dialog'] p.discount-percent"));
+        private IWebElement DiscountPercent => WebDriver.FindElement(By.CssSelector("div[role='dialog'] span.dis-percent"));
         private IList<IWebElement> Discounts => WebDriver.FindElements(By.CssSelector("div.ticketsCardDesk div.ticketCard div.ticketСardItem span"));
         private IList<IWebElement> TicketsQuantBookedAll2 => WebDriver.FindElements(By.CssSelector("div.ticketsOutInfo p"));
 
@@ -23,7 +23,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
         private IWebElement TicketQuantityElement => WebDriver.FindElement(By.XPath("//div[@class='checkQuanityBlock']/p[text()='" + TicketNumber + "']"));
         private IWebElement TotalPrice => WebDriver.FindElement(By.CssSelector("div:nth-child(2) > p.order-data.totalValue"));
         private IWebElement QuantityTicSecond => WebDriver.FindElement(By.CssSelector("div.priceGreyContainer div:last-child p.quantitiValue"));
-        private IList<IWebElement> PricesP => WebDriver.FindElements(By.CssSelector(".infoModalMainTitle .productPrices p"));
+        private IList<IWebElement> PricesP => WebDriver.FindElements(By.CssSelector(".infoModalMainTitle div.prize-card-price-container span"));//".infoModalMainTitle .productPrices p"));
         private IWebElement Picture => WebDriver.FindElement(By.CssSelector(".slider .slick-active img"));
         private IWebElement CloseX => WebDriver.FindElement(By.CssSelector("button.close-modal-icon"));
         private IList<IWebElement> PrizeTitles => WebDriver.FindElements(By.CssSelector("div.productTitle"));
@@ -110,6 +110,11 @@ namespace SpecFlowDreanLotteryHome.pages.user
                 CloseX.Click();
             }
             return sum;
+        }
+        public double GetCreditValueInSingleDialog()
+        {
+            AddToBasketBtn.Click();
+            return double.Parse(EarnedCredit.Text.Substring(2));
         }
     }
 }

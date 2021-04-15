@@ -191,8 +191,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 31
- testRunner.Given("user logged in as admin with \"testqaanuitex@mail.com\" email and \"000000\" password" +
-                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("admin logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 32
     testRunner.And("click Fixed odds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -246,8 +245,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 41
- testRunner.Given("user logged in as admin with \"testqaanuitex@mail.com\" email and \"000000\" password" +
-                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("admin logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 42
     testRunner.And("go to user management", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -331,8 +329,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 62
- testRunner.Given("user logged in as admin with \"testqaanuitex@mail.com\" email and \"000000\" password" +
-                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("admin logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 63
     testRunner.And("go to staff management", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

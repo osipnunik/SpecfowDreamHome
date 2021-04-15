@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ namespace SpecFlowDreanLotteryHome.pages.user
     {
         public FixedOddsUserPage(IWebDriver webDriver) : base(webDriver) { }
 
-        private IWebElement FixedOddsHref => WebDriver.FindElement(By.CssSelector("a[href='/fixedodds']"));
+        private IWebElement FixedOddsHref => Waiter.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[href='/fixedodds']")));
         private IList<IWebElement> FirstElementPrices => WebDriver.FindElements(By.CssSelector(".lifestyleProduct-mob:first-child .productPrices p"));
         private IList<IWebElement> FirstProductPricesP => WebDriver.FindElements(By.CssSelector(".lifestyleProductList.container div.lifestyleProduct-mob:first-child div.productPrices div p"));
         

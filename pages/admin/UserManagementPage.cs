@@ -143,7 +143,6 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             ApproveRemove.Click();
             Waiter.Until(ExpectedConditions.InvisibilityOfElementWithText(PopupTitle, "Are you sure you want to remove ticket?"));
         }
-
         internal void ClickAddTicket()
         {
             try { AddTicketBtn.Click(); }

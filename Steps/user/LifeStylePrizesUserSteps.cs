@@ -146,17 +146,17 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void ThenCreditCalculatedAsAtAdminGeneralExpected()
         {
             string actualDialogCredit = (string)_scenarioContext["creditEarned"];
-            Dictionary<int, int> credits = (Dictionary<int, int>)_scenarioContext["eurosPercentsCredits"];
+            Dictionary<double, int> credits = (Dictionary<double, int>)_scenarioContext["eurosPercentsCredits"];
             double totalPrice = double.Parse(((string)_scenarioContext["totalPrice"]).Substring(2));
             int creditPerEur = 0;
-            int maxCoant = 0;
-            foreach (KeyValuePair<int, int> keyValue in credits)
+            double maxCoant = 0;
+            foreach (KeyValuePair<double, int> keyValue in credits)
             {
-                if(maxCoant < keyValue.Key && keyValue.Key < totalPrice) 
+                if(maxCoant < keyValue.Key && keyValue.Key <= totalPrice) 
                 { maxCoant = keyValue.Key;creditPerEur = keyValue.Value; }                
             }
             double credit = creditPerEur * totalPrice / 100;
-            Assert.AreEqual("£ " + Math.Round(credit, 2), actualDialogCredit);
+            Assert.AreEqual("£ " + Math.Round(credit, 2), actualDialogCredit, credit.ToString());
         }
 
         [When(@"user click on buy now")]
@@ -164,11 +164,17 @@ namespace SpecFlowDreanLotteryHome.Steps.user
 
         [When(@"click Enter Now button")]
         public void WhenClickEnterNowButton() => lifeStylePage.ClickEnterNow();
+        [When(@"scroll up")]
+        public void WhenScrollToDreamHome()
+        {
+            lifeStylePage.ScrollToDreamHome();
+        }
+
         [When(@"user go to Dream Home page")]
         public void WhenUserGoToDreamHomePage()
         {
             lifeStylePage.ClickDreamHome();
-            WebDriver.Manage().Cookies.DeleteAllCookies();
+            //WebDriver.Manage().Cookies.DeleteAllCookies();
             //WebDriver.Navigate().Refresh();
         }
         [When(@"click on random category")]

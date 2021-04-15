@@ -70,9 +70,9 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         }
 
         [Then(@"category with title ""(.*)"" exist")]
-        public void ThenCategoryWithTitleExist(string p0)
+        public void ThenCategoryWithTitleExist(string categ)
         {
-            Assert.IsTrue(catSubc.GetFirstRowDatatd().Contains(p0));
+            Assert.IsTrue(catSubc.GetFirstRowDatatd().Contains(categ), categ);
         }
         [Then(@"popup with text ""(.*)"" appears")]
         public void ThenPopupWithTextAppears(string expectedMessage)
@@ -101,7 +101,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         public void ThenSub_CategoryWithTitleExist(string p0)
         {
             var subCategs = catSubc.GetFirstRowDatatd();
-            Assert.IsTrue(subCategs.Contains(p0));
+            Assert.IsTrue(subCategs.Contains(p0), p0);
         }
 
 

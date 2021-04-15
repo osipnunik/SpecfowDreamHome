@@ -55,7 +55,14 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             int size = FixedOddsP.GetSizeOfFixedOddsList();
             Random r = new Random();
             int randNum = r.Next(size);
+            _scenarioContext.Remove("randNum");
             _scenarioContext.Add("randNum", randNum);
+        }
+        [When(@"user click on this element")]
+        public void WhenUserClickOnThisElement()
+        {
+            int randNum = (int)_scenarioContext["randNum"];
+            FixedOddsP.ClickOnNthFixedOdds(randNum);
         }
 
         [When(@"user notice all info about this element from fixedOddsList")]

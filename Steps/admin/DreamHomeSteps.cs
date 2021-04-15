@@ -337,8 +337,7 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         public void WhenClickOnStatusInDiscountsTab()
         {
             dreamHomePg.ClickDiscountStatus();
-        }
-        
+        }        
 
         [When(@"input new price is in discount tab (.*)")]
         public void WhenInputNewPriceIsInDiscountTab(string p0)
@@ -485,9 +484,9 @@ namespace SpecFlowDreanLotteryHome.Steps.admin
         [When(@"set credits euroes and percents as defined earlier")]
         public void WhenSetCreditsEuroesAndPercentsAsDefinedEarlier()
         {
-            Dictionary<int, int> eurosPercents = (Dictionary<int, int>)_scenarioContext["eurosPercentsCredits"];
+            Dictionary<double, int> eurosPercents = (Dictionary<double, int>)_scenarioContext["eurosPercentsCredits"];
             int i = 0;
-            foreach (KeyValuePair<int, int> keyValue in eurosPercents)
+            foreach (KeyValuePair<double, int> keyValue in eurosPercents)
             {               
                 dreamHomePg.InputCreditLastEuro(keyValue.Key.ToString());
                 dreamHomePg.InputCreditLastPercent(keyValue.Value.ToString());

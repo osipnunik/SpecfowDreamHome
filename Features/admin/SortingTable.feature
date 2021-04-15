@@ -28,7 +28,7 @@ Scenario: Sorting table on LifeStyle prizes
 
 @mytag
 Scenario: Sorting table on Fixed Odds
-	Given user logged in as admin with "testqaanuitex@mail.com" email and "000000" password
+	Given admin logged in
     And click Fixed odds
 	When click downsorting Fixed odds idies
 	Then all Fixed odds IDes should be downsorted
@@ -38,7 +38,7 @@ Scenario: Sorting table on Fixed Odds
 	Then all Titles should be upsorted
 
 Scenario: Sorting of user management
-	Given user logged in as admin with "testqaanuitex@mail.com" email and "000000" password
+    Given admin logged in
     And go to user management
 	When click downsort first name
 	Then all first names should be downsorted
@@ -59,7 +59,7 @@ Scenario: Sorting of user management
 	Then all phones should be upsorted
 
 Scenario: Sorting on staff management
-	Given user logged in as admin with "testqaanuitex@mail.com" email and "000000" password
+	Given admin logged in
     And go to staff management
 	When click downsort first name
 	Then all first names should be downsorted

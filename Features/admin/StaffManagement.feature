@@ -1,7 +1,7 @@
 ﻿Feature: StaffManagement
 	Simple calculator for adding two numbers
 
-@mytag
+@admin
 Scenario: Create Stuff 
 	Given admin logged in
 	When admin go to staff Management page

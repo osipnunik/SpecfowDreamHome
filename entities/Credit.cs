@@ -6,7 +6,7 @@ namespace SpecFlowDreanLotteryHome.entities
 {
     class Credit
     {
-        public int Count { get; set; }
+        public double Count { get; set; }
         public int Percent { get; set; }
     }
 }

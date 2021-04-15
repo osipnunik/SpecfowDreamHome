@@ -37,7 +37,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             int expectAmount = (int)_scenarioContext["ticketQuantity"];
             double expectedTotalPrice = expectedPrice * expectAmount;
             Assert.AreEqual(expectedProd.Title, basketP.GetLastProductTitle());
-            Assert.AreEqual("£" + expectedPrice/*.ToString("N2").Replace(",", "")*/, basketP.GetLastProductPrice());
+            Assert.AreEqual("£" + expectedPrice.ToString("N2").Replace(",", ""), basketP.GetLastProductPrice());
             Assert.AreEqual(expectAmount.ToString(), basketP.GetLastProductAmount());
             string expectedTotalPriceRounded = "£" + expectedTotalPrice.ToString("N2").Replace(",", "");
             Assert.IsTrue(expectedTotalPriceRounded.StartsWith(basketP.GetLastProductTotalPrice()));
@@ -59,7 +59,6 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             string expectedCreditEarned = (string)_scenarioContext["creditEarned"];
             Assert.AreEqual(expectedCreditEarned, basketP.GetCreditEarnedValue());
         }
-
         [When(@"user click Pay")]
         public void WhenUserClickPay()
         {
@@ -80,7 +79,7 @@ namespace SpecFlowDreanLotteryHome.Steps.user
             basketP.InputCardName("5436 0310 3060 6378");
             //basketP.InputExpDate("22");
             Thread.Sleep(1000);
-            basketP.InputExpDate("1122");
+            //basketP.InputExpDate("1122");
             basketP.InputCVC("257");
             Thread.Sleep(1000);           
         }
@@ -108,8 +107,11 @@ namespace SpecFlowDreanLotteryHome.Steps.user
         public void ThenUserSeeCreditAmountAtBasketAndHeaderAsNoticedEarlier()
         {
             double expectedCredit = (double)_scenarioContext["CreditsSum"];
+           // Waiter.Until(ExpectedConditions.TitleIs)
             string basketSumOfCredit = basketP.GetCreditEarnedValue();
-            Assert.AreEqual("£" + expectedCredit.ToString("N2"), basketSumOfCredit, basketP.GetLastProductTitle());
+            string lastTitle = basketP.GetLastProductTitle();
+            basketP.CloseAllItemsInBasket();
+            Assert.AreEqual("£" + expectedCredit.ToString("N2").Replace(",", ""), basketSumOfCredit, lastTitle);
         }
         [When(@"close all items in basket")]
         public void WhenCloseAllItemsInBasket()

@@ -19,7 +19,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
             Paginats = new PaginationFragment(webDriver);
         }
 
-        private IWebElement SettingsHref => WebDriver.FindElement(By.XPath("//span[text()='Settings']"));
+        private IWebElement SettingsHref => WebDriver.FindElement(By.CssSelector(".menu-wrap>li:nth-of-type(2)"));
         private IWebElement WinnersHref => WebDriver.FindElement(By.CssSelector("a[href='#/winners']"));
         private IWebElement DeleteIcon4 => WebDriver.FindElement(By.CssSelector("tbody:nth-child(5) div svg.delete-icon"));
         private IWebElement Addnew => WebDriver.FindElement(By.CssSelector("a[aria-label = 'Add new ']"));
@@ -145,7 +145,7 @@ namespace SpecFlowDreanLotteryHome.pages.admin
 
         internal void InputDateTime()
         {
-            DrawDateInput.SendKeys("06052121"+ Keys.ArrowRight+ "1051");
+            DrawDateInput.SendKeys("06052020"+ Keys.ArrowRight+ "1051");
             //DrawDateInput.SendKeys(Keys.ArrowRight+ Keys.ArrowLeft+ Keys.ArrowLeft);
            // DrawDateInput.SendKeys("1051");
         }
